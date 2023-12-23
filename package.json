@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.21.1"
+  }
+}
