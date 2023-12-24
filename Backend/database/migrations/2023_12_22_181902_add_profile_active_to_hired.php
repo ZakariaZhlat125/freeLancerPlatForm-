@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('hired', function (Blueprint $table) {
-            //
+        Schema::table('profiles', function ($table) {
+            $table->boolean('hire_me')->nullable();
         });
     }
 
