@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             //
+            $table->string('files')->nullable();
+            $table->string('url')->nullable();
+            $table->boolean('finshed')->default(0);
+            $table->timestamp('finshed_at')->nullable();
         });
     }
 

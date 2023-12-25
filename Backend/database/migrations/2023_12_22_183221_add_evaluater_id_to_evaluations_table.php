@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('evaluations', function (Blueprint $table) {
             //
+            $table->unsignedBigInteger('evaluater_id')->after('user_id');
+            $table->foreign('evaluater_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

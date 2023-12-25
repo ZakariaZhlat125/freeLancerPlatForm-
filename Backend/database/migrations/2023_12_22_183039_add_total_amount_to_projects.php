@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             //
+            $table->double('totalAmount')->nullable()->default(0);
+
         });
     }
 

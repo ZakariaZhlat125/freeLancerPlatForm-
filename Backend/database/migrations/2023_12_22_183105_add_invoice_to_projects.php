@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             //
+            $table->string('invoice')->nullable();
+            $table->string('payment_status')->nullable()->default('unpaid');
         });
     }
 

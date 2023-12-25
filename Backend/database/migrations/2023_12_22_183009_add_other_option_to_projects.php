@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             //
+            $table->boolean('other_way_send_files')->nullable()->default(0);
         });
     }
 
