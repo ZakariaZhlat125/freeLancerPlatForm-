@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             //
+            $table->timestamp('stated_at')->nullable();
+            $table->double('duration')->nullable();
         });
     }
 

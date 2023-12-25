@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('profiles', function (Blueprint $table) {
             //
+            $table->integer('reseved')->default(0);
+
         });
     }
 

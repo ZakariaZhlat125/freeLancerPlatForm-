@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('profiles', function (Blueprint $table) {
             //
-            $table->double('amount')->nullable();
+
         });
     }
 
@@ -24,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('profiles', function (Blueprint $table) {
             //
+            $table->integer('limit')->default(4);
         });
     }
 };
