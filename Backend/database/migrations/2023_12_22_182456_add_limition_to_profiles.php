@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('profiles', function (Blueprint $table) {
             //
+            $table->double('amount')->nullable();
         });
     }
 
