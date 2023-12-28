@@ -1,0 +1,147 @@
+<?php
+
+namespace App\Http\Controllers\client;
+
+use App\Http\Controllers\Controller;
+use App\Models\Comments;
+use App\Models\Posts;
+use App\Models\Profile;
+use App\Models\User;
+use App\Notifications\CommentNotification;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Pusher\ApiErrorException;
+use Pusher\Pusher;
+use Symfony\Component\ErrorHandler\Error\FatalError;
+use Symfony\Component\Mailer\Exception\TransportException;
+
+class CommentsController extends Controller
+{
+    //
+    public function save(Request $request)
+    {
+        try {
+            $request->validate([
+                'cost' => ['required', 'numeric', 'max:1000000'],
+                'duration' => ['required', 'numeric', 'max:1000000'],
+            ], [
+                'cost.required' => 'رجاء قم بأدخال التكلفه لهذا المشروع',
+                'duration.required' => 'حقل المده مطلوب',
+                'duration.numeric' => 'يجب ان يكون حق المده من نوع رقمي',
+            ]);
+
+            $comment = new Comments();
+            $comment->user_id = Auth::id();
+            $comment->post_id = $request->post_id;
+            $comment->cost = $request->cost;
+            $comment->duration = $request->duration;
+            $comment->description = $request->message;
+            $comment->is_active = 1;
+            $comment->cost_after_taxs = $request->cost / 0.5;
+
+            $comments  = Comments::where('post_id', $request->post_id)->count();
+
+            // update the offer numbers
+            Posts::where('id', $request->post_id)->update([
+                'offers' => $comments + 1
+            ]);
+            if ($comment->save()) {
+
+                $postOwner = User::select(
+                    'posts.id',
+                    'posts.title',
+                    'posts.user_id as userid',
+                    'profiles.name as user_name'
+                )->join('posts', 'posts.user_id', '=', 'users.id')
+                    ->join('profiles', 'profiles.user_id', '=', 'users.id')
+                    ->where('posts.id', $request->post_id)
+                    ->first();
+
+                $user = User::join('profiles', 'profiles.user_id', 'users.id')->where('id', $postOwner->userid)->first();
+                $provider = Profile::select('name')->where('user_id', Auth::id())->first();
+                // return response()->json($user);
+                $data = [
+                    'name' =>  $postOwner->user_name,
+                    'post_title' => $postOwner->title,
+                    'message' => 'قام ' .   $provider->name . ' باضافه تعليق على  مشروعك ' . $postOwner->title,
+                    'url' => url('posts/details/' . $postOwner->id),
+                    'userId' => $postOwner->userid
+                ];
+
+
+                $options = array(
+                    'cluster' => env('PUSHER_APP_CLUSTER'),
+                    'encrypted' => true
+                );
+                $pusher = new Pusher(
+                    env('PUSHER_APP_KEY'),
+                    env('PUSHER_APP_SECRET'),
+                    env('PUSHER_APP_ID'),
+                    $options
+                );
+
+
+                $user->notify(new CommentNotification($data));
+                $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
+
+                return redirect()->back()
+                    ->with(['message' => 'تم اضافة عرضك  بنجاح', 'type' => 'alert-success']);
+            } else {
+                return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            }
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {
+            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+        } catch (FatalError $e) {
+            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+        } catch (ApiErrorException $e) {
+            return redirect()->back()->with(['message' => 'تأكد من الاتصال بالانترنت ', 'type' => 'alert-success']);
+        } catch (TransportException $e) {
+            return redirect()->back()->with(['message' => 'تأكد من الاتصال بالانترنت ', 'type' => 'alert-success']);
+        } catch (\Throwable $th) {
+            throw $th;
+            return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+        }
+    }
+    // update comment
+
+    public function update(Request $request, $comment_id)
+    {
+
+        try {
+            $request->validate([
+
+                'cost' => ['required', 'numeric'],
+                'duration' => ['required', 'numeric'],
+                'message' => ['required'],
+            ], [
+                'cost.required' => 'رجاء قم بأدخال التكلفه لهذا العرض',
+                'duration.required' => 'حقل المده مطلوب',
+                'duration.numeric' => 'يجب ان يكون حق المده من نوع رقمي',
+                'message.required' => 'اضف تفاصيل للعرض ',
+                // 'message.min' => 'حقل الوصف يجب ان يحتوي على 255 حرف على الاقل',
+            ]);
+
+            $comment = Comments::find($comment_id);
+            // $comment->user_id = Auth::id();
+
+            //   $comment->user_id = Auth::id();
+            // $comment->post_id = $request->post_id;
+            $comment->cost = $request->cost;
+            $comment->duration = $request->duration;
+            $comment->description = $request->message;
+            $comment->is_active = 1;
+            $comment->cost_after_taxs = $request->cost / 0.5;
+
+
+            if ($comment->save()) {
+                return redirect()->back()
+                    ->with(['message' => 'تم تعديل العرض بنجاح', 'type' => 'alert-success']);
+            } else
+                return back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {
+            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+        } catch (\Throwable $th) {
+            return back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+        }
+    }
+}

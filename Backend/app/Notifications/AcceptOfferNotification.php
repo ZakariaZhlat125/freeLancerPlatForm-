@@ -6,17 +6,19 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Lang;
 
 class AcceptOfferNotification extends Notification
 {
     use Queueable;
-
+    private $data;
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($data)
     {
         //
+        $this->data = $data;
     }
 
     /**
@@ -26,18 +28,33 @@ class AcceptOfferNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
      * Get the mail representation of the notification.
      */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail( $notifiable): MailMessage
     {
+        $message = 'قام ' . $this->data['name'] . 'بقبول عرضك   ';
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject(Lang::get('تم قبول عرضك'))
+            ->line($message)
+            ->action('دعني اراها', $this->data['url'])
+            ->line('شكرا');
+    }
+
+    public function toDatabase($notifiable)
+    {
+        return [
+            'name' => $this->data['name'],
+            'project_id' => $this->data['project_id'],
+            'project_title' => $this->data['project_title'],
+            'url' => $this->data['url'],
+            'type' => 'accept_offer',
+            'message' => $this->data['message'],
+            'userId' => $this->data['userId']
+        ];
     }
 
     /**
@@ -45,10 +62,20 @@ class AcceptOfferNotification extends Notification
      *
      * @return array<string, mixed>
      */
-    public function toArray(object $notifiable): array
+    public function toArray( $notifiable): array
     {
         return [
-            //
+            'id' => $this->id,
+            'read_at' => null,
+            'data' => [
+                'name' => $this->data['name'],
+                'project_id' => $this->data['project_id'],
+                'project_title' => $this->data['project_title'],
+                'url' => $this->data['url'],
+                'type' => 'accept_offer',
+                'message' => $this->data['message'],
+                'userId' => $this->data['userId']
+            ],
         ];
     }
 }

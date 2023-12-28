@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('profiles', function (Blueprint $table) {
             //
-
+            $table->integer('limit')->default(4);
         });
     }
 
@@ -24,7 +24,6 @@ return new class extends Migration
     {
         Schema::table('profiles', function (Blueprint $table) {
             //
-            $table->integer('limit')->default(4);
         });
     }
 };

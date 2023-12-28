@@ -18,13 +18,11 @@ return new class extends Migration
             $table->string('cost');
             $table->integer('duration');
             $table->string('file')->nullable();
-            $table->string('status')->nullable(); // here if its publish or drif
-            $table->integer('offers')->default(0); // how many people offer
+            $table->string('status')->nullable();
+            $table->string('offers')->default(0);//how many people offer
 
-            // not sure if its within category
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
