@@ -31,7 +31,7 @@ class ProfileSeeder extends Seeder
         $Dhoha = Profile::create([
             'user_id' => 2,
             // 'user_id' => User::all()->random()->id,
-            'name' => 'فادي خوري',
+            'name' => 'زكريا زحلط',
             'gender' => 'male',
             'mobile' => '773065471',
             'country' => 'syria',
