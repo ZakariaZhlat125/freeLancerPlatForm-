@@ -260,9 +260,7 @@ class postController extends Controller
                 'projects.created_at',
                 'projects.duration',
                 'projects.post_id',
-            )->join('posts', 'posts.id', 'projects.post_id')
-
-                ->get();
+            )->join('posts', 'posts.id', 'projects.post_id')->get();
             // return response()->json($projects);
             return view('client.post.myProject')->with('projects', $project);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {

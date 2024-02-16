@@ -17,6 +17,8 @@ class ControllPannelController extends Controller
 
     function index()
     {
+
+
         // give all the categories
         $categories = category::where('is_active', 1)->get();
 

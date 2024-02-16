@@ -38,7 +38,7 @@
                                 fill="#1976D2" />
                         </svg>
                     </div>
-                    <h1 class=" w-5/6 text-center text-primary-pink ">سجل عن طريق قوقل</h1>
+                    <h1 class=" w-5/6 text-center text-primary-pink ">سجل عن طريق غوغل</h1>
                 </a>
                 <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 lg:w-1/4"></span>
