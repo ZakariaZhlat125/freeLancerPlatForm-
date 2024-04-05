@@ -50,7 +50,6 @@
 .navbar-toggler span {
     margin: 0;
     padding: 0;
-
 }
 
 .toggler-icon {
@@ -62,7 +61,7 @@
     opacity: 1;
     right: 0;
     transform: rotate(0deg);
-    transition: .25s ease-in-out;
+    transition: 0.25s ease-in-out;
     background-color: var(--main-offwhite-color);
 }
 
@@ -127,11 +126,23 @@
 }
 
 .user-items a:hover,
-.user-items a:active, 
+.user-items a:active,
 .user-items a:visited {
     color: var(--main-offwhite-color);
     cursor: pointer;
 }
 
+.language-link {
+    margin-right: 10px; /* Adjust margin as needed */
+    margin-left: 10px; /* Adjust margin as needed */
+    padding: 6px;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: background-color 0.3s, font-weight 0.3s; /* Add transition for smooth effect */
+}
 
+.language-link:hover {
+    background-color: #f5f5f5; /* Change background color when hovering */
+    color: black;
+}
 /* ============= /Image avatar of nav ========= */

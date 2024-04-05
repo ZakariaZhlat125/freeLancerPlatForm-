@@ -39,6 +39,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\UserMiddleware::class,
              \App\Http\Middleware\OnlineMiddleware::class,
             \App\Http\Middleware\LastSeenUserActivity::class,
+            \App\Http\Middleware\LanguageSwitcher::class,
         ],
 
         'api' => [

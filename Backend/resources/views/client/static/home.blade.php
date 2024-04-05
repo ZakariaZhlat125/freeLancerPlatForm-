@@ -31,7 +31,7 @@
                 :class="{ 'shadow-lg flex-col border-md': isOpen, '': !isOpen }">
                 <div class=" flex justify-between md:w-fit w-full">
                     <div class="logo-font">
-                        <p>متوفر</p>
+                        <p>{{ __('static.title') }}</p>
                     </div>
                     <!-- toggle menu  -->
                     <!-- <div class="inline md:hidden cursor-pointer" @click="isNavOpend = !isNavOpend">close</div> -->
@@ -81,6 +81,17 @@
                             </a>
                         </div>
                     @endif
+                    <div class="d-flex align-items-center justify-content-end">
+                        @if (session()->get('lang') == 'en')
+                            <a class="language-link d-flex" href="javascript:void(0);" onclick="changeLanguage('ar')">
+                                <span class="align-self-center">{{ __('Arabic') }}</span>
+                            </a>
+                        @else
+                            <a class="language-link d-flex" href="javascript:void(0);" onclick="changeLanguage('en')">
+                                <span class="align-self-center">{{ __('English') }}</span>
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </nav>
 
@@ -128,7 +139,8 @@
                                 class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
                                 ملفك الشخصي
                             </div>
-                            @if (request()->segment(2) == 'controllPannal' || (request()->segment(2) == 'skills' || request()->segment(2) == 'myWorks'))
+                            @if (request()->segment(2) == 'controllPannal' ||
+                                    (request()->segment(2) == 'skills' || request()->segment(2) == 'myWorks'))
                                 <ion-icon name="person" class=" font-md cursor-pointer text-primary-green"></ion-icon>
                             @else
                                 <ion-icon name="person-outline" class=" font-md cursor-pointer ">
@@ -240,9 +252,9 @@
                         <!-- end drop up -->
 
                         <!-- <div
-                  class="rounded-full mr-1 w-fit h-12 bg-primary-green  border-2 border-white text-white font-sm flex justify-center items-center p-3 ">
-                  اضف عمل
-                </div> -->
+                    class="rounded-full mr-1 w-fit h-12 bg-primary-green  border-2 border-white text-white font-sm flex justify-center items-center p-3 ">
+                    اضف عمل
+                    </div> -->
 
                     </div>
                 </nav>
@@ -287,7 +299,7 @@
                     </div>
                     <p class="text-gray text-center" data-aos="fade-down" data-aos-duration="3000">
                         تستطيع أن تبحث عن مشروع الآن وتقدم عليه عرضاً<br />
-                         أو تستطيع أن تبحث عن أشخاص متاحين للعمل لديك.
+                        أو تستطيع أن تبحث عن أشخاص متاحين للعمل لديك.
                         <br />
                         ماذا تنتظر ... لتبدأ الآن !
                     </p>
@@ -324,7 +336,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class=" h-96 flex flex-col items-center pt-5  bg-primary-blue text-primary-pink w-12/12 md:w-6/12">
+                <div
+                    class=" h-96 flex flex-col items-center pt-5  bg-primary-blue text-primary-pink w-12/12 md:w-6/12">
                     <h3 class="font-4xl" data-aos="fade-down" data-aos-duration="1000">أنا مقدم خدمة !</h3>
                     <ul>
                         <li class="font-lg mt-4 text-white flex items-center">
@@ -493,6 +506,33 @@
         </script>
         <script>
             AOS.init();
+        </script>
+        <script>
+            function changeLanguage(lang) {
+                // Send an AJAX request to update the language
+                fetch('{{ route('LanguageSwitcher') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            lang: lang
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Reload the page to reflect the language change
+                            window.location.reload();
+                        } else {
+                            // Handle errors
+                            console.error('Failed to change language');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
         </script>
 </body>
 

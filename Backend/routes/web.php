@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\client\ChatController;
 use App\Http\Controllers\client\ContactController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\payment\PaymentController;
 use App\Models\Project;
 use App\Models\User;
@@ -75,6 +76,12 @@ Route::post('/forget-password', [ForgotPasswordController::class, 'postEmail'])-
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('reset-password');
 Route::post('/reset-password', [ResetPasswordController::class, 'updatePassword'])->name('update-password');
 // Route::apiResource('enquiries', 'Api\WebsiteEnquiryController');
+
+
+// change lang
+Route::post('/change-language', [LanguageController::class, 'switch'])->name('LanguageSwitcher');
+
+
 
 Route::group([], function () {
     //  mywallet view
