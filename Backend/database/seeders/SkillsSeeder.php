@@ -14,35 +14,10 @@ class SkillsSeeder extends Seeder
     public function run(): void
     {
         //
-        $photoshop = Skill::create([
-            'name' => 'فتشوب',
-
-            'is_active' => 1,
-
-
-        ]);
-        $tasmim = Skill::create([
-            'name' => 'التصميم الابداعي',
-
-            'is_active' => 1,
-
-        ]);
-        $advire = Skill::create([
-            'name' => ' اعلان',
-
-            'is_active' => 0,
-        ]);
-
-        $microsoft = Skill::create([
-            'name' => ' مايكروسوفت وورد',
-
-            'is_active' => 1,
-        ]);
-
-        $translate = Skill::create([
-            'name' => '  الترجمة',
-
-            'is_active' => 1,
-        ]);
+        Skill::updateOrCreate(['name' => 'فتشوب'], ['is_active' => 1]);
+        Skill::updateOrCreate(['name' => 'التصميم الابداعي'], ['is_active' => 1]);
+        Skill::updateOrCreate(['name' => 'اعلان'], ['is_active' => 0]);
+        Skill::updateOrCreate(['name' => 'مايكروسوفت وورد'], ['is_active' => 1]);
+        Skill::updateOrCreate(['name' => 'الترجمة'], ['is_active' => 1]);
     }
 }
