@@ -55,17 +55,17 @@
                         <ul class="flex flex-col md:flex-row gap-x-4 ">
                             <li class="nav_item font-sm cursor-pointer active_link">
                                 <a href="{{ route('home') }}">
-                                    الرئيسية
+                                    {{ __('static.Home') }}
                                 </a>
                             </li>
                             <li class="nav_item font-sm cursor-pointer">
                                 <a href="{{ route('projectlancer') }}">
-                                    المشاريع المتاحة
+                                    {{ __('static.Available_projects') }}
                                 </a>
                             </li>
                             <li class="nav_item font-sm cursor-pointer">
                                 <a href="{{ route('freelancers') }}">
-                                    مقدمو الخدمات
+                                    {{ __('static.Service_providers') }}
                                 </a>
                             </li>
                         </ul>
@@ -74,10 +74,10 @@
                         <div class="flex gap-x-3 ">
                             <a href="{{ route('login') }}"
                                 class="mo-btn btn-light-pink-bg p-2 px-6 rounded-full bg-primary-light-pink text-black">
-                                تسجيل الدخول
+                                {{ __('static.Signup') }}
                             </a>
                             <a href="{{ route('create_user') }}" class="mo-btn btn-light-pink-rounderd">
-                                حساب جديد
+                                {{ __('static.new_account') }}
                             </a>
                         </div>
                     @endif
@@ -102,12 +102,13 @@
                 <!-- title -->
                 <div class="w-12/12 md:w-6/12  sm:mt-8 mx-auto">
                     <div class="flex flex-col  items-center  sm:items-start h-full px-5 md:px-24">
-                        <h1 class="logo-font font-4xl" data-aos="fade-up" data-aos-duration="1000">متوفر</h1>
-                        <p class="mt-4" data-aos="fade-up" data-aos-duration="2000">منصة إبداعية تجمع بين
-                            صاحب المشروع والعامل الحر
+                        <h1 class="logo-font font-4xl" data-aos="fade-up" data-aos-duration="1000">
+                            {{ __('static.title') }}
+                        </h1>
+                        <p class="mt-4" data-aos="fade-up" data-aos-duration="2000">
+                            {{ __('static.descrption1') }}
                             <br />
-                            لتسهيل
-                            العمل وضمان الحقوق بسهولة وجودة عالية
+                            {{ __('static.descrption2') }}
                         </p>
                     </div>
                 </div>
@@ -137,7 +138,7 @@
 
                             <div style='left:-1.75rem' data-hover='person'
                                 class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                ملفك الشخصي
+                            {{ __('static.your_profile') }}
                             </div>
                             @if (request()->segment(2) == 'controllPannal' ||
                                     (request()->segment(2) == 'skills' || request()->segment(2) == 'myWorks'))
@@ -154,7 +155,7 @@
                                 <a href="{{ route('post') }}" id='document' class="relative">
                                     <div data-hover='document' style='left:-1.65rem'
                                         class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                        اضف مشروع
+                                         {{ __('static.add_project') }}
                                     </div>
                                     @if (request()->segment(2) == 'post')
                                         <ion-icon name="document" class=" font-md cursor-pointer text-primary-green">
@@ -173,7 +174,7 @@
                                 <a href="{{ route('userWork') }}" class='relative' id='work'>
                                     <div data-hover='work' style='left:-1.65rem'
                                         class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                        اضف عمل
+                                        {{ __('static.add_work') }}
                                     </div>
                                     @if (request()->segment(2) == 'userWork')
                                         <ion-icon name="briefcase" class=" font-md cursor-pointer text-primary-green">
@@ -190,7 +191,7 @@
                             <a href="{{ route('mywallet') }}" class="relative" id='wallet'>
                                 <div data-hover='wallet' style='left:-1.65rem'
                                     class="hidden bg-black border-2 -top-16  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                    محفظتي
+                                    {{ __('static.my_wallet') }}
                                 </div>
                                 @if (request()->segment(2) == 'mywallet')
                                     <ion-icon name="wallet" class=" font-md cursor-pointer text-primary-green">
@@ -220,7 +221,9 @@
                                                 @role('provider')
                                                     <a href="{{ route('workonProject') }}"
                                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
-                                                        اعمل على</a>
+                                                          {{ __('static.ongoing_projects') }}
+
+                                                        </a>
                                                 @endrole
                                             @endif
 
@@ -228,12 +231,16 @@
                                                 @role('seeker')
                                                     <a href="{{ route('myProject') }}"
                                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
-                                                        مشاريعي</a>
+                                                             {{ __('static.my_projects') }}
+
+                                                        </a>
                                                 @endrole
                                             @endif
                                             <a href='{{ route('logout') }}'
                                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
-                                                تسجيل الخروج
+                                                    {{ __('static.logout') }}
+
+
                                             </a>
                                         </div>
                                     </div>
@@ -288,7 +295,8 @@
             <!-- search section -->
             <section class="my-32">
                 <div class="flex flex-col justify-between items-center">
-                    <h2 class="font-4xl" data-aos="fade-down" data-aos-duration="2500">ابحث عن مشروع ؟!!
+                    <h2 class="font-4xl" data-aos="fade-down" data-aos-duration="2500">
+                        {{ __('static.lookfor_project') }}
                     </h2>
                     <!-- search component -->
                     <div class="rounded-full  shadow-lg h-14 w-full md:w-6/12 my-8 flex justify-between items-center">
@@ -298,10 +306,11 @@
                             class="rounded-full w-11 h-11 bg-primary-green mx-2 p-2 text-white flex justify-center items-center">ابحث</button>
                     </div>
                     <p class="text-gray text-center" data-aos="fade-down" data-aos-duration="3000">
-                        تستطيع أن تبحث عن مشروع الآن وتقدم عليه عرضاً<br />
-                        أو تستطيع أن تبحث عن أشخاص متاحين للعمل لديك.
+                        {{ __('static.option1') }}
                         <br />
-                        ماذا تنتظر ... لتبدأ الآن !
+                        {{ __('static.option2') }}
+                        <br />
+                        {{ __('static.option3') }}
                     </p>
                 </div>
             </section>
@@ -311,52 +320,55 @@
             <section class=" my-32 relative bg-primary-green h-fit w-full flex flex-col md:flex-row ">
                 <div
                     class=" h-96 flex flex-col items-center pt-5 bg-primary-pink  text-primary-blue w-12/12 md:w-6/12 ">
-                    <h3 class="font-4xl" data-aos="fade-down" data-aos-duration="1000">أنا طالب خدمة !</h3>
+                    <h3 class="font-4xl" data-aos="fade-down" data-aos-duration="1000">
+                        {{ __('static.seeker') }}
+                    </h3>
 
                     <ul>
                         <li class="font-lg mt-4 text-white flex items-center">
                             <span class="w-6 h-6 p-2 mx-4 rounded-full bg-primary-green"></span>
-                            <p data-aos="fade-down" data-aos-duration="2000">أقدم
-                                مشروعاً
-                                جديداً
+                            <p data-aos="fade-down" data-aos-duration="2000">
+                                 {{ __('static.seeker_option1') }}
                             </p>
                         </li>
 
                         <li class="font-lg mt-4 text-white flex items-center">
                             <span class="w-6 h-6 p-2 mx-4 rounded-full bg-primary-green"></span>
                             <p data-aos="fade-down" data-aos-duration="2000">
-                                أقيم مشروعاً منجزاً
+                                {{ __('static.seeker_option2') }}
                             </p>
                         </li>
                         <li class="font-lg mt-4 text-white flex items-center">
                             <span class="w-6 h-6 p-2 mx-4 rounded-full bg-primary-green"></span>
                             <p data-aos="fade-down" data-aos-duration="2000">
-                                أبحث عن متاحين للعمل
+                                {{ __('static.seeker_option3') }}
                             </p>
                         </li>
                     </ul>
                 </div>
                 <div
                     class=" h-96 flex flex-col items-center pt-5  bg-primary-blue text-primary-pink w-12/12 md:w-6/12">
-                    <h3 class="font-4xl" data-aos="fade-down" data-aos-duration="1000">أنا مقدم خدمة !</h3>
+                    <h3 class="font-4xl" data-aos="fade-down" data-aos-duration="1000">
+                        {{ __('static.provider') }}
+                    </h3>
                     <ul>
                         <li class="font-lg mt-4 text-white flex items-center">
                             <span class="w-6 h-6 p-2 mx-4 rounded-full bg-primary-green"></span>
                             <p data-aos="fade-down" data-aos-duration="2000">
-                                أبحث عن مشاريع
+                                 {{ __('static.provider_option1') }}
                             </p>
                         </li>
 
                         <li class="font-lg mt-4 text-white flex items-center">
                             <span class="w-6 h-6 p-2 mx-4 rounded-full bg-primary-green"></span>
                             <p data-aos="fade-down" data-aos-duration="2000">
-                                أقدم عرض عمل
+                                {{ __('static.provider_option2') }}
                             </p>
                         </li>
                         <li class="font-lg mt-4 text-white flex items-center">
                             <span class="w-6 h-6 p-2 mx-4 rounded-full bg-primary-green"></span>
                             <p data-aos="fade-down" data-aos-duration="2000">
-                                أعمل وأتقاضى أجري
+                                {{ __('static.provider_option3') }}
                             </p>
                         </li>
                     </ul>
@@ -367,7 +379,9 @@
             {{-- Our services --}}
             <section class="my-32">
                 <div x-data="{ swep: false }" @mouseleave="swep = false" class=" flex flex-col items-center ">
-                    <h2 class="font-4xl" data-aos="fade-down" data-aos-duration="1000">ماهي خدماتنا؟!</h2>
+                    <h2 class="font-4xl" data-aos="fade-down" data-aos-duration="1000">
+                        {{ __('static.features') }}
+                    </h2>
                     <div class="flex my-16 flex-wrap justify-center ">
                         <div @mouseover.away="swep = true" data-aos="fade-down" data-aos-duration="2000"
                             class='font-lg text-center w-72 h-72 p-10 flex flex-col justify-center items-center m-4 bg-white shadow-sm rounded-xl'>
@@ -377,9 +391,7 @@
                             <p x-show="swep">
                                 <ion-icon name="game-controller" class="font-4xl font-bold "></ion-icon>
                             </p>
-
-                            بيئة
-                            عمل متكاملة
+                            {{ __('static.feature1') }}
                         </div>
                         <div @mouseover.away="swep = true" data-aos="fade-down" data-aos-duration="2100"
                             class='font-lg text-center w-72 h-72 p-10 flex flex-col justify-center items-center m-4 bg-white shadow-sm rounded-xl'>
@@ -389,8 +401,7 @@
                             <p x-show="swep">
                                 <ion-icon name="wallet" class="font-4xl font-bold "></ion-icon>
                             </p>
-                            محفظة
-                            آمنة
+                            {{ __('static.feature2') }}
                         </div>
                         <div @mouseover.away="swep = true" data-aos="fade-down" data-aos-duration="2200"
                             class='font-lg text-center w-72 h-72 p-10 flex flex-col justify-center items-center m-4 bg-white shadow-sm rounded-xl'>
@@ -400,8 +411,7 @@
                             <p x-show="swep">
                                 <ion-icon name="logo-paypal" class="font-4xl font-bold "></ion-icon>
                             </p>
-                            طرق
-                            دفع سريعة
+                            {{ __('static.feature3') }}
                         </div>
                         <div @mouseover.away="swep = true" data-aos="fade-down" data-aos-duration="2300"
                             class='font-lg text-center w-72 h-72 p-10 flex flex-col justify-center items-center m-4 bg-white shadow-sm rounded-xl'>
@@ -411,8 +421,7 @@
                             <p x-show="swep">
                                 <ion-icon name="chatbox" class="font-4xl font-bold "></ion-icon>
                             </p>
-                            خدمة
-                            تواصل سهلة
+                            {{ __('static.feature4') }}
                         </div>
                     </div>
                 </div>
@@ -430,12 +439,13 @@
                 <!-- title -->
                 <div class="w-12/12 md:w-6/12">
                     <div class="flex flex-col justify-center h-full px-5 md:px-20">
-                        <h1 class="logo-font font-4xl">متوفر</h1>
-                        <p class="mt-4">منصة إبداعية تجمع بين
-                            صاحب المشروع والعامل الحر
+                        <h1 class="logo-font font-4xl">
+                            {{ __('static.title') }}
+                        </h1>
+                        <p class="mt-4">
+                            {{ __('static.descrption1') }}
                             <br />
-                            لتسهيل
-                            العمل وضمان الحقوق بسهولة وجودة عالية
+                            {{ __('static.descrption2') }}
                         </p>
                         <!-- social media -->
                         <div class="flex mt-4 space-x-6  ">
@@ -478,13 +488,19 @@
                 </div>
                 <ul class="flex flex-wrap items-center mx-12 mt-5  text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
                     <li>
-                        <a href="{{ route('aboutUs') }}" class="mr-4 hover:underline md:mr-6 ">بشأننا</a>
+                        <a href="{{ route('aboutUs') }}" class="mr-4 hover:underline md:mr-6 ">
+                            {{ __('static.about_us') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6">سياسة الخصوصية</a>
+                        <a href="#" class="mr-4 hover:underline md:mr-6">
+                            {{ __('static.privacy_policy') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('contactUs') }}" class="mr-4 hover:underline md:mr-6 ">تواصل معانا</a>
+                        <a href="{{ route('contactUs') }}" class="mr-4 hover:underline md:mr-6 ">
+                            {{ __('static.contact_us') }}
+                        </a>
                     </li>
 
                 </ul>

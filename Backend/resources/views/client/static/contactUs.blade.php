@@ -5,8 +5,10 @@
         class="max-w-screen-xl mt-20  md:mx-32 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-white text-gray-900 rounded-lg shadow-lg">
         <div class="flex flex-col justify-between">
           <div>
-            <h2 class="text-4xl lg:text-4xl font-bold leading-tight"> لنتواصل معاً</h2>
-           
+            <h2 class="text-4xl lg:text-4xl font-bold leading-tight">
+                {{ __('static.contact') }}
+            </h2>
+
           </div>
           <div class="mt-8 text-center">
             <svg class="w-full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -83,7 +85,9 @@
                 <linearGradient id="a964f849-fa65-4178-8cc4-fb8fb10b3617" x1="462.91" y1="660.68" x2="462.91"
                   y2="559.69" xlink:href="#eb6c86d6-45fa-49e0-9a60-1b0612516196" />
               </defs>
-              <title>تواصل معنا</title>
+              <title>
+                {{ __('static.contact_us') }}
+              </title>
               <g opacity="0.1">
                 <ellipse cx="479.42" cy="362.12" rx="11.38" ry="14.9" fill="#3f3d56" />
                 <path
@@ -509,36 +513,43 @@
         <form method="POST" action="{{ route('contact.us.store') }}" id="contactUSForm">
                             {{ csrf_field() }}
           <div>
-            <span class="uppercase text-md text-gray-600 font-bold">اسمك الكامل</span>
+            <span class="uppercase text-md text-gray-600 font-bold">
+                {{ __('static.form_name') }}
+            </span>
             <input class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
             type="text" name="name"  value="{{ old('name') }}" placeholder="">
             @error('name')
-                <span class="text-danger w-100">{{ $message }}</span>              
+                <span class="text-danger w-100">{{ $message }}</span>
           @enderror
           </div>
-      
+
           <div class="mt-8">
-            <span class="uppercase text-md text-gray-600 font-bold">البريد الإكتروني</span>
+            <span class="uppercase text-md text-gray-600 font-bold">
+                {{ __('static.form_email') }}
+            </span>
             <input class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                type="email" name="email" value="{{ old('email') }}">
               @error('email')
-                <span class="text-danger w-100">{{ $message }}</span>              
+                <span class="text-danger w-100">{{ $message }}</span>
               @enderror
           </div>
           <div class="mt-8">
-            <span class="uppercase text-md text-gray-600 font-bold">رسالتك</span>
+            <span class="uppercase text-md text-gray-600 font-bold">
+                {{ __('static.form_message') }}
+            </span>
             <textarea
               class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
               name="message" rows="3" >{{ old('message') }}</textarea>
               @error('message')
-                <span class="text-danger w-100">{{ $message }}</span>              
+                <span class="text-danger w-100">{{ $message }}</span>
           @enderror
           </div>
           <div class="mt-8">
-          <button class="mo-btn btn-blue-bg float-left font-md" type="submit"> إرسال
+          <button class="mo-btn btn-blue-bg float-left font-md" type="submit">
+            {{ __('static.form_send') }}
             </button>
           </div>
         </form>
       </div>
- 
+
 @endsection
