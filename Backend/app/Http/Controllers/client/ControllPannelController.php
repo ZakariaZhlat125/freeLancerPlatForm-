@@ -32,7 +32,7 @@ class ControllPannelController extends Controller
         } else if ($user->hasRole('provider')) {
             $userRole = 'provider';
         }
-
+        // dd($profile, $userRole, $categories);
         // return response()->json($transactions);
         return view('client.userProfile.controllPannal')->with([
             'data' => $profile,
@@ -47,49 +47,52 @@ class ControllPannelController extends Controller
     // here the function for the saving the user information
     public function profile_save(Request $request)
     {
-        try {
-            $current_user_id = Auth::user()->id;
+        // try {
+        $current_user_id = Auth::user()->id;
 
-            $userRole = false;
-            // Auth::user()->roles()->detach();
+        $userRole = false;
+        // Auth::user()->roles()->detach();
+
+        $user = User::findOrFail($current_user_id);
+        $user_name = $user->name;
+        // if ($request->provider && $request->seeker) {
+        //     Auth::user()->roles()->sync([3, 4]);
+        //     $userRole = true;
+        // } else if ($request->provider) {
+        //     Auth::user()->roles()->sync([4]);
+        //     $userRole = true;
+        // } else if ($request->seeker) {
+        //     Auth::user()->roles()->sync([3]);
+        //     $userRole = true;
+        // } else {
+        //     $userRole = false;
+        // }
 
 
-            // if ($request->provider && $request->seeker) {
-            //     Auth::user()->roles()->sync([3, 4]);
-            //     $userRole = true;
-            // } else if ($request->provider) {
-            //     Auth::user()->roles()->sync([4]);
-            //     $userRole = true;
-            // } else if ($request->seeker) {
-            //     Auth::user()->roles()->sync([3]);
-            //     $userRole = true;
-            // } else {
-            //     $userRole = false;
-            // }
+        // if ($userRole) {
+        Profile::updateOrCreate(
+            ['user_id' => $current_user_id],
+            [
+                // !what this for?
+                'job_title' => $request->input('job_title'),
+                'name' => $user_name,
+                'specialization'  =>  $request->input('category_id'),
+                'bio'  =>  $request->input('bio'),
+                'video'  =>  $request->input('video'),
+                'category_id' => $request->input('category_id'),
+                'hire_me' => $request->hire_me ? 1 : 0
+            ]
 
-
-            // if ($userRole) {
-            Profile::where('user_id', $current_user_id)->update(
-                [
-                    // !what this for?
-                    'job_title' => $request->input('job_title'),
-                    'specialization'  =>  $request->input('category_id'),
-                    'bio'  =>  $request->input('bio'),
-                    'video'  =>  $request->input('video'),
-                    'category_id' => $request->input('category_id'),
-                    'hire_me' => $request->hire_me ? 1 : 0
-                ]
-
-            );
-            return redirect()->route('profile')
-                ->with(['message' => '   تم تعديل معلومات الشخصيه بنجاح', 'type' => 'alert-success']);
-            // } else {
-            //     return redirect()->back()
-            //         ->with(['message' => 'يرجى تحديد نوع الحساب رجاء', 'type' => 'alert-danger']);
-            // }
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+        );
+        return redirect()->route('profile')
+            ->with(['message' => '   تم تعديل معلومات الشخصيه بنجاح', 'type' => 'alert-success']);
+        // } else {
+        //     return redirect()->back()
+        //         ->with(['message' => 'يرجى تحديد نوع الحساب رجاء', 'type' => 'alert-danger']);
+        // }
+        // } catch (\Throwable $th) {
+        //     //throw $th;
+        // }
     }
 
 
