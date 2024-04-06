@@ -18,25 +18,24 @@
             <div
                 class=" hidden-text w-full h-full bg-primary-green absolute flex justify-center items-center top-0 left-0  border-4 border-primary-green p-4 z-20">
                 <p class="text-white font-xl text-center">
-                    هنا ستتمكن من اضافه مشاريعك التي ترغب في بنائها كما يمكنك العمل كمتاح </br>
-                    وتتمكن من البحث عن مشروع لتبدأ العمل عليه بكل سهوله
+                {{ __('static.about_desc1') }}
+                </br>
+                {{ __('static.about_desc2') }}
                 </p>
             </div>
             <div class="flex flex-col  items-center my-8">
-                <h2 class="font-4xl text-black drop-shadow-lg" style="text-shadow: 2px 3px 3px #f1f1f1">ماهو متوفر؟
+                <h2 class="font-4xl text-black drop-shadow-lg" style="text-shadow: 2px 3px 3px #f1f1f1">
+                {{ __('static.about_desc3') }}
                 </h2>
             </div>
             <div class="flex">
                 <div class="w-full text-center">
                     {{-- <h1 class="font-4xl logo-font">متاح</h1> --}}
-                    <p class="font-lg text-center  pb-10 text-dark-gray ">منصه تسهل التواصل بين كل من طالب
-                        الخدمه ومقدم الخدمه
-                        وتوفر
+                    <p class="font-lg text-center  pb-10 text-dark-gray ">
+                        {{ __('static.about_desc4') }}
                         </br>
-                        كل الطرق
-                        لتتبع
-                        العمليات من والى استلام
-                        المشروع</p>
+                        {{ __('static.about_desc5') }}
+            </p>
                 </div>
 
             </div>
@@ -61,11 +60,16 @@
                             {{-- team 1 --}}
                             <div class=" relative bubble bubble-4">
                                 <div class="absolute p-1 px-4 bg-primary-pink text-black left-20 w-fit">
-                                    <h3> فادي خوري</h3>
+                                    <h3>
+                                      {{ __('static.about_name') }}
+
+                                    </h3>
                                 </div>
                                 <img class='w-32 h-32' src='/assets/client/images/Avatar (4).png' alt='afnan' />
                                 <div class="border-t border-t-gray  mt-5">
-                                    <p class='font-xs'>مطور مواقع ويب</p>
+                                    <p class='font-xs'>
+                                      {{ __('static.about_job') }}
+                                    </p>
                                     <a href="javascript:void(0)" class="" style="top: 10px ; left:-10px"><i
                                             class="fab fa-github   p-1 hover:text-black text-gray" title="github">
                                         </i>

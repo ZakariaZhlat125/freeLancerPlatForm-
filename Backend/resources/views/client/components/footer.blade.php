@@ -6,11 +6,13 @@
         <!-- title -->
         <div class="w-12/12 md:w-6/12">
             <div class="flex flex-col justify-center h-full px-5 md:px-20">
-                <h1 class="logo-font font-4xl">متوفر</h1>
-                <p class="mt-4">منصه ابداعيه تجمع بين اصحاب الاعمال والمطور الحر
+                <h1 class="logo-font font-4xl">
+                    {{ __('static.title') }}
+                </h1>
+                <p class="mt-4">
+                    {{ __('static.descrption1') }}
                     <br />
-                    لتسهيل
-                    العمل وضمان الحقوق بجوده عاليه وسهوله
+                    {{ __('static.descrption2') }}
                 </p>
                 <!-- social media -->
                 <div class="flex mt-4 space-x-6  ">
@@ -53,13 +55,19 @@
         </div>
         <ul class="flex flex-wrap items-center mx-12 mt-5  text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
             <li>
-                <a href="{{ route('aboutUs') }}" class="mr-4 hover:underline md:mr-6 ">بشأننا</a>
+                <a href="{{ route('aboutUs') }}" class="mr-4 hover:underline md:mr-6 ">
+                    {{ __('static.about_us') }}
+                </a>
             </li>
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6">سياسه الخصوصيه</a>
+                <a href="#" class="mr-4 hover:underline md:mr-6">
+                    {{ __('static.privacy_policy') }}
+                </a>
             </li>
             <li>
-                <a href="{{ route('contactUs') }}" class="mr-4 hover:underline md:mr-6 ">تواصل معانا</a>
+                <a href="{{ route('contactUs') }}" class="mr-4 hover:underline md:mr-6 ">
+                    {{ __('static.contact_us') }}
+                </a>
             </li>
 
         </ul>

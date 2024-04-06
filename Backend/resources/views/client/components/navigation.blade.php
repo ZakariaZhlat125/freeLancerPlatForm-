@@ -7,7 +7,9 @@
         :class="{ 'shadow-lg flex-col border-md': isOpen, '': !isOpen }">
         <div class=" flex justify-between md:w-fit w-full">
             <div class="logo-font">
-                <p>متوفر</p>
+                <p>
+                    {{ __('static.title') }}
+                </p>
             </div>
             <!-- toggle menu  -->
             <!-- <div class="inline md:hidden cursor-pointer" @click="isNavOpend = !isNavOpend">close</div> -->
@@ -30,21 +32,24 @@
                 <ul class="flex flex-col md:flex-row gap-x-4 ">
                     <li class="nav_item font-sm cursor-pointer {{ request()->segment(2) == '' ? 'active_link' : '' }}">
                         <a href="{{ route('home') }}">
-                            الرئيسية
+                              {{ __('static.Home') }}
                         </a>
                     </li>
 
                     <li
                         class="nav_item font-sm cursor-pointer {{ request()->segment(2) == 'posts' ? 'active_link' : '' }}">
                         <a href="{{ route('projectlancer') }}">
-                            المشاريع المتاحة
+                             {{ __('static.Available_projects') }}
+
                         </a>
                     </li>
 
                     <li
                         class="nav_item font-sm cursor-pointer {{ request()->segment(2) == 'freelancers' ? 'active_link' : '' }}">
                         <a href="{{ route('freelancers') }}">
-                            مقدمو الخدمات
+                            {{ __('static.Service_providers') }}
+
+
                         </a>
                     </li>
                 </ul>
@@ -56,10 +61,12 @@
                 <div class="flex gap-x-3 ">
                     <a href="{{ route('login') }}"
                         class="mo-btn btn-light-pink-bg p-2 px-6 rounded-full bg-primary-light-pink text-black">
-                        تسجيل الدخول
+                        {{ __('static.Signup') }}
+
                     </a>
                     <a href="{{ route('create_user') }}" class="mo-btn btn-light-pink-rounderd">
-                        حساب جديد
+                        {{ __('static.new_account') }}
+                
                     </a>
 
                 </div>
