@@ -63,7 +63,7 @@
     </script>
 </head>
 
-<body>
+<body class="@if (session()->get('lang') == 'ar') dir-ar) @else dir-en @endif">
     {{-- <div id='loading' class=" fixed flex justify-center items-center bg-primary-light-gray w-screen h-screen z-50"
         style="z-index: 2000">
         <div class="ripple"></div>
@@ -116,7 +116,8 @@
                                 class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
                                 ملفك الشخصي
                             </div>
-                            @if (request()->segment(2) == 'controllPannal' || (request()->segment(2) == 'skills' || request()->segment(2) == 'myWorks'))
+                            @if (request()->segment(2) == 'controllPannal' ||
+                                    (request()->segment(2) == 'skills' || request()->segment(2) == 'myWorks'))
                                 <ion-icon name="person" class=" font-md cursor-pointer text-primary-green"></ion-icon>
                             @else
                                 <ion-icon name="person-outline" class=" font-md cursor-pointer ">

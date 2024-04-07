@@ -17,7 +17,7 @@
     <title>Motahh</title>
 </head>
 
-<body style="background-color:#f2f2f2;">
+<body class=" @if (session()->get('lang') == 'en') dir-en) @else dir-ar @endif" style="background-color:#f2f2f2;">
     <!-- page warrper -->
     <div class="m-5">
         <!-- start of page -->
@@ -81,17 +81,18 @@
                             </a>
                         </div>
                     @endif
-                    <div class="d-flex align-items-center justify-content-end">
+                    <div class="flex items-center justify-end">
                         @if (session()->get('lang') == 'en')
-                            <a class="language-link d-flex" href="javascript:void(0);" onclick="changeLanguage('ar')">
-                                <span class="align-self-center">{{ __('Arabic') }}</span>
+                            <a class="language-link flex" href="javascript:void(0);" onclick="changeLanguage('ar')">
+                                <span class="self-center">{{ __('Arabic') }}</span>
                             </a>
                         @else
-                            <a class="language-link d-flex" href="javascript:void(0);" onclick="changeLanguage('en')">
-                                <span class="align-self-center">{{ __('English') }}</span>
+                            <a class="language-link flex" href="javascript:void(0);" onclick="changeLanguage('en')">
+                                <span class="self-center">{{ __('English') }}</span>
                             </a>
                         @endif
                     </div>
+
                 </div>
             </nav>
 
@@ -116,11 +117,13 @@
                 <div class=" relative  w-6/12 hidden md:flex  ">
                     <div class="illstration_warrper w-full h-full">
                         <div class="motaah_illstration">
-                            <div class="motaah-circle__gray green white xl"></div>
+                            {{-- <div class="motaah-circle__gray green white xl"></div> --}}
                             <div class="motaah-circle__gray blue white lg"></div>
                             <div class="motaah-circle__gray white md"></div>
                             <div class="motaah-circle__gray white sm"></div>
-                            <div class="motaah-core bg-primary-green"></div>
+                            <div
+                                class="motaah-core bg-primary-green @if (session()->get('lang') == 'en') motaah-core-en @endif ">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -138,7 +141,7 @@
 
                             <div style='left:-1.75rem' data-hover='person'
                                 class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                            {{ __('static.your_profile') }}
+                                {{ __('static.your_profile') }}
                             </div>
                             @if (request()->segment(2) == 'controllPannal' ||
                                     (request()->segment(2) == 'skills' || request()->segment(2) == 'myWorks'))
@@ -155,7 +158,7 @@
                                 <a href="{{ route('post') }}" id='document' class="relative">
                                     <div data-hover='document' style='left:-1.65rem'
                                         class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                         {{ __('static.add_project') }}
+                                        {{ __('static.add_project') }}
                                     </div>
                                     @if (request()->segment(2) == 'post')
                                         <ion-icon name="document" class=" font-md cursor-pointer text-primary-green">
@@ -221,9 +224,9 @@
                                                 @role('provider')
                                                     <a href="{{ route('workonProject') }}"
                                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
-                                                          {{ __('static.ongoing_projects') }}
+                                                        {{ __('static.ongoing_projects') }}
 
-                                                        </a>
+                                                    </a>
                                                 @endrole
                                             @endif
 
@@ -231,14 +234,14 @@
                                                 @role('seeker')
                                                     <a href="{{ route('myProject') }}"
                                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
-                                                             {{ __('static.my_projects') }}
+                                                        {{ __('static.my_projects') }}
 
-                                                        </a>
+                                                    </a>
                                                 @endrole
                                             @endif
                                             <a href='{{ route('logout') }}'
                                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
-                                                    {{ __('static.logout') }}
+                                                {{ __('static.logout') }}
 
 
                                             </a>
@@ -328,7 +331,7 @@
                         <li class="font-lg mt-4 text-white flex items-center">
                             <span class="w-6 h-6 p-2 mx-4 rounded-full bg-primary-green"></span>
                             <p data-aos="fade-down" data-aos-duration="2000">
-                                 {{ __('static.seeker_option1') }}
+                                {{ __('static.seeker_option1') }}
                             </p>
                         </li>
 
@@ -355,7 +358,7 @@
                         <li class="font-lg mt-4 text-white flex items-center">
                             <span class="w-6 h-6 p-2 mx-4 rounded-full bg-primary-green"></span>
                             <p data-aos="fade-down" data-aos-duration="2000">
-                                 {{ __('static.provider_option1') }}
+                                {{ __('static.provider_option1') }}
                             </p>
                         </li>
 
