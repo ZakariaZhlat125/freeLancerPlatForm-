@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'password.old_incorrect' => 'The old password is incorrect!',
+    'password_changed_message' => 'Password changed successfully!',
+    'time_limit_exceeded' => 'The process took longer than the specified time.',
+    'login.failed' => 'Login attempt failed. Please try again.',
+    'access.unauthorized' => 'You do not have the necessary permissions to access this page.',
+    'email_password.check' => 'Please check your email and password.',
+    'page_not_found' => 'An error occurred or the page you are trying to access does not exist.',
+    'project_rejected' => 'You have rejected your project delivery.',
+    'project_resumed' => 'Work on the project has been resumed.',
+    'confirmation_sent' => 'Confirmation message sent.',
+    'account_activated_message' => 'Your account has been activated successfully.',
+    'account_created_message' => 'Your account has been created successfully.',
+    'account_confirmed_message' => 'Your account has been confirmed successfully! Get started.',
+    'department_disabled_message' => 'The department has been disabled successfully.',
+    'department_enabled_message' => 'The department has been enabled successfully.',
+    'delete_failed_message' => 'The deletion process failed. Please try again.',
+    'department_added_success' => 'New department added successfully.',
+    'add_failed_message' => 'The addition process failed. Please try again.',
+    'update_success' => 'Update successful.',
+    'update_failed_message' => 'The update process failed. Please try again.',
+    'password_changed_success' => 'Password changed successfully.',
+];

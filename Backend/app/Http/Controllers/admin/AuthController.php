@@ -45,14 +45,14 @@ class AuthController extends Controller
         auth()->user()->sendEmailVerificationNotification();
 
         return back()
-            ->with(['message' => 'تم ارسال رسال التأكيد ', 'type' => 'alert-success']);
+            ->with(['message' => __('messges.confirmation_sent'), 'type' => 'alert-success']);
     }
 
     public function verify(EmailVerificationRequest $request)
     {
         $request->fulfill();
 
-        return redirect()->route('profile')->with(['message' => 'تم تأكيد الحساب بنجاح ! انطلق ', 'type' => 'alert-success']);; // <-- change this to whatever you want
+        return redirect()->route('profile')->with(['message' => __('messges.account_confirmed_message'), 'type' => 'alert-success']);; // <-- change this to whatever you want
     }
 
 
@@ -135,7 +135,7 @@ class AuthController extends Controller
 
 
                 return redirect()->route('login')
-                    ->with(['message' => 'تم انشاء حسابك بنجاح', 'type' => 'alert-success']);
+                    ->with(['message' => __('messges.account_created_message'), 'type' => 'alert-success']);
                 // } catch (\Throwable $th) {
                 //     return back()->with(['message' => 'فشلت عمليه تسجيل دخولك رجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
                 // }
@@ -144,9 +144,9 @@ class AuthController extends Controller
 
             return back()->with(['message' => __('error.login.failed'), 'type' => 'alert-danger']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' =>  __('error.process.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' =>  __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('admin')->with(['message' => __('error.access.unauthorized'), 'type' => 'alert-danger']);
+            return redirect()->route('admin')->with(['message' => __('messges.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
 
@@ -196,7 +196,7 @@ class AuthController extends Controller
                 // return redirect()->route('home');
             }
         } else {
-            return redirect()->route('login')->with(['message' =>    __('error.email_password.check'),  'type' => 'alert-danger']);
+            return redirect()->route('login')->with(['message' =>    __('messges.email_password.check'),  'type' => 'alert-danger']);
         }
     }
 
@@ -218,7 +218,7 @@ class AuthController extends Controller
             $user->email_verified_at = Carbon::now()->timestamp;
             $user->save();
             Auth::login($user);
-            return redirect()->route('profile')->with(['message' => 'تم تفعيل حسابك بنجاح', 'type' => 'alert-success']);;
+            return redirect()->route('profile')->with(['message' => __('messges.account_activated_message'), 'type' => 'alert-success']);;
         } else
             echo "invalid token";
     }
@@ -252,7 +252,7 @@ class AuthController extends Controller
 
 
         if (!Hash::check($request->old_password, auth()->user()->password)) {
-            return back()->with("error", __('error.password.old_incorrect'));
+            return back()->with("error", __('messges.password.old_incorrect'));
         }
 
 
@@ -262,7 +262,7 @@ class AuthController extends Controller
         ]);
 
 
-        return back()->with("status", "تم تغيير كلمة السر بنجاح!");
+        return back()->with("status", __('messges.password_changed_message'));
     }
     // end change password
 
