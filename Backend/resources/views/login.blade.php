@@ -2,17 +2,18 @@
 @section('content')
     {{-- Header --}}
     <main class="md:px-20 my-20">
-        <div class="flex  bg-white border-md  rounded-l-none shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+        <div
+            class="flex  bg-white border-md  rounded-l-none shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
             <div style='border-right: none;' class="hidden lg:block lg:w-1/2 bg-cover bg-primary-pink ">
                 <div class=" relative  w-6/12 hidden md:flex  ">
-                    <div class="illstration_warrper w-full h-full">
-                        <div class="motaah_illstration" style="top: -44px;
-                                                                                                left: 210%;">
+                    <div class="illstration_warrper w-full h-full ">
+                        <div class="motaah_illstration" style=" @if (session()->get('lang') == 'en')top: -44px; left: 50%; @else top: -44px; left: 210%; @endif ">
                             <div class="motaah-circle__gray green white xl"></div>
                             <div class="motaah-circle__gray blue white lg"></div>
                             <div class="motaah-circle__gray white md"></div>
                             <div class="motaah-circle__gray white sm"></div>
-                            <div class="motaah-core bg-primary-green"></div>
+                            <div class="motaah-core bg-primary-green @if (session()->get('lang') == 'en') motaah-core-en @endif">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,7 +60,7 @@
                 <div class="mt-4">
                     <div class="flex justify-between">
                         <label class="block text-gray-700 text-sm font-bold mb-2">كلمة المرور</label>
-                        <a href="{{route('forget-password')}}" class="text-xs text-gray-500">نسيت كلمة المرور؟ </a>
+                        <a href="{{ route('forget-password') }}" class="text-xs text-gray-500">نسيت كلمة المرور؟ </a>
                     </div>
                     <input
                         class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"

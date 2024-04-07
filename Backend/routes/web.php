@@ -86,8 +86,6 @@ Route::post('/change-language', [LanguageController::class, 'switch'])->name('La
 Route::group([], function () {
     //  mywallet view
 
-
-
     //
     // ------------------------------------------------------------------------
     // Static pages section
@@ -303,8 +301,10 @@ Route::group([], function () {
         //end active & block users
 
         // start change password
+
         Route::get('/change-password', [AuthController::class, 'changePassword'])->name('change-password');
-        Route::post('/change-password', [AuthController::class, 'updatePassword'])->name('update-password');
+        // Route::post('/change-password', [AuthController::class, 'updatePassword'])->name('update-password');
+
         // end change password
         Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
         // payment
