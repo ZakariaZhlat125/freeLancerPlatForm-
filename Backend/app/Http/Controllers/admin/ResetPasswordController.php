@@ -49,6 +49,6 @@ class ResetPasswordController extends Controller
 
     DB::table('password_resets')->where(['email' => $request->email])->delete();
 
-    return redirect('login')->with(['message' => 'تم تغير كلمه المرور بنجاح ', 'type' => 'alert-success']);
+    return redirect('login')->with(['message' =>  __('messges.password_changed_success'), 'type' => 'alert-success']);
   }
 }
