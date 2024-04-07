@@ -29,15 +29,14 @@
         <div class="flex  bg-white border-md  rounded-l-none shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
             <div style='border-right: none;' class="hidden lg:block lg:w-1/2 bg-cover bg-primary-pink ">
                 <div class=" relative  w-6/12 hidden md:flex  ">
-                    <div class="illstration_warrper w-full h-full">
-                        <div class="motaah_illstration"
-                            style="top: -44px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        left: 210%;">
+                     <div class="illstration_warrper w-full h-full ">
+                        <div class="motaah_illstration" style=" @if (session()->get('lang') == 'en')top: -34px; left: 40%; @else top: -34px; left: 210%; @endif ">
                             <div class="motaah-circle__gray green white xl"></div>
                             <div class="motaah-circle__gray blue white lg"></div>
                             <div class="motaah-circle__gray white md"></div>
                             <div class="motaah-circle__gray white sm"></div>
-                            <div class="motaah-core bg-primary-green"></div>
+                            <div class="motaah-core bg-primary-green @if (session()->get('lang') == 'en') motaah-core-en @endif">
+                            </div>
                         </div>
                     </div>
                 </div>
