@@ -60,7 +60,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
 
-    
+
         try {
 
             // return response()->json($request->role);
@@ -142,11 +142,11 @@ class AuthController extends Controller
             }
 
 
-            return back()->with(['message' => 'فشلت عمليه تسجيل دخولك رجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('error.login.failed'), 'type' => 'alert-danger']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' =>  __('error.process.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('admin')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
+            return redirect()->route('admin')->with(['message' => __('error.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
 
@@ -196,7 +196,7 @@ class AuthController extends Controller
                 // return redirect()->route('home');
             }
         } else {
-            return redirect()->route('login')->with(['message' => 'يرجى التحقق من الايميل وكلمة السر ',  'type' => 'alert-danger']);
+            return redirect()->route('login')->with(['message' =>    __('error.email_password.check'),  'type' => 'alert-danger']);
         }
     }
 
@@ -252,7 +252,7 @@ class AuthController extends Controller
 
 
         if (!Hash::check($request->old_password, auth()->user()->password)) {
-            return back()->with("error", "الكلمة القديمة ليست صحيحة!");
+            return back()->with("error", __('error.password.old_incorrect'));
         }
 
 
