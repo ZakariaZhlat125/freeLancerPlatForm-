@@ -241,7 +241,7 @@ class MyWorkOnProjectController extends Controller
             //! notification of acceptence
 
             // return response()->json($profile);
-            return redirect()->route('profile')->with(['message' => 'تم تسليم المشروعك بنجاح', 'type' => 'alert-success']);
+            return redirect()->route('profile')->with(['message' => __("messges.project_delivered_success"), 'type' => 'alert-success']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
             return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {

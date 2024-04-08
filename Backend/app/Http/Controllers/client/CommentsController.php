@@ -25,9 +25,9 @@ class CommentsController extends Controller
                 'cost' => ['required', 'numeric', 'max:1000000'],
                 'duration' => ['required', 'numeric', 'max:1000000'],
             ], [
-                'cost.required' => 'رجاء قم بأدخال التكلفه لهذا المشروع',
-                'duration.required' => 'حقل المده مطلوب',
-                'duration.numeric' => 'يجب ان يكون حق المده من نوع رقمي',
+                'cost.required' => __('request.cost.required'),
+                'duration.required' => __('request.duration.required'),
+                'duration.numeric' => __('request.duration.numeric'),
             ]);
 
             $comment = new Comments();
@@ -63,7 +63,7 @@ class CommentsController extends Controller
                 $data = [
                     'name' =>  $postOwner->user_name,
                     'post_title' => $postOwner->title,
-                    'message' => 'قام ' .   $provider->name . ' باضافه تعليق على  مشروعك ' . $postOwner->title,
+                    'message' => __('messges.comment_added', ['provider' => $provider->name, 'title' => $postOwner->title]),
                     'url' => url('posts/details/' . $postOwner->id),
                     'userId' => $postOwner->userid
                 ];
@@ -85,21 +85,20 @@ class CommentsController extends Controller
                 $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
 
                 return redirect()->back()
-                    ->with(['message' => 'تم اضافة عرضك  بنجاح', 'type' => 'alert-success']);
+                    ->with(['message' => __('messges.offer_added_success'), 'type' => 'alert-success']);
             } else {
-                return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
             }
-        } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+
         } catch (FatalError $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-success']);
         } catch (ApiErrorException $e) {
-            return redirect()->back()->with(['message' => 'تأكد من الاتصال بالانترنت ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.check_internet_connection'), 'type' => 'alert-success']);
         } catch (TransportException $e) {
-            return redirect()->back()->with(['message' => 'تأكد من الاتصال بالانترنت ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' =>  __('messges.check_internet_connection'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
             throw $th;
-            return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
     // update comment
@@ -114,10 +113,10 @@ class CommentsController extends Controller
                 'duration' => ['required', 'numeric'],
                 'message' => ['required'],
             ], [
-                'cost.required' => 'رجاء قم بأدخال التكلفه لهذا العرض',
-                'duration.required' => 'حقل المده مطلوب',
-                'duration.numeric' => 'يجب ان يكون حق المده من نوع رقمي',
-                'message.required' => 'اضف تفاصيل للعرض ',
+                'cost.required' => __('request.cost.required'),
+                'duration.required' => __('request.duration.required'),
+                'duration.numeric' => __('request.duration.numeric'),
+                'message.required' => __('request.details.required'),
                 // 'message.min' => 'حقل الوصف يجب ان يحتوي على 255 حرف على الاقل',
             ]);
 
@@ -135,13 +134,13 @@ class CommentsController extends Controller
 
             if ($comment->save()) {
                 return redirect()->back()
-                    ->with(['message' => 'تم تعديل العرض بنجاح', 'type' => 'alert-success']);
+                    ->with(['message' => __('messges.offer_updated_success'), 'type' => 'alert-success']);
             } else
-                return back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messges.update_failed_message'), 'type' => 'alert-danger']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messges.update_failed_message'), 'type' => 'alert-danger']);
         }
     }
 }

@@ -24,17 +24,17 @@ class ContactController extends Controller
             'email' => 'required|email',
             'message' => 'required'
         ], [
-            'name.required' => 'رجاء قم بأدخال الاسم',
-            'email.required' => 'رجاء قم بأدخال الايميل',
-            'email.email' => 'ادخل الايميل بشكل صحيح',
-            'message.required' => 'رجاء قم بأدخال رسالتك',
+            'name.required' => __('resquest.name.required'),
+            'email.required' => __('resquest.email.required'),
+            'email.email' =>__('resquest.email.email'),
+            'message.required' => __('resquest.message.required'),
         ]);
 
         Contact::create($request->all());
 
         return redirect()->back()
 
-        ->with(['message' => '   شكرا لتواصلك معنا', 'type' => 'alert-success']);
+        ->with(['message' => __('messges.thank_you') ,'type' => 'alert-success']);
 
     }
 }

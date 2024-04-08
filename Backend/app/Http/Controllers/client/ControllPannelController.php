@@ -85,7 +85,7 @@ class ControllPannelController extends Controller
 
         );
         return redirect()->route('profile')
-            ->with(['message' => '   تم تعديل معلومات الشخصيه بنجاح', 'type' => 'alert-success']);
+            ->with(['message' => __('messges.personal_info_updated_success'), 'type' => 'alert-success']);
         // } else {
         //     return redirect()->back()
         //         ->with(['message' => 'يرجى تحديد نوع الحساب رجاء', 'type' => 'alert-danger']);
@@ -169,16 +169,16 @@ class ControllPannelController extends Controller
             'avatar' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
         ], [
-            'name.required' => 'ادخل الاسم',
-            'name.min' => 'يجب ان يكون الاسم اكثر من 8حروف',
-            'gender.required' => ' هذا الحقل مطلوب',
-            'country.required' => 'ادخل الدولة',
-            'avatar.required' => 'اظف صورة',
-            'avatar.image' => 'الصيغة غير صحيحة',
-            'avatar.mimes' => 'نوع الصورة يجب ان يكون jpgاوpngاوjpegاوgifاوsvg',
-            'mobile.required' => 'ادخل رقم الهاتف',
-            'mobile.regex' => ' ادخل  صيغة رقم صحيح ',
-            'mobile.min' => ' يجب ان يكون الرقم اكبر 8 ارقام ',
+            'name.required' => __("request.name.required"),
+            'name.min' => __("request.name.min"),
+            'gender.required' => __("request.gender.required"),
+            'country.required' => __("request.country.required"),
+            'avatar.required' => __("request.avatar.required"),
+            'avatar.image' => __("request.avatar.image"),
+            'avatar.mimes' => __("request.avatar.mimes"),
+            'mobile.required' => __("request.mobile.required"),
+            'mobile.regex' => __("request.mobile.regex"),
+            'mobile.min' => __("request.mobile.min"),
 
 
         ]);
