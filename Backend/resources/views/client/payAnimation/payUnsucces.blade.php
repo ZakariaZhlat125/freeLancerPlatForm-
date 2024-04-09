@@ -12,8 +12,9 @@
 
 
                 <h1 class="font-bold font-xl text-red-500 w-6/6 text-center">
+                    {{ __('static.pay_unsucess') }}
 
-                    فشلت عملية الدفع
+
                     </p>
 
                 </h1>
@@ -25,8 +26,7 @@
                     speed="1" style="width: 300px; height: 300px;" loop autoplay>
                 </lottie-player>
                 <button class="bg-primary-blue text-white rounded-md  font-semibold px-4 py-3 w-full">
-
-                    انتقل الى الصفحة السابقة
+                    {{ __('static.pay_unsucess_back') }}
                 </button>
             </div>
         </div>

@@ -12,14 +12,14 @@
                                         @php
                                             $not_seen = \App\Models\Messages::where('user_id', $user->id)->where('receiver', auth()->id())->where('is_seen', false)->get() ?? null
                                         @endphp
-                                    <a href="{{ route('inbox.show', $user->id) }}" > 
+                                    <a href="{{ route('inbox.show', $user->id) }}" >
                                         <div class="entry  cursor-pointer transform hover:scale-105 duration-300 transition-transform bg-white mb-4 rounded p-4 flex shadow-md"  wire:click="getUser({{ $user->id }})" id="user_{{ $user->id }}">
                                                 <div class="flex-2">
                                                     <div class="w-12 h-12 relative">
                                                         <img class="w-12 h-12 rounded-full mx-auto" src="/images/1651959757_edait.png" alt="chat-user" />
-                                                        @if($user->is_online)  
+                                                        @if($user->is_online)
                                                          <span class="absolute w-4 h-4 bg-primary-green rounded-full right-0 bottom-0 border-2 border-white"></span>
-                                                        @endif 
+                                                        @endif
                                                     </div>
                                                 </div>
 
@@ -53,7 +53,7 @@
                                         @foreach($messages as $message)
                                             <div class="message  mb-4 flex  @if($message->user_id !== auth()->id()) received @else sent @endif">
                                                 @if($message->user_id == auth()->id())
-                                                
+
                                                     <div class="flex-1  px-2 text-right">
                                                         <div class="inline-block bg-primary-blue text-primary-light-gray rounded-full p-2 px-6 text-gray-700">
                                                             <span>{{ $message->message }}</span>
@@ -70,7 +70,7 @@
                                                             </div>
                                                         @elseif ($message->file)
                                                             <div class="w-100 my-2">
-                                                                <a href="{{ $message->file}}" class="bg-light p-2 rounded-pill" target="_blank" download><i class="fa fa-download"></i> 
+                                                                <a href="{{ $message->file}}" class="bg-light p-2 rounded-pill" target="_blank" download><i class="fa fa-download"></i>
                                                                     {{ $message->file_name }}
                                                                 </a>
                                                             </div>
@@ -78,7 +78,7 @@
                                                         <div class="pl-4 "><small class="text-gray-500">{{ $message->created_at }}</small></div>
                                                     </div>
                                                 @else
-                                            
+
                                                     <div class="flex-1  px-2">
                                                         <div class="inline-block bg-primary-light-gray rounded-full p-2 px-6 text-gray-700">
                                                             <span>{{ $message->message }}</span>
@@ -95,7 +95,7 @@
                                                             </div>
                                                         @elseif ($message->file)
                                                             <div class="w-100 my-2">
-                                                                <a href="{{ $message->file}}" class="bg-light p-2 rounded-pill" target="_blank" download><i class="fa fa-download"></i> 
+                                                                <a href="{{ $message->file}}" class="bg-light p-2 rounded-pill" target="_blank" download><i class="fa fa-download"></i>
                                                                     {{ $message->file_name }}
                                                                 </a>
                                                             </div>
@@ -104,7 +104,7 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                    
+
                                             <!-- <div class="message me mb-4 flex text-right">
                                                 <div class="flex-1 px-2">
                                                     <div class="inline-block bg-gray rounded-full p-2 px-6 text-white">
@@ -115,22 +115,23 @@
                                             </div> -->
                                         @endforeach
                                     @else
-                                        لا يوجد رسائل لعرضها -_-
-                                    @endif 
+                                        {{ __('static.chat_no_messages') }}
+                                    @endif
                                 </div>
                                 <div class="flex-2 pt-4 pb-10" >
                                     <form wire:submit.prevent="SendMessage" enctype="multipart/form-data">
                                         <div wire:loading wire:target='SendMessage'>
-                                            Sending message . . . 
+                                            Sending message . . .
                                         </div>
                                         <div wire:loading wire:target="file">
                                             Uploading file . . .
                                         </div>
                                         @if($file)
                                                 <div class="mb-2">
-                                               لقد تم التحميل  <button type="button" wire:click="resetFile" class="btn bg-primary-light-pink text-right btn-sm"> حذف {{ $file->getClientOriginalName() }}<i class="fa fa-times"></i></button>
+                                        {{ __('static.uploading_done') }}
+                                         <button type="button" wire:click="resetFile" class="btn bg-primary-light-pink text-right btn-sm"> حذف {{ $file->getClientOriginalName() }}<i class="fa fa-times"></i></button>
                                                 </div>
-                                 
+
                                         @endif
 
                                         <div class="write bg-white shadow flex rounded-lg">
@@ -145,12 +146,12 @@
                                             <div class="flex-2 w-32 p-2 flex content-center items-center">
                                             @if(empty($file))
                                                 <div class="flex-1 text-center">
-                                          
+
                                                     <label class="w-4 flex flex-col items-center px-4 py-6  rounded-md  tracking-wide  cursor-pointer  ease-linear transition-all ">
                                                     <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
                                                     <input type='file' class="hidden"  type="file" wire:model="file"/>
-                                                    </label> 
-                                              
+                                                    </label>
+
                                                 </div>
 
 
@@ -162,8 +163,8 @@
                                                         </span>
                                                     </button>
                                                 </div>
-                                         
-                                         
+
+
                                             </div>
                                         </div>
                                     </form>
@@ -172,4 +173,4 @@
     </div>
 
 
-                            
+

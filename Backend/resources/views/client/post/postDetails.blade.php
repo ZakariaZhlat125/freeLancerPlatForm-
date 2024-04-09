@@ -13,7 +13,9 @@
                         <div class="dropdown inline-block relative min-w-fit">
                             <button tabindex="-1" data-bs-toggle="modal" data-bs-target="#deleteModel"
                                 class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center">
-                                <span class="mr-1 font-md">اغلاق المشروع</span>
+                                <span class="mr-1 font-md">
+                                     {{ __('static.post_detail_desc1') }}
+                                </span>
                                 <svg class="fill-current h-4 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path
                                         style="color:white ; stroke: white;
@@ -25,7 +27,9 @@
                                 class="dropdown-menu w-fit absolute  hidden text-dark-gray bg-light-gray rounded-sm shadow-md pt-2 ">
                                 <li class="border-b border-primary-light-pink"><a
                                         class="rounded-t bg-gray-200 hover:bg-gray-400 hover:bg-primary-light-gray hover:text-dark-gray py-2 px-4 block whitespace-no-wrap"
-                                        href="{{ route('editPosts', $post_id) }}">تعديل المشروع</a>
+                                        href="{{ route('editPosts', $post_id) }}">
+                                                {{ __('static.post_detail_desc2') }}
+                                     </a>
                                 </li>
 
 
@@ -42,17 +46,23 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title font-lg" id="deleteModel">حذف المشروع</h5>
+                                <h5 class="modal-title font-lg" id="deleteModel">
+                                    {{ __('static.post_detail_desc3') }}
+                                </h5>
                                 <a type="button" class="fa fa-xmark font-md" data-bs-dismiss="modal" aria-label="Close"></a>
                             </div>
                             <div class="modal-body">
-                                هل تريد حذف {{ $post->title }}
+                                    {{ __('static.post_detail_desc4') }}  {{ $post->title }}
                             </div>
                             <div class="modal-footer">
                                 <a href="{{ route('toggle_post', $post_id) }}"
-                                    class="mo-btn btn-pink-bg pink font-md">تاكيد الحذف</a>
+                                    class="mo-btn btn-pink-bg pink font-md">
+                                        {{ __('static.post_detail_desc5') }}
+                                </a>
                                 <button type="button" class="mo-btn btn-blue-bg font-md"
-                                    data-bs-dismiss="modal">الغاء</button>
+                                    data-bs-dismiss="modal">
+                                    {{ __('static.post_detail_desc6') }}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -63,7 +73,9 @@
         <div class="row my-5">
             <div class="col-md-8 col-sm-12">
                 <div class="card">
-                    <h5 class="card-header font-md">تفاصيل المشروع</h5>
+                    <h5 class="card-header font-md">
+                        {{ __('static.post_detail_desc7') }}
+                    </h5>
 
                     <div class="card-body">
                         <p class="card-text font-sm"> {{ $post->description }}</p>
@@ -71,11 +83,15 @@
 
                 </div>
                 <div class="card mt-3">
-                    <h5 class="card-header font-md">المهارات المطلوبة</h5>
+                    <h5 class="card-header font-md">
+                        {{ __('static.post_detail_desc8') }}
+                    </h5>
 
                     <div class="skills mt-3 font-sm">
                         @if (count($skills) == 0)
-                            <p>لاتوجد مهارات مطلوبه </p>
+                            <p>
+                                 {{ __('static.post_detail_desc9') }}
+                            </p>
                         @endif
                         @foreach ($skills as $item)
                             <a class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center"
@@ -117,7 +133,8 @@
 
                                             {{-- estamte cost --}}
                                             <div class="col-sm-4 col-md-10  col-xs-12 col-lg-6  pt-3">
-                                                <label class="font-sm">قيمة العرض
+                                                <label class="font-sm">
+                                                     {{ __('static.post_detail_desc10') }}
                                                 </label>
                                                 <div class="input-group">
 
@@ -130,7 +147,9 @@
                                                         $</div>
                                                 </div>
 
-                                                <p class="text-muted font-xs ">اختر ميزانية مناسبة</p>
+                                                <p class="text-muted font-xs ">
+                                                    {{ __('static.post_detail_desc11') }}
+                                                </p>
                                                 @error('cost')
                                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning"
                                                         role="alert"
@@ -168,7 +187,8 @@
                                             </div> --}}
                                             {{-- duration --}}
                                             <div class="col-sm-4 col-md-10  col-xs-12 col-lg-6 pt-3">
-                                                <label class="font-sm">المدة المتوقعة للتسليم
+                                                <label class="font-sm">
+                                                    {{ __('static.post_detail_desc12') }}
 
                                                 </label>
                                                 <div class="input-group">
@@ -182,7 +202,9 @@
                                                         style="height: 46px;" id="basic-addon1">ايام</span>
                                                 </div>
 
-                                                <span class="text-muted font-xs ">متى تحتاج لتنفيذ مشروعك</span>
+                                                <span class="text-muted font-xs ">
+                                                    {{ __('static.post_detail_desc13') }}
+                                                </span>
                                                 @error('duration')
                                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning"
                                                         role="alert"
@@ -200,9 +222,8 @@
                                                     name='message' value="{{ old('message') }}" id="message"
                                                     type="text" style="height: 10rem;" data-sb-validations="required"
                                                     required></textarea>
-                                                <p class="text-muted font-xs">أدخل وصفاً مفصلاً لمشروعك وأرفق أمثلة لما تريد
-                                                    ان
-                                                    أمكن.
+                                                <p class="text-muted font-xs">
+                                                    {{ __('static.post_detail_desc14') }}
                                                 </p>
                                                 @error('message')
                                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning"
@@ -215,7 +236,9 @@
 
 
                                             <div class="mb-1">
-                                                <label class="font-sm" for="message">ملفات توضيحية</label>
+                                                <label class="font-sm" for="message">
+                                                    {{ __('static.post_detail_desc15') }}
+                                                </label>
                                                 <input
                                                     class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                                     id="dropzone" multiple name='files' type="file"
@@ -224,8 +247,8 @@
 
                                             </div>
                                             <div>
-                                                <button class="mo-btn btn-blue-bg float-left font-md" type="submit">انشر
-                                                    الان
+                                                <button class="mo-btn btn-blue-bg float-left font-md" type="submit">
+                                                    {{ __('static.post_detail_desc16') }}
                                                 </button>
                                             </div>
 
@@ -251,7 +274,7 @@
                             <button class="accordion-button font-md" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                                 aria-controls="panelsStayOpen-collapseOne">
-                                العروض المقدمة
+                                {{ __('static.post_detail_desc17') }}
                             </button>
                         </h2>
 
@@ -326,7 +349,9 @@
                                                                         data-bs-target="#demo"
                                                                         style="width:100% ; padding: .6rem">
                                                                         <i class="fa fa-fw fa-edit"></i>
-                                                                        <span class="action-text">تعديل العرض </span>
+                                                                        <span class="action-text">
+                                                                            {{ __('static.post_detail_desc18') }}
+                                                                        </span>
                                                                     </button>
                                                                 @endif
                                                             </div>
@@ -355,7 +380,8 @@
                                                                                     class="border-b border-primary-light-pink">
                                                                                     <a class="rounded-t bg-gray-200 hover:bg-gray-400 hover:bg-primary-light-gray hover:text-dark-gray p-2  block whitespace-no-wrap"
                                                                                         href="{{ route('report_provider', $item->user_id) }}">
-                                                                                        التبليغ عن مستخدم</a>
+                                                                                         {{ __('static.post_detail_desc19') }}
+                                                                                    </a>
                                                                                 </li>
 
 
@@ -373,12 +399,18 @@
                                                         <div class="d-flex justify-content-around m-3 bg-lighter-gray p-3">
                                                             @if (Auth::id() == $item->user_id || Auth::id() == $post->post_user_id)
                                                                 <div>
-                                                                    <div>المبلغ</div>
+                                                                    <div>
+                                                                        {{ __('static.post_detail_desc20') }}
+                                                                    </div>
                                                                     <div>${{ $item->cost }}</div>
                                                                 </div>
                                                                 <div>
-                                                                    <div>مدة التنفيذ</div>
-                                                                    <div>{{ $item->duration }} أيام</div>
+                                                                    <div>
+                                                                        {{ __('static.post_detail_desc21') }}
+                                                                    </div>
+                                                                    <div>{{ $item->duration }}
+                                                                        {{ __('static.post_detail_desc22') }}
+                                                                    </div>
                                                                 </div>
                                                             @endif
 
@@ -408,7 +440,8 @@
                                                                         {{-- estamte cost --}}
                                                                         <div
                                                                             class="col-sm-4 col-md-10  col-xs-12 col-lg-6 pt-3">
-                                                                            <label>قيمة العرض
+                                                                            <label>
+                                                                                 {{ __('static.post_detail_desc23') }}
                                                                                 <em class="text--danger">*</em>
                                                                             </label>
                                                                             <div class="input-group mb-3 flex">
@@ -424,8 +457,9 @@
                                                                                     $</div>
                                                                             </div>
 
-                                                                            <p class="text-muted font-xs">اختر ميزانية
-                                                                                مناسبة</p>
+                                                                            <p class="text-muted font-xs">
+                                                                                {{ __('static.post_detail_desc11') }}
+                                                                            </p>
                                                                             @error('cost')
                                                                                 <div id='alert '
                                                                                     class="   px-4 alert position-fixed  alert-warning"
@@ -470,8 +504,9 @@
                                                                         {{-- duration --}}
                                                                         <div
                                                                             class="col-sm-4 col-md-10 col-xs-12  col-lg-6 pt-3">
-                                                                            <label class="font-md">المدة المتوقعة
-                                                                                للتسليم <em class="text--danger">*</em>
+                                                                            <label class="font-md">
+                                                                                {{ __('static.post_detail_desc12') }}
+                                                                                <em class="text--danger">*</em>
                                                                             </label>
                                                                             <div class="input-group mb-3 flex">
 
@@ -486,8 +521,9 @@
                                                                                     id="basic-addon1">ايام</span>
                                                                             </div>
 
-                                                                            <span class="text-muted font-xs">متى تحتاج
-                                                                                لتنفيذ مشروعك</span>
+                                                                            <span class="text-muted font-xs">
+                                                                                {{ __('static.post_detail_desc13') }}
+                                                                            </span>
                                                                             @error('duration')
                                                                                 <div id='alert '
                                                                                     class="   px-4 alert position-fixed  alert-warning"
@@ -502,16 +538,14 @@
                                                                         <!-- Message input -->
                                                                         <div>
                                                                             <label class="font-md"
-                                                                                for="message">تفاصيل
-                                                                                العرض</label>
+                                                                                for="message">
+                                                                                {{ __('static.post_detail_desc24') }}
+                                                                            </label>
                                                                             <textarea class="form-control" name='message' id="message" type="text" style="height: 10rem;"
                                                                                 data-sb-validations="required"
                                                                                 required>{{ $item->description ?? old('description') }}</textarea>
-                                                                            <p class="text-muted font-xs">أدخل وصفاً
-                                                                                مفصلاً
-                                                                                لمشروعك وأرفق أمثلة
-                                                                                لما تريد ان
-                                                                                أمكن.
+                                                                            <p class="text-muted font-xs">
+                                                                                {{ __('static.post_detail_desc14') }}
                                                                             </p>
                                                                             @error('message')
                                                                                 <div id='alert '
@@ -526,8 +560,9 @@
 
                                                                         <div class="mb-1">
                                                                             <label class="font-md"
-                                                                                for="message">ملفات
-                                                                                توضيحية</label>
+                                                                                for="message">
+                                                                                {{ __('static.post_detail_desc15') }}
+                                                                            </label>
                                                                             <input class="form-control" id="dropzone"
                                                                                 multiple name='files' type="file"
                                                                                 value="{{ $item->files ?? old('files') }}"
@@ -538,8 +573,8 @@
                                                                         <div>
                                                                             <button
                                                                                 class="mo-btn btn-blue-bg float-left font-md"
-                                                                                type="submit">حفظ
-                                                                                التعديلات
+                                                                                type="submit">
+                                                                                {{ __('static.post_detail_desc25') }}
                                                                             </button>
                                                                         </div>
                                                                         {{-- <button class="mo-btn" data-bs-toggle="collapse"
@@ -561,12 +596,16 @@
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#exampleModal_{{ $item->user_id }}">
                                                             <i class="fa fa-check px-1"></i>
-                                                            <span class=""> قبول العرض </span>
+                                                            <span class="">
+                                                                {{ __('static.post_detail_desc26') }}
+                                                            </span>
                                                         </button>
                                                         <a tabindex="-1" class="mo-btn btn-blue-rounderd"
                                                             href="{{ route('inbox.show', $item->user_id) }}">
                                                             <i class="fa fa-send px-1"></i>
-                                                            <span class="action-text"> تواصل مع متاح </span>
+                                                            <span class="action-text">
+                                                                {{ __('static.post_detail_desc27') }}
+                                                            </span>
                                                         </a>
                                                     @endif
                                                 </div>
@@ -581,8 +620,9 @@
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title order-2 font-lg">قبول
-                                                            العرض</h5>
+                                                        <h5 class="modal-title order-2 font-lg">
+                                                            {{ __('static.post_detail_desc26') }}
+                                                        </h5>
                                                         <button type="button" class="btn-close order-2"
                                                             data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
@@ -601,7 +641,9 @@
                                                             <!-- credit card -->
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <label class="font-md">المبلغ المتفق عليه
+                                                                    <label class="font-md">
+                                                                        {{ __('static.post_detail_desc28') }}
+
                                                                     </label>
                                                                     <div class="input-group mt-1">
                                                                         <input name="amount" min="1"
@@ -621,7 +663,8 @@
                                                                     @enderror
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <label class="font-md">المده المتفق عليه
+                                                                    <label class="font-md">
+                                                                        {{ __('static.post_detail_desc29') }}
                                                                     </label>
                                                                     <div class="input-group mt-1">
                                                                         <input name="duration" min="1"
@@ -632,7 +675,9 @@
                                                                             aria-describedby="basic-addon1">
                                                                         <span
                                                                             class="flex items-center justify-center appearance-none  border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3  mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink w-8 bg-primary-light-pink"
-                                                                            id="basic-addon1">ايام</span>
+                                                                            id="basic-addon1">
+                                                                            {{ __('static.post_detail_desc22') }}
+                                                                        </span>
                                                                     </div>
                                                                     @error('duration')
                                                                         <p class="text-danger" role="alert">
@@ -648,7 +693,9 @@
                                                                     value="قبول العرض">
                                                                 <button type="button"
                                                                     class=" mo-btn btn-blue-rounderd font-md"
-                                                                    data-bs-dismiss="modal">تراجع</button>
+                                                                    data-bs-dismiss="modal">
+                                                                    {{ __('static.post_detail_desc30') }}
+                                                                </button>
                                                             </div>
                                                     </form>
                                                 </div>
@@ -671,24 +718,36 @@
         {{-- more information --}}
         <div class="col-md-4 col-sm-12">
             <div class="card">
-                <h5 class="card-header font-md">بطاقة المشروع</h5>
+                <h5 class="card-header font-md">
+                    {{ __('static.post_detail_desc31') }}
+                </h5>
 
                 <div class="card-body">
                     <div class="d-flex justify-content-between ">
                         <div>
-                            <div class="my-3 font-sm"> حالة المشروع</div>
-                            <div class="my-3 font-sm"> تاريخ النشر</div>
-                            <div class="y-3 font-sm"> الميزانية </div>
-                            <div class="my-3 font-sm"> مدة التنفيذ</div>
-                            <div class="my-3 font-sm"> عدد العروض</div>
+                            <div class="my-3 font-sm">
+                                 {{ __('static.post_detail_desc32') }}
+                            </div>
+                            <div class="my-3 font-sm">
+                                {{ __('static.post_detail_desc33') }}
+                            </div>
+                            <div class="y-3 font-sm">
+                                {{ __('static.post_detail_desc34') }}
+                            </div>
+                            <div class="my-3 font-sm">
+                                {{ __('static.post_detail_desc21') }}
+                            </div>
+                            <div class="my-3 font-sm">
+                                {{ __('static.post_detail_desc35') }}
+                            </div>
                         </div>
                         <div>
                             <div class="my-3 font-sm"> <span class="px-1"
                                     style="background-color: green ; color:white;">
                                     @if ($post->status == 'open')
-                                        مفتوح
+                                        {{ __('static.post_detail_desc36') }}
                                     @elseif ($post->status == 'closed')
-                                        مغلق
+                                        {{ __('static.post_detail_desc37') }}
                                     @endif
                                 </span></div>
                             <div class="my-3 font-sm"> {{ $post->created_at }}</div>
@@ -709,7 +768,9 @@
                                                                                                                                                                                                                 </div> -->
                 <hr>
                 <div>
-                    <p class="font-md my-4">صاحب المشروع</p>
+                    <p class="font-md my-4">
+                        {{ __('static.post_detail_desc38') }}
+                    </p>
                     <div class="image d-flex">
 
 

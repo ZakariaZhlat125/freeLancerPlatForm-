@@ -4,12 +4,16 @@
         <!-- top nav start -->
         <div class="row mx-1  my-3 col-12 d-flex justify-content-lg-between ">
             <nav aria-label="breadcrumb" class="main-breadcrumb col-6 p-3">
-                <h3 class="m-5 font-xl font-bold"> لوحة التحكم</h3>
+                <h3 class="m-5 font-xl font-bold">
+                    {{ __('static.control_pannel') }}
+                </h3>
 
             </nav>
             <div class="col-6 mt-8">
                 <a href="{{ route('userProfile', Auth::user()->id) }}" class="mo-btn btn-blue-bg float-start font-md"><i
-                        class="fa fa-user p-1"></i> ملفي الشخصي </a>
+                        class="fa fa-user p-1"></i>
+                    {{ __('static.my_profile') }}
+                </a>
             </div>
         </div>
         <!-- top nav end -->

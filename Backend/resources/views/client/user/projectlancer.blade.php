@@ -27,7 +27,9 @@
 </style>
     @livewireStyles
     <div class="d-flex justify-content-between align-item-center pt-20">
-        <h3 class="mt-5 mb-2 font-xl font-bold px-4"> المشاريع المتاحه </h3>
+        <h3 class="mt-5 mb-2 font-xl font-bold px-4">
+            {{ __('static.availabel_projects') }}
+        </h3>
         <div id="filter_toggle" class="mx-4 mt-5">
             <button class="mo-btn btn-blue-rounderd " id='filter_toggle' onclick="openNav()">☰ Filter</button>
         </div>

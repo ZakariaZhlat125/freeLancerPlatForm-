@@ -7,11 +7,15 @@
             <main class="container pt-20">
                 <div class="row mx-1 my-3 col-12 d-flex justify-content-lg-between ">
                     <nav aria-label="breadcrumb" class="main-breadcrumb col-6 p-3">
-                        <h3 class="m-5 font-xl font-bold"> لوحة التحكم</h3>
+                        <h3 class="m-5 font-xl font-bold">
+                            {{ __('static.control_pannel') }}
+                        </h3>
                     </nav>
                     <div class="col-6 mt-8">
                         <a href="{{ route('userProfile', Auth::user()->id) }}"
-                            class="mo-btn btn-blue-bg float-start font-md"><i class="fa fa-user p-1"></i> ملفي الشخصي </a>
+                            class="mo-btn btn-blue-bg float-start font-md"><i class="fa fa-user p-1"></i>
+                            {{ __('static.my_profile') }}
+                        </a>
                     </div>
                 </div>
 
@@ -33,15 +37,21 @@
                                             <div class="mx-2 my-2 px-2">
                                                 @role('seeker')
                                                     <strong>{{ __('profile.person1') }}</strong>
-                                                    (أبحث عن متاحين لتنفيذ مشاريعي)
+                                                    (
+                                                        {{ __('static.looking_for_freelancers') }}
+                                                    )
                                                 @endrole
                                                 @role('provider')
                                                     <strong>{{ __('profile.person2') }}</strong>
-                                                    (أبحث عن مشاريع لتنفيذها)
+                                                    (
+                                                        {{ __('static.looking_for_projects') }}
+                                                    )
                                                     <input class="form-check-input mx-2" type="checkbox" name="hire_me"
                                                         {{ $item->hire_me ? 'checked' : '' }}>
                                                     <strong>{{ __('profile.person21') }}</strong>
-                                                    (إزالة هذه الإشارة سيخفي حسابك بشكل مؤقت من نتائج البحث)
+                                                    (
+                                                        {{ __('static.remove_sign') }}
+                                                    )
                                                 @endrole
                                             </div>
                                         </div>
@@ -98,7 +108,8 @@
                                     </div>
 
                                     <div>
-                                        <button class="mo-btn btn-blue-bg float-left font-md" type="submit">حفظ
+                                        <button class="mo-btn btn-blue-bg float-left font-md" type="submit">
+                                            {{ __('static.save_button') }}
                                         </button>
                                     </div>
 
@@ -114,11 +125,15 @@
         <main class="container pt-20">
             <div class="row mx-1 my-3 col-12 d-flex justify-content-lg-between ">
                 <nav aria-label="breadcrumb" class="main-breadcrumb col-6 p-3">
-                    <h3 class="m-5 font-xl font-bold"> لوحة التحكم</h3>
+                    <h3 class="m-5 font-xl font-bold">
+                        {{ __('static.control_pannel') }}
+                    </h3>
                 </nav>
                 <div class="col-6 mt-8">
                     <a href="{{ route('userProfile', Auth::user()->id) }}"
-                        class="mo-btn btn-blue-bg float-start font-md"><i class="fa fa-user p-1"></i> ملفي الشخصي </a>
+                        class="mo-btn btn-blue-bg float-start font-md"><i class="fa fa-user p-1"></i>
+                        {{ __('static.my_profile') }}
+                    </a>
                 </div>
             </div>
 
@@ -141,15 +156,21 @@
                                         <div class="mx-2 my-2 px-2">
                                             @role('seeker')
                                                 <strong>{{ __('profile.person1') }}</strong>
-                                                (أبحث عن متاحين لتنفيذ مشاريعي)
+                                                (
+                                                        {{ __('static.looking_for_freelancers') }}
+                                                )
                                             @endrole
                                             @role('provider')
                                                 <strong>{{ __('profile.person2') }}</strong>
-                                                (أبحث عن مشاريع لتنفيذها)
+                                                (
+                                                        {{ __('static.looking_for_projects') }}
+                                                )
                                                 <input class="form-check-input mx-2" type="checkbox" name="hire_me"
                                                     {{ $item->hire_me ? 'checked' : '' }}>
                                                 <strong>{{ __('profile.person21') }}</strong>
-                                                (إزالة هذه الإشارة سيخفي حسابك بشكل مؤقت من نتائج البحث)
+                                                (
+                                                        {{ __('static.remove_sign') }}
+                                                )
                                             @endrole
                                         </div>
                                     </div>
@@ -206,13 +227,13 @@
                                 </div>
 
                                 <div>
-                                    <button class="mo-btn btn-blue-bg float-left font-md" type="submit">حفظ
+                                    <button class="mo-btn btn-blue-bg float-left font-md" type="submit">
+                                        {{ __('static.save_button') }}
                                     </button>
                                 </div>
 
                                 {{ csrf_field() }}
                             </form>
-                            sss
                         </div>
                     </div>
                 </section>

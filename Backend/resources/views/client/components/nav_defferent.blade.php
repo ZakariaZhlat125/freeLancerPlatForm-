@@ -4,7 +4,9 @@ $enable_multi_language = get_option('multi_language', 'on');
 
 <nav class="navbar navbar-expand-lg px-5 main-nav">
     <!-- <div class="container-fluid"> -->
-    <a class="navbar-brand fw-bold fs-3 brand" href="{{ route('home') }}">متوفر</a>
+    <a class="navbar-brand fw-bold fs-3 brand" href="{{ route('home') }}">
+        {{ __('static.title') }}
+    </a>
 
     <button
         class="navbar-toggler text-light collapsed
@@ -22,13 +24,19 @@ $enable_multi_language = get_option('multi_language', 'on');
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <a class="nav-link active fw-bolder nav-links" aria-current="page"
-                    href="{{ route('home') }}">الرئيسية</a>
+                    href="{{ route('home') }}">
+                    {{ __('static.Home') }}
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-links" href="{{ route('freelancers') }}">المستقلون</a>
+                <a class="nav-link nav-links" href="{{ route('freelancers') }}">
+                    {{ __('static.freelancers') }}
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fs-6 nav-links" href="{{ route('projectlancer') }}">المشاريع المتاحه </a>
+                <a class="nav-link fs-6 nav-links" href="{{ route('projectlancer') }}">
+                    {{ __('static.Available_projects') }}
+                </a>
             </li>
         </ul>
 
@@ -38,7 +46,9 @@ $enable_multi_language = get_option('multi_language', 'on');
 
                 <ul class="navbar-nav  ">
                     <li class="nav-item ">
-                        <a class="nav-link fs-6 nav-links" href="{{ route('myProject') }}">مشاريعي </a>
+                        <a class="nav-link fs-6 nav-links" href="{{ route('myProject') }}">
+                            {{ __('static.my_projects') }}
+                        </a>
                     </li>
                 </ul>
             @endrole
@@ -50,10 +60,14 @@ $enable_multi_language = get_option('multi_language', 'on');
 
                 <ul class="navbar-nav  ">
                     <li class="nav-item ">
-                        <a class="nav-link fs-6 nav-links" href="{{ route('myWorks') }}">اعمالي </a>
+                        <a class="nav-link fs-6 nav-links" href="{{ route('myWorks') }}">
+                            {{ __('static.account_works') }}
+                        </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link fs-6 nav-links" href="{{ route('workonProject') }}">اعمل على </a>
+                        <a class="nav-link fs-6 nav-links" href="{{ route('workonProject') }}">
+                            {{ __('static.ongoing_projects') }}
+                        </a>
                     </li>
                 </ul>
             @endrole
@@ -95,9 +109,12 @@ $enable_multi_language = get_option('multi_language', 'on');
                                     style=' color: gray ; border-right: 4px solid {{ $notification->read_at == null ? 'red' : 'gray' }}  ; padding-right: 2px ; width:inherit; height: fit-content; '>
                                     @if ($notification->data['type'] == 'comment')
                                         {{-- <a href="{{ route('markAsReadOne', $notification->id) }}"> --}}
-                                        <span> قام بأضافه
+                                        <span>
+                                            {{ __('static.project_notfi1') }}
                                             {{ $notification->data['name'] }}
-                                            عرض جديد على مشروعك</span>
+                                            {{ __('static.project_notfi2') }}
+
+                                        </span>
                                         {{-- </a> --}}
                                     @else
                                         {{-- <a href="{{ route('markAsReadOne', $notification->id) }}"> --}}
@@ -155,26 +172,34 @@ $enable_multi_language = get_option('multi_language', 'on');
                             <li>
                                 <a class="dropdown-item color-black" href="#">
                                     <i class="fa-solid fa-bookmark  ms-1 font-xs"></i>
-                                    <span>المفضلة</span>
+                                    <span>
+                                        {{ __('static.project_fav') }}
+                                    </span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item color-black" href="#">
                                     <i class="fa-solid fa-dollar-sign ms-1 font-xs"></i>
-                                    <span>الرصيد</span>
+                                    <span>
+                                        {{ __('static.project_money') }}
+                                    </span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item color-black" href="{{ route('profile') }}">
                                     <i class="fa-solid fa-sliders ms-1 font-xs"></i>
-                                    <span>تعديل الحساب</span>
+                                    <span>
+                                        {{ __('static.edit_my_account') }}
+                                    </span>
                                 </a>
                             </li>
                         @else
                             <li>
                                 <a class="dropdown-item color-black" href="{{ route('admin') }}">
                                     <i class="fa-solid fa-sliders ms-1 font-xs"></i>
-                                    <span>لوحه التحكم</span>
+                                    <span>
+                                        {{ __('static.control_pannel') }}
+                                    </span>
                                 </a>
                             </li>
                         @endif
@@ -183,7 +208,9 @@ $enable_multi_language = get_option('multi_language', 'on');
                         <li>
                             <a class="dropdown-item color-black" href="{{ route('logout') }}">
                                 <i class="fa-solid fa-arrow-right-from-bracket ms-1 font-xs"></i>
-                                <span>تسجيل الخروج</span>
+                                <span>
+                                    {{ __('static.logout') }}
+                                </span>
                             </a>
                         </li>
                     </ul>
@@ -192,11 +219,15 @@ $enable_multi_language = get_option('multi_language', 'on');
         @elseif (Auth::guest())
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link fs-6 nav-links " href="{{ route('login') }}">تسجيل الدخول</a>
+                    <a class="nav-link fs-6 nav-links " href="{{ route('login') }}">
+                        {{ __('static.Signup') }}
+                    </a>
                 </li>
 
                 <li class="nav-item border">
-                    <a class="nav-link fs-6 nav-links " href="{{ route('create_user') }}">حساب جديد </a>
+                    <a class="nav-link fs-6 nav-links " href="{{ route('create_user') }}">
+                        {{ __('static.new_account') }}
+                    </a>
                 </li>
             </ul>
         @endif

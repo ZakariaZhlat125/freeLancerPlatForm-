@@ -4,12 +4,16 @@
         <!-- top nav start -->
         <div class="row mx-1  my-3 col-12 d-flex justify-content-lg-between ">
             <nav aria-label="breadcrumb" class="main-breadcrumb col-6 p-3">
-                <h3 class="m-5 font-xl font-bold"> لوحة التحكم</h3>
+                <h3 class="m-5 font-xl font-bold">
+                    {{ __('static.control_pannel') }}
+                </h3>
 
             </nav>
             <div class="col-6 mt-8">
                 <a href="{{ route('userProfile', Auth::user()->id) }}" class="mo-btn btn-blue-bg float-start font-md"><i
-                        class="fa fa-user p-1"></i> ملفي الشخصي </a>
+                        class="fa fa-user p-1"></i>
+                    {{ __('static.my_profile') }}
+                </a>
             </div>
         </div>
         <!-- top nav end -->
@@ -26,7 +30,7 @@
                 <div
                     class=" w-12/12 lg:w-5/12 mb-10  h-24 flex justify-center items-center font-3xl border rounded-lg shadow-sm bg-white p-3">
                     <span class="font-2xl font-bold text-primary-green px-2">
-                        ماتملكه :
+                        {{ __('static.user_wallet') }}
                     </span>
                     @if ($wallet != null)
                         ${{ $wallet->balance }}
@@ -35,21 +39,35 @@
                 <div class="w-full flex justify-end ">
                     <button :class="{ ' text-primary-pink font-bold': deposit == true }
                     'font-sm mx-2'"
-                        @click="deposit = true ; withdraw = false"> أضافه للمحفظه</button>
+                        @click="deposit = true ; withdraw = false">
+                        {{ __('static.deposit_wallet') }}
+                    </button>
                     <span class="font-bold mx-3">|</span>
                     <button :class="{ ' text-primary-pink font-bold': withdraw == true }
                     'font-sm mx-2'"
-                        @click="deposit = false ; withdraw = true">سحب من المحفظه</button>
+                        @click="deposit = false ; withdraw = true">
+                        {{ __('static.withdraw_wallet') }}
+                    </button>
                 </div>
                 <table class="table border">
                     <thead>
                         <tr>
-                            <th class="font-md">الرقم</th>
-                            <th class="font-md">المسلم </th>
+                            <th class="font-md">
+                                {{ __('static.transation_number') }}
+                            </th>
+                            <th class="font-md">
+                                {{ __('static.transation_type') }}
+                            </th>
                             {{-- <th class="font-md">المستلم</th> --}}
-                            <th class="font-md">المبلغ </th>
-                            <th class="font-md">المشروع </th>
-                            <th class="font-md">التاريخ</th>
+                            <th class="font-md">
+                                {{ __('static.transation_amount') }}
+                            </th>
+                            <th class="font-md">
+                                {{ __('static.transation_project') }}
+                            </th>
+                            <th class="font-md">
+                                {{ __('static.transation_date') }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="table-light">

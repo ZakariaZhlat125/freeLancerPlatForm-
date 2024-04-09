@@ -114,7 +114,7 @@
 
                             <div style='left:-1.75rem' data-hover='person'
                                 class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                ملفك الشخصي
+                                 {{ __('static.your_profile') }}
                             </div>
                             @if (request()->segment(2) == 'controllPannal' ||
                                     (request()->segment(2) == 'skills' || request()->segment(2) == 'myWorks'))
@@ -131,7 +131,8 @@
                                 <a href="{{ route('post') }}" id='document' class="relative">
                                     <div data-hover='document' style='left:-1.65rem'
                                         class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                        اضف مشروع
+
+                                        {{ __('static.add_project') }}
                                     </div>
                                     @if (request()->segment(2) == 'post')
                                         <ion-icon name="document" class=" font-md cursor-pointer text-primary-green">
@@ -150,7 +151,9 @@
                                 <a href="{{ route('userWork') }}" class='relative' id='work'>
                                     <div data-hover='work' style='left:-1.65rem'
                                         class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                        اضف عمل
+
+                                        {{ __('static.add_work') }}
+
                                     </div>
                                     @if (request()->segment(2) == 'userWork')
                                         <ion-icon name="briefcase" class=" font-md cursor-pointer text-primary-green">
@@ -167,7 +170,8 @@
                             <a href="{{ route('mywallet') }}" class="relative" id='wallet'>
                                 <div data-hover='wallet' style='left:-1.65rem'
                                     class="hidden bg-black border-2 -top-16  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                    محفظتي
+
+                                    {{ __('static.my_wallet') }}
                                 </div>
                                 @if (request()->segment(2) == 'mywallet')
                                     <ion-icon name="wallet" class=" font-md cursor-pointer text-primary-green">
@@ -214,7 +218,9 @@
                                                     id='workonProject'>
                                                     <div data-hover='workonProject' style='left:-1.65rem'
                                                         class=" hidden absolute bg-black border-2 -top-16  border-primary-light-pink rounded-sm text-white font-xs  p-2">
-                                                        أعمل على
+
+                                                            {{ __('static.ongoing_projects') }}
+
                                                     </div>
                                                     @if (request()->segment(2) == 'workonProject')
                                                         <ion-icon name="receipt"
@@ -233,7 +239,8 @@
                                                     id='myProject'>
                                                     <div data-hover='myProject' style='left:-1.65rem'
                                                         class="hidden absolute bg-black border-2 -top-16  border-primary-light-pink rounded-sm text-white font-xs  p-2">
-                                                        مشاريعي
+
+                                                        {{ __('static.my_projects') }}
                                                     </div>
                                                     @if (request()->segment(2) == 'myProject')
                                                         <ion-icon name="receipt"
@@ -248,7 +255,9 @@
                                             <a href="{{ route('logout') }}" class="relative mx-2" id='logout'>
                                                 <div data-hover='logout' style='left:-1.65rem'
                                                     class="hidden bg-black border-2 -top-16  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                                    تسجيل الخروج
+
+                                                    {{ __('static.logout') }}
+                                            
                                                 </div>
                                                 @if (request()->segment(2) == 'logout')
                                                     <ion-icon name="log-out"

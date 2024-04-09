@@ -1,6 +1,8 @@
 @extends('client.master_layout')
 @section('content')
-    <h3 class="m-5 font-xl font-bold pt-20 flex flex-col justify-start items-start"> المشاريع الخاصة بي</h3>
+    <h3 class="m-5 font-xl font-bold pt-20 flex flex-col justify-start items-start">
+        {{ __('static.my_personal_projects') }}
+    </h3>
     {{-- updating --}}
     @foreach ($projects as $item)
         {{-- one card --}}
@@ -14,20 +16,20 @@
                 </div>
 
                 <div class="col-sm-6 ">
-                    <span class="badge bg-primary-light-pink text-md-center text-black font-md float-start">حالة
-                        المشروع:
+                    <span class="badge bg-primary-light-pink text-md-center text-black font-md float-start">
+                        {{ __('static.project_status') }}
                         @if ($item->status == 'pending')
-                            إنتظار العروض
+                        {{ __('static.project_status1') }}
                         @elseif ($item->status == 'at_work' && $item->payment_status == 'unpaid')
-                            في انتظار الدفع
+                        {{ __('static.project_status2') }}
                         @elseif ($item->status == 'at_work')
-                            قيد العمل
+                        {{ __('static.project_status3') }}
                         @elseif ($item->status == 'done')
-                            تم التسليم
+                        {{ __('static.project_status4') }}
                         @elseif ($item->status == 'rejected')
-                            لم يتم قبول التسليم
+                        {{ __('static.project_status5') }}
                         @elseif ($item->status == 'received')
-                            تم قبول التسليم
+                        {{ __('static.project_status6') }}
                         @endif
                     </span>
                 </div>
@@ -50,7 +52,8 @@
                          </li> --}}
 
                         <li class="text-muted font-sm color-gray-dark mx-5">
-                            <i class="fa-regular fa-clock  ms-1"></i>المدة المحتمله: {{ $item->duration }} يوم
+                            <i class="fa-regular fa-clock  ms-1"></i>
+                                {{ __('static.estimmed_duration') }} {{ $item->duration }} {{ __('static.estimmed_duration_days') }}
                         </li>
 
                     </ul>
@@ -59,8 +62,9 @@
 
             </div>
             <div class="flex justify-between">
-                <div> التكلفه
-                    : <span class="text-primary-pink font-bold mx-1"> ${{ $item->amount }}</span>
+                <div>
+                    {{ __('static.project_cost') }}
+                     <span class="text-primary-pink font-bold mx-1"> ${{ $item->amount }}</span>
 
                 </div>
                 <div class="flex justify-content-end gap-1 margin-right: -23px;">
@@ -68,13 +72,17 @@
                     @if ($item->payment_status == 'unpaid' && $item->status == 'at_work')
                         <a href="{{ route('payment.do', [$item->project_id, $item->seeker_id]) }}"
                             class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center">
-                            <p class="font-md"> لم يتم الدفع</p>
+                            <p class="font-md">
+                                 {{ __('static.project_cost_option1') }}
+                            </p>
                         </a>
                     @endif
                     @if ($item->status == 'done')
                         <a href="{{ route('markAsRecive', [$item->project_id, $item->provider_id]) }}"
                             class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center">
-                            <p class="font-md">تم تسليم مشروعك</p>
+                            <p class="font-md">
+                                {{ __('static.project_cost_option2') }}
+                           </p>
                         </a>
                     @endif
                     {{-- <div class="card--actions hidden-xs   flex justify-content-end gap-1">
@@ -113,16 +121,21 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">حذف المشروع</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            {{ __('static.post_detail_desc3') }}
+                        </h5>
                         <a class="fa fa-xmark" data-bs-dismiss="modal" aria-label="Close"></a>
                     </div>
                     <div class="modal-body">
-                        هل تريد حذف {{ $item->title }}
+                        {{ __('static.post_detail_desc4') }} {{ $item->title }}
                     </div>
                     <div class="modal-footer">
-                        <a href="{{ route('toggle_post', $item->post_id) }}" class="mo-btn btn-pink-bg pink">تاكيد
-                            الحذف</a>
-                        <button type="button" class="mo-btn btn-blue-bg" data-bs-dismiss="modal">الغاء</button>
+                        <a href="{{ route('toggle_post', $item->post_id) }}" class="mo-btn btn-pink-bg pink">
+                            {{ __('static.post_detail_desc5') }}
+                        </a>
+                        <button type="button" class="mo-btn btn-blue-bg" data-bs-dismiss="modal">
+                            {{ __('static.post_detail_desc6') }}
+                        </button>
                         {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
 
                     </div>
