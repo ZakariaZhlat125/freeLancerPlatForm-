@@ -16,7 +16,9 @@
                                 class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center"
                                 href="{{ route('posts.details', $item->post_id) }}">
                                 {{-- <i class="fa fa-fw fa-send"></i> --}}
-                                <span class="mr-1"> أضف عرضك </span>
+                                <span class="mr-1">
+                                        {{ __('static.add_offer') }}
+                                </span>
                                 <svg class="fill-current h-4 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path style="color:white ; stroke: white;
                                                                   fill: white;"
@@ -33,7 +35,8 @@
                                     <li class="border-b border-primary-light-pink">
                                         <a class="rounded-t bg-gray-200 hover:bg-gray-400 hover:bg-primary-light-gray hover:text-dark-gray py-2 px-4 block whitespace-no-wrap"
                                             href="{{ route('report_content', ['post_id' => $item->post_id, 'provider_id' => Auth::id()]) }}">
-                                         التبليغ عن محتوى</a>
+                                            {{ __('static.profile_report') }}
+                                        </a>
                                     </li>
                                 @endif
                             </ul>
@@ -63,15 +66,15 @@
                     <li class="text-muted font-sm color-gray-dark">
                         <i class="fa fa-fw fa-ticket"></i>
                         @if ($item->offer == 0)
-                            أضف أول عرض
+                            {{ __('static.add_first_offer') }}
                         @else
                             @if ($item->offer == 1)
-                                عرض واحد
+                                {{ __('static.one_offer') }}
                             @endif
                             @if ($item->offer == 2)
-                                عرضان
+                                {{ __('static.two_offers') }}
                             @endif
-                            عروض{{ $item->offer }}
+                            {{ __('static.many_offers') }}  {{ $item->offer }}
                         @endif
                     </li>
 

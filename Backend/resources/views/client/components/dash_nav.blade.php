@@ -29,7 +29,9 @@
         <div class="text-center">
             <a class="text-prof fs-5 font-lg fw-bold " href="">{{ $item->name }}</a>
             <p class="my-2 border-top  mb-3"></p>
-            <a class=" font-md w-full " href='{{ route('account') }}'>تعديل معلومات الحساب</a>
+            <a class=" font-md w-full " href='{{ route('account') }}'>
+                {{ __('static.edit_account_info') }}
+            </a>
         </div>
     </div>
 
@@ -51,7 +53,9 @@
                     <a id="mywork" href='{{ route('myWorks') }}'
                         class="text-secondary d-flex align-items-center d-inline-block ms-3 border-bottom pb-2">
                         <ion-icon name="code-working"></ion-icon>
-                        <span class="fs-6 font-md fw-bold mx-4">أعمالي </span>
+                        <span class="fs-6 font-md fw-bold mx-4">
+                            {{ __('static.account_works') }}
+                        </span>
                     </a>
                 @endrole
             @endif

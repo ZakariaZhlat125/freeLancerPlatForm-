@@ -23,7 +23,9 @@
     </style>
 
     <div class="container pt-20">
-        <h3 class="my-5 font-xl font-bold">تعديل مشروع</h3>
+        <h3 class="my-5 font-xl font-bold">
+            {{ __('static.edit_post') }}
+        </h3>
         {{-- @foreach ($data as $item) --}}
         <div class="row my-5 grid place-items-center">
             <div class="col-md-8 col-sm-12">
@@ -34,12 +36,16 @@
                             @csrf
                             <!-- Name input -->
                             <div class="col-12 pt-3">
-                                <label class="form-label font-md" for="name">عنوان المشروع</label>
+                                <label class="form-label font-md" for="name">
+                                    {{ __('static.post_title') }}
+                                </label>
                                 <input
                                     class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                     name='title' id="name" value="{{ $data->title ?? old('title') }}" type="text"
                                     data-sb-validations="required" required />
-                                <p class="text-muted font-xs">أدرج عنوانا موجزا يصف مشروعك بشكل دقيق.</p>
+                                <p class="text-muted font-xs">
+                                    {{ __('static.post_add_title') }}
+                                </p>
                                 @error('title')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
                                         style="width: fit-content; position: fixed; top: 20% ; right: 0px ; z-index: 9999999">
@@ -51,7 +57,9 @@
                             {{-- category --}}
                             <div class="col-12 pt-3">
                                 <div class="form-group  ">
-                                    <label class="font-md"> القسم <em class="text--danger">*</em>
+                                    <label class="font-md">
+                                        {{ __('static.post_add_category') }}
+                                        <em class="text--danger">*</em>
                                     </label>
                                     <select class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"  aria-label="Default select example" name="category"
                                         required="required">
@@ -64,7 +72,9 @@
                                         @endforeach
 
                                     </select>
-                                    <p class="text-muted font-xs">اختر القسم المناسب للمشروع </p>
+                                    <p class="text-muted font-xs">
+                                        {{ __('static.post_add_category1') }}
+                                    </p>
                                 </div>
                                 {{-- @error('category')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
@@ -90,20 +100,24 @@
                                             @endif
                                     @endforeach
                                 </select>
-                                <p class="text-muted font-xs">اختر المهارات المطلوبه لهذا المنشور</p>
+                                <p class="text-muted font-xs">
+                                    {{ __('static.post_add_required_skills') }}
+                                </p>
                             </div>
 
 
 
                             <!-- Message input -->
                             <div>
-                                <label class="form-label font-md" for="message">تفاصيل المشروع</label>
+                                <label class="form-label font-md" for="message">
+                                    {{ __('static.post_detail_desc7') }}
+                                </label>
                                 <textarea class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                  name='message' id="message" type="text" style="height: 10rem;"
                                     data-sb-validations="required"
                                     required>{{ $data->description ?? old('description') }}</textarea>
-                                <p class="text-muted font-xs">أدخل وصفاً مفصلاً لمشروعك وأرفق أمثلة لما تريد ان
-                                    أمكن.
+                                <p class="text-muted font-xs">
+                                    {{ __('static.post_detail_desc14') }}
                                 </p>
                                 @error('message')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
@@ -116,7 +130,9 @@
                             {{-- the cost --}}
                             <div class="col-sm-6 col-xs-12 pt-3">
                                 <div class="form-group  ">
-                                    <label class="font-md">الميزانية المتوقعة <em class="text--danger">*</em>
+                                    <label class="font-md">
+                                        {{ __('static.post_estimeed_budget') }}
+                                        <em class="text--danger">*</em>
                                     </label>
                                     {{-- {{ $price = array( '0-25', '50-25 ','250-100') }} --}}
                                    <?php $price = ['0-25', '50-25 ','50-100','250-100','500-250','1000-500','2500-5000','5000-10000'] ;?>
@@ -124,13 +140,15 @@
                                         required="required">
                                         @foreach ($price as $value)
                                             @if ($data->cost == $value)
-                                                <option value="{{ $value }}"  selected> {{ $value }}دولار</option>
+                                                <option value="{{ $value }}"  selected> {{ $value }} $</option>
                                             @else
-                                            <option value="{{ $value }}"  > {{ $value }} دولار</option>
+                                            <option value="{{ $value }}"  > {{ $value }} $</option>
                                             @endif
                                         @endforeach
                                          </select>
-                                    <p class="text-muted font-xs">اختر ميزانية مناسبة لتحصل على عروض جيدة</p>
+                                    <p class="text-muted font-xs">
+                                        {{ __('static.post_add_budget') }}
+                                    </p>
                                 </div>
                                 @error('cost')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
@@ -143,7 +161,9 @@
 
                             {{-- duration --}}
                             <div class="col-sm-6 col-xs-12 pt-3">
-                                <label class="font-md" >المدة المتوقعة للتسليم <em class="text--danger">*</em>
+                                <label class="font-md" >
+                                    {{ __('static.post_detail_desc12') }}
+                                    <em class="text--danger">*</em>
                                 </label>
                                 <div class="input-group mb-3">
 
@@ -153,7 +173,9 @@
                                     <span class="flex items-center justify-center appearance-none  border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3  mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink w-8 bg-primary-light-pink" style="height: 46px;" id="basic-addon1">ايام</span>
                                 </div>
 
-                                <span class="text-muted font-xs">متى تحتاج استلام مشروعك</span>
+                                <span class="text-muted font-xs">
+                                    {{ __('static.post_add_submit_date') }}
+                                </span>
                                 @error('duration')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
                                         style="width: fit-content; position: fixed; top: 20% ; right: 0px ; z-index: 9999999">
@@ -163,14 +185,18 @@
 
                             </div>
                             <div class="mb-1">
-                                <label class="form-label font-md" for="message">ملفات توضيحية</label>
+                                <label class="form-label font-md" for="message">
+                                    {{ __('static.post_detail_desc15') }}
+                                </label>
                                 <input class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"  id="dropzone" multiple name='files' type="file"
                                     value="{{ $data->files ?? old('files') }}" data-sb-validations="required">
 
 
                             </div>
                             <div>
-                            <button class="mo-btn btn-blue-bg float-left font-md" type="submit">حفظ التعديلات
+                            <button class="mo-btn btn-blue-bg float-left font-md" type="submit">
+                                {{ __('static.post_detail_desc25') }}
+
                                 </button>
 
                             </div>

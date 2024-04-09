@@ -1,7 +1,9 @@
 @extends('client.master_layout')
 @section('content')
     <div class=" container d-flex justify-content-between mt-20">
-        <h3 class="font-xl font-bold"> المشاريع اللتي اعمل عليها حاليه </h3>
+        <h3 class="font-xl font-bold">
+            {{ __('static.my_current_project') }}
+        </h3>
         <div class="card--actions hidden-xs">
             <div class="dropdown btn-group">
                 <div class="dropdown inline-block relative min-w-fit">
@@ -9,7 +11,9 @@
                         class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center"
                         href="{{ route('workonProject') }}">
                         <i class="fa-solid fa-filter font-sm mx-1"></i>
-                        <span class="mr-1"> اعمالي الحاليه </span>
+                        <span class="mr-1">
+                                {{ __('static.my_current_works') }}
+                        </span>
                         <svg class="fill-current h-4 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path style="color:white ; stroke: white;
                                                                                       fill: white;"
@@ -22,7 +26,9 @@
                             <a class="rounded-t bg-gray-200 hover:bg-gray-400 hover:bg-primary-light-gray hover:text-dark-gray py-2 px-4 block whitespace-no-wrap"
                                 href="{{ route('doneWork') }}">
                                 <i class="fa-solid fa-check font-sm px-3"></i>
-                                <span class="mr-1"> اعمالي المنجزه </span>
+                                <span class="mr-1">
+                                     {{ __('static.my_finished_works') }}
+                                </span>
                             </a>
                         </li>
                 </div>
@@ -35,7 +41,9 @@
     @foreach ($data as $item)
         {{-- one card --}}
         @if (request()->get('status') == 'reject')
-            <div>لقد تم رفض أحد مشاريعك رجاء قم بالتأكد</div>
+            <div>
+                {{ __('static.my_declined_works') }}
+            </div>
         @endif
         <div class="row d-flex flex-column justify-content-center">
             <div class="mx-lg-5 col-lg-9">
@@ -59,7 +67,9 @@
                                              data-bs-target="#model_{{ $item->project_id }}">
                                             <i class="fa-regular fa-paper-plane"></i>
 
-                                            <span class="action-text">تسليم المشروع </span>
+                                            <span class="action-text">
+                                                    {{ __('static.submit_project') }}
+                                            </span>
 
                                         </a>
                                     @endif
@@ -67,14 +77,18 @@
                                         <a class="mo-btn btn-pink-bg cursor-wait" aria-readonly="true" readOnly>
                                             {{-- <i class="fa-regular fa-paper-plane"></i> --}}
 
-                                            <span class="action-text"> لم يتم الدفع بعد... </span>
+                                            <span class="action-text">
+                                                {{ __('static.project_cost_option1') }}
+                                             </span>
 
                                         </a>
                                     @endif
                                     @if ($item->status == 'done')
                                         <button tabindex="-1" class="mo-btn " aria-disabled="true">
                                             <i class="fa-solid fa-spinner"></i>
-                                            <span class="action-text"> انتظار الرد... </span>
+                                            <span class="action-text">
+                                                {{ __('static.project_cost_option3') }}
+                                             </span>
 
                                         </button>
                                     @endif
@@ -83,13 +97,17 @@
                                             <a class="mo-btn btn-pink-bg pink col-md-6"
                                                 href='{{ route('continueProject', [$item->project_id]) }}'>
                                                 <i class="fa-solid fa-spinner"></i>
-                                                <span class="font-sm"> استئناف المشروع </span>
+                                                <span class="font-sm">
+                                                    {{ __('static.project_cost_option4') }}
+                                                </span>
 
                                             </a>
                                             <a class="mo-btn btn-blue-bg col-md-6" data-bs-toggle="modal"
                                                 data-bs-target="#reject_{{ $item->project_id }}" {{-- style='background-color: red' --}}>
                                                 <i class="fa-solid fa-flag-checkered"></i>
-                                                <span class="font-sm"> قدم شكوى </span>
+                                                <span class="font-sm">
+                                                    {{ __('static.project_cost_option5') }}
+                                                </span>
 
                                             </a>
                                         </div>
@@ -142,34 +160,46 @@
                                 <input hidden type="hidden" value='{{ $item->project_id }}' name='project_id' />
                                 <input hidden type="hidden" value='{{ $item->seeker_id }}' name='seeker_id' />
                                 <div class="modal-header">
-                                    <h5 class="modal-title font-lg" id="exampleModalLabel"> هل تريد تسليم
-                                        {{ $item->title }}
+                                    <h5 class="modal-title font-lg" id="exampleModalLabel">
+                                            {{ __('static.submit_the_project') }}     {{ $item->title }}
                                     </h5>
                                     {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
 
                                 </div>
                                 <div class="modal-body">
-                                    <h2 class="font-md">ارفق مجلدات المشروع</h2>
+                                    <h2 class="font-md">
+                                        {{ __('static.submit_the_project_files') }}
+                                    </h2>
                                     <div>
-                                        <label for="upload"> ارفع المشروع :</label>
+                                        <label for="upload">
+                                            {{ __('static.upload_the_project') }}
+                                        </label>
                                         <input type="file" name="upload" id="upload" value="" />
                                     </div>
                                     <div class="col-12 p-2 my-2">
-                                        <label for="url">رابط المشروع :</label>
+                                        <label for="url">
+                                            {{ __('static.project_link') }}
+                                        </label>
                                         <input
                                             class='appearance-none  border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3  mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink'
                                             type="url" name="url" id="url" value="" />
                                     </div>
                                     <div>
                                         <input type="checkbox" name="other_option" id="other_option" aria-checked="false" />
-                                        <label for="other_option">تم تسليمها بطريقه أخرى </label>
+                                        <label for="other_option">
+                                            {{ __('static.project_submit_way') }}
+                                        </label>
                                     </div>
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="submit" class="mo-btn btn-pink-bg pink font-md">سلم الان</button>
+                                    <button type="submit" class="mo-btn btn-pink-bg pink font-md">
+                                        {{ __('static.project_submit_now') }}
+                                    </button>
                                     <button type="button" class="mo-btn btn-blue-bg font-md"
-                                        data-bs-dismiss="modal">الغاء</button>
+                                        data-bs-dismiss="modal">
+                                        {{ __('static.post_detail_desc6') }}
+                                    </button>
 
                                 </div>
                             </form>
@@ -184,7 +214,9 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModel">تقديم شكوى</h5>
+                                    <h5 class="modal-title" id="deleteModel">
+                                        {{ __('static.project_cost_option5') }}
+                                    </h5>
                                     {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                                 </div>
 
@@ -194,7 +226,9 @@
                                         <input hidden type='text' name="seeker_id" value='{{ $item->seeker_id }}' />
                                         <input hidden type='text' name="project_id" value='{{ $item->project_id }}' />
                                         <div class="pt-3">
-                                            <label class="my-2">تفاصيل الشكوى <em class="text--danger">*</em>
+                                            <label class="my-2">
+                                                {{ __('static.complimnt_deatails') }}
+                                                <em class="text--danger">*</em>
                                             </label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group mb-3">
@@ -204,10 +238,13 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="mo-btn btn-pink-bg pink font-md">ارسال
-                                                الشكوى</button>
+                                            <button type="submit" class="mo-btn btn-pink-bg pink font-md">
+                                                {{ __('static.send_complimnt') }}
+                                            </button>
                                             <button type="button" class="mo-btn btn-blue-bg font-md"
-                                                data-bs-dismiss="modal">الغاء</button>
+                                                data-bs-dismiss="modal">
+                                                {{ __('static.post_detail_desc6') }}
+                                            </button>
                                             {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
 
                                         </div>

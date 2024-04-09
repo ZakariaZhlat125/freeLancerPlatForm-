@@ -24,10 +24,10 @@
                             <h5 class="font-xl">{{ $data->name }}</h5>
                             <p>
                                 @role('seeker')
-                                    صاحب مشاريع
+                                    {{ __('static.seeker_role') }}
                                 @endrole
                                 @role('provider')
-                                    متاح للعمل الحر
+                                    {{ __('static.provider_role') }}
                                 @endrole
                             </p>
                         </div>
@@ -48,8 +48,9 @@
 
                             @if ($data->hire_me)
                                 <p class="d-inline-block">
-                                    <i class="fas fa-user-tie color-green mx-2 "></i> <span class="me-1"> انا متاح
-                                        للتوظيف</span>
+                                    <i class="fas fa-user-tie color-green mx-2 "></i> <span class="me-1">
+                                    {{ __('static.hire_me') }}
+                                    </span>
                                 </p>
                             @endif
 
@@ -69,7 +70,9 @@
                                         class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center"
                                         href="{{ route('post') }}">
                                         <i class="fa fa-fw fa-send"></i>
-                                        <span class="mr-1"> أضف مشروع </span>
+                                        <span class="mr-1">
+                                            {{ __('static.profile_add_project') }}
+                                        </span>
                                         <svg class="fill-current h-4 w-8" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20">
                                             <path
@@ -85,7 +88,9 @@
                             <li class="border-b border-primary-light-pink">
                                 <a class="rounded-t bg-gray-200 hover:bg-gray-400 hover:bg-primary-light-gray hover:text-dark-gray py-2 px-4 block whitespace-no-wrap"
                                     href="{{ route('report_provider', $data->user_id) }}">
-                                    التبليغ عن محتوى</a>
+                                    {{ __('static.profile_report') }}
+
+                                </a>
                             </li>
 
                         </ul>
@@ -104,16 +109,24 @@
         <!-- Profile Taps -->
         <div class="user-profile-tabs row d-flex justify-content-between align-items-center">
             <nav class="nav fw-bold col-auto">
-                <p class="nav-link color-black tab tab-A is-active" id="about" data-current="tab-A">حول</p>
+                <p class="nav-link color-black tab tab-A is-active" id="about" data-current="tab-A">
+                    {{ __('static.about_user') }}
+                </p>
                 @if ($role == 'provider')
-                    <p class="nav-link color-black tab tab-B" id="rates" data-current="tab-B">التقييمات</p>
+                    <p class="nav-link color-black tab tab-B" id="rates" data-current="tab-B">
+                    {{ __('static.user_ratings') }}
+                    </p>
                 @endif
 
                 @if ($role == 'provider' || $role == 'both')
-                    <p class="nav-link color-black tab tab-C" id="works" data-current="tab-C">الأعمال</p>
+                    <p class="nav-link color-black tab tab-C" id="works" data-current="tab-C">
+                    {{ __('static.user_works') }}
+                    </p>
                 @endif
                 @if ($role == 'seeker' || $role == 'both')
-                    <p class="nav-link color-black tab tab-C" id="works" data-current="tab-D">المشاريع</p>
+                    <p class="nav-link color-black tab tab-C" id="works" data-current="tab-D">
+                    {{ __('static.user_projects') }}
+                    </p>
                 @endif
             </nav>
 
@@ -141,24 +154,32 @@
                                 <section class="card shadow-sm  col-sm-12 col-lg-4  p-3 ">
                                     <div class="about-me">
                                         <div class="section-title">
-                                            <h5 class="font-md">نبذة عني</h5>
+                                            <h5 class="font-md">
+                                                {{ __('static.user_brief') }}
+                                            </h5>
                                         </div>
                                         <div class="brief-content mt-3">
                                             <p class="p-1">
                                                 <i class="fas fa-briefcase ms-1"></i>
-                                                <span class="fs-6 fw-bold">التخصص:</span>
+                                                <span class="fs-6 fw-bold">
+                                                     {{ __('static.user_specilization') }}
+                                                </span>
                                                 @if (!empty($cate->title))
                                                     <span class="me-1">{{ $cate->title }}</span>
                                                 @endif
                                             </p>
                                             <p class="p-1">
                                                 <i class="fa-solid fa-location-dot ms-1"></i>
-                                                <span class="fs-6 fw-bold">البلد:</span>
+                                                <span class="fs-6 fw-bold">
+                                                    {{ __('static.user_country') }}
+                                                </span>
                                                 <span class="me-1">{{ $data->country }}</span>
                                             </p>
                                             <p class="p-1">
                                                 <i class="fa-solid fa-circle-info ms-1"></i>
-                                                <span class="fs-6 fw-bold">تفاصيل أكثر:</span>
+                                                <span class="fs-6 fw-bold">
+                                                    {{ __('static.user_bio') }}
+                                                </span>
                                                 <span class="me-1">
                                                     {{ $data->bio }}</span>
                                             </p>
@@ -174,7 +195,9 @@
                                 <section class="card shadow-sm col-12 col-sm-12 mt-3 p-3">
                                     <div class="my-skills">
                                         <div class="section-title">
-                                            <h5 class="font-md">مهاراتي</h5>
+                                            <h5 class="font-md">
+                                                {{ __('static.user_skills') }}
+                                            </h5>
                                         </div>
                                         <div class="skills flex flex-wrap mt-3">
                                             @foreach ($skills as $item)
@@ -204,23 +227,31 @@
                                             <div class="statistic-content mt-3">
                                                 <p class="p-1">
                                                     <i class="fas fa-briefcase ms-1"></i>
-                                                    <span class="fs-6 fw-bold d-inll">معدل الطلب:</span>
+                                                    <span class="fs-6 fw-bold d-inll">
+                                                         {{ __('static.user_demands') }}
+                                                    </span>
                                                     <span class="me-1">66%</span>
                                                 </p>
                                                 <p class="p-1">
                                                     <i class="fa-solid fa-clipboard-check ms-1"></i>
-                                                    <span class="fs-6 fw-bold d-inll">المشاريع المسلمة:</span>
+                                                    <span class="fs-6 fw-bold d-inll">
+                                                        {{ __('static.user_done_projects') }}
+                                                    </span>
                                                     <span class="me-1">{{ $data->reseved }}</span>
                                                 </p>
                                                 <p class="p-1">
                                                     <i class="fa-solid fa-spinner ms-1"></i>
-                                                    <span class="fs-6 fw-bold d-inll">المشاريع قيد العمل:</span>
+                                                    <span class="fs-6 fw-bold d-inll">
+                                                        {{ __('static.user_in_progress_projects') }}
+                                                    </span>
                                                     <span class="me-1">{{ 4 - $data->limit }}</span>
                                                 </p>
                                                 <p class="p-1 d-flex justify-between">
                                                     <span>
                                                         <i class="fa-solid fa-star ms-1"></i>
-                                                        <span class="fs-6 fw-bold d-inll">التقييمات:</span>
+                                                        <span class="fs-6 fw-bold d-inll">
+                                                            {{ __('static.user_projects_rating') }}
+                                                        </span>
                                                         <span class="me-1">
                                                             {{-- {{ $rating->countEvalution }} --}}
                                                             @for ($i = 1; $i <= 5; $i++)
@@ -253,7 +284,9 @@
                                         <div class="histories-content mt-3">
                                             <p class="p-1">
                                                 <i class="fa-solid fa-calendar-days ms-1"></i>
-                                                <span class="fs-6 fw-bold d-inll">تاريخ الانضمام:</span>
+                                                <span class="fs-6 fw-bold d-inll">
+                                                    {{ __('static.user_register_date') }}
+                                                </span>
                                                 <span class="me-1">{{ $data->created_at }}</span>
                                             </p>
                                         </div>
@@ -263,7 +296,9 @@
                                         <div class="histories-content mt-3">
                                             <p class="p-1">
                                                 <i class="fa-solid fa-clock"></i>
-                                                <span class="fs-6 fw-bold d-inll">اخر تواجد</span>
+                                                <span class="fs-6 fw-bold d-inll">
+                                                    {{ __('static.user_last_seen_date') }}
+                                                </span>
                                                 <span class="fs-6 fw-bold d-inll">
                                                     @foreach ($users as $user)
                                                         {{-- @if (Cache::has('user-is-online-' . $user->id))
@@ -294,7 +329,9 @@
                         <section class="card shadow-sm col-12 col-sm-12 p-3">
                             <div class="about-me">
                                 <div class="section-title">
-                                    <h5 class="font-md">آراء العملاء</h5>
+                                    <h5 class="font-md">
+                                        {{ __('static.user_customers_ratings') }}
+                                    </h5>
                                 </div>
                                 <div class="brief-content mt-3 me-1">
                                     @foreach ($evaluations as $evaluate)
@@ -304,7 +341,7 @@
                                                 <div class="flex justify-between mb-2">
                                                     <div class="flex justify-between">
                                                         <p class="bg-primary-green text-white flex-none px-2 py-1 text-xs">
-                                                            مكتمل
+                                                                {{ __('static.user_project_status') }}
                                                         </p>
                                                         <p class="text-primary-blue font-semibold mr-2">
                                                             {{ $evaluate->title }}

@@ -17,7 +17,10 @@
                     <div class="color-black px-3 modal-panel is-show supSection" id="tab-A">
                         <div class="row">
                             <div class="col-6">
-                                <label>المبلغ المتفق عليه <em class="text--danger text-danger">*</em></label>
+                                <label>
+                                     {{ __('static.post_detail_desc28') }}
+                                    <em class="text--danger text-danger">*</em>
+                                </label>
                                 <div class="input-group mt-1">
                                     <input name="amount" class='form-control' id="amount" type="text"
                                         value="{{ old('cost') }}" aria-label="Username"
@@ -57,10 +60,12 @@
                                                                                                                                                                 </div> -->
 
                         <div class="row border-top mt-4 py-3">
-                            <p>المبلغ النهائي بعد اضافة رسوم إجرائية بنسبة 3% على عملية الدفع: <span
-                                    class="color-orange font-lg">3082.50$</span> </p>
-                            <p class="text-muted font-xs"><em class="text--danger text-danger">*</em> رسوم عملية الدفع
-                                تقتطعها بوابات الدفع الالكترونية مثل PayPal والبطاقات الائتمانية.
+                            <p>
+                                {{ __('static.acceptence_cost') }}
+                             <span class="color-orange font-lg">3082.50$</span>
+                            </p>
+                            <p class="text-muted font-xs"><em class="text--danger text-danger">*</em>
+                                {{ __('static.acceptence_credit_card') }}
                             </p>
                         </div>
                     </div>
@@ -84,7 +89,9 @@
                 </div>
                 <div class="modal-footer d-flex ">
                     <input type="submit" class="btn wak_btn" value="قبول العرض">
-                    <button type="button" class="btn wak_btn green_border" data-bs-dismiss="modal">تراجع</button>
+                    <button type="button" class="btn wak_btn green_border" data-bs-dismiss="modal">
+                        {{ __('static.back_button') }}
+                    </button>
                 </div>
             </form>
         </div>

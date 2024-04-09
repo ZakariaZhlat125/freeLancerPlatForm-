@@ -5,7 +5,9 @@
 
         <form action="{{ route('account_save') }}" method="POST" class="login-form" enctype="multipart/form-data">
             <div class="container-fluid border-bottom  pt-20">
-                   <h4 class=" font-xl font-bold"> المعلومات الشخصية</h4>
+                   <h4 class=" font-xl font-bold">
+                         {{ __('static.edit_user_info') }}
+                    </h4>
 
                 <!-- User Identety Brief-->
                 <div class="profile-identity row">
@@ -75,7 +77,8 @@
 
                                 <div class="col-sm-6 col-xs-12 pt-3">
                                     <div class="form-group  ">
-                                        <label class="font-md">الاسم
+                                        <label class="font-md">
+                                                {{ __('static.edit_user_name') }}
                                         </label>
                                         <input class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink" placeholder="أكتب اسمك باللغة العربية" type="text"
                                             name=" name" value="{{ $d->name }}">
@@ -100,13 +103,17 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-12 pt-3">
                                     <div class="form-group  ">
-                                        <label class="font-md"> الجنس
+                                        <label class="font-md">
+                                            {{ __('static.edit_user_sex') }}
                                         </label>
                                         <select class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink" aria-label="Default select example" name="gender"
                                             required="required">
                                             {{-- <option selected>الجنس</option> --}}
-                                            <option @if ($d->gender == 1) selected @endif value="1">ذكر</option>
-                                            <option @if ($d->gender == -1) selected @endif value="-1">انثى
+                                            <option @if ($d->gender == 1) selected @endif value="1">
+                                                {{ __('static.edit_user_sex_option1') }}
+                                            </option>
+                                            <option @if ($d->gender == -1) selected @endif value="-1">
+                                                {{ __('static.edit_user_sex_option2') }}
                                             </option>
 
                                         </select>
@@ -118,17 +125,22 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-12 pt-3">
                                     <div class="form-group  ">
-                                        <label class="font-md">الدولة
+                                        <label class="font-md">
+                                            {{ __('static.edit_user_country') }}
                                         </label>
                                         <select class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink" aria-label="Default select example" name="country"
                                             required="required">
-                                            <option @if ($d->country == 'Yemen') selected @endif value="Yemen">اليمن
+                                            <option @if ($d->country == 'Yemen') selected @endif value="Yemen">
+                                                {{ __('static.edit_user_country_option1') }}
                                             </option>
-                                            <option @if ($d->country == 'ksa') selected @endif value="ksa">السعودية
+                                            <option @if ($d->country == 'ksa') selected @endif value="ksa">
+                                                {{ __('static.edit_user_country_option2') }}
                                             </option>
-                                            <option @if ($d->country == 'Egypt') selected @endif value="Egypt">مصر
+                                            <option @if ($d->country == 'Egypt') selected @endif value="Egypt">
+                                                {{ __('static.edit_user_country_option3') }}
                                             </option>
-                                            <option @if ($d->country == 'UAE') selected @endif value="UAE">الامارات
+                                            <option @if ($d->country == 'UAE') selected @endif value="UAE">
+                                                {{ __('static.edit_user_country_option4') }}
                                             </option>
 
                                         </select>
@@ -144,7 +156,9 @@
 
                                 <div class="col-sm-6 col-xs-12 pt-3">
 
-                                    <label class="font-md">رقم الهاتف </label>
+                                    <label class="font-md">
+                                        {{ __('static.edit_user_phone') }}
+                                    </label>
                                     <input name="mobile" class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink" id="phone" type="tel"
                                         value="{{ $d->mobile }}">
                                     @error('mobile')
@@ -157,7 +171,8 @@
 
 
                                <div>
-                            <button class="mo-btn btn-blue-bg float-left font-md mt-3" type="submit">حفظ الاعدادات
+                            <button class="mo-btn btn-blue-bg float-left font-md mt-3" type="submit">
+                                {{ __('static.edit_save_profile') }}
                             </button>
                         </div>
                             </div>

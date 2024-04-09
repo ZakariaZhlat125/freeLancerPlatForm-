@@ -19,8 +19,12 @@
                 </div>
             </div>
             <form class="w-full p-8 lg:w-1/2" action="{{ route('do_login') }}" method="POST">
-                <h2 class="logo-font  text-center ">متوفر</h2>
-                <p class="text-lg text-dark-gray text-gray-600 text-center">مرحبا بك !</p>
+                <h2 class="logo-font  text-center ">
+                    {{ __('static.title') }}
+                </h2>
+                <p class="text-lg text-dark-gray text-gray-600 text-center">
+                    {{ __('static.create_user_welcome') }}
+                </p>
                 <a href="{{ route('loginWithGoogle') }} "
                     class="flex items-center justify-center mt-4 text-white border-sm border border-primary-pink hover:bg-gray-100">
                     <div class=" py-2">
@@ -39,16 +43,20 @@
                                 fill="#1976D2" />
                         </svg>
                     </div>
-                    <h1 class=" w-5/6 text-center text-primary-pink ">سجل عن طريق غوغل</h1>
+                    <h1 class=" w-5/6 text-center text-primary-pink ">
+                        {{ __('static.create_user_google') }}
+                    </h1>
                 </a>
                 <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 lg:w-1/4"></span>
-                    <a href="#" class="text-xs text-center text-gray-500 uppercase">أو سجل عن طريق الإيميل </a>
+                    <a href="#" class="text-xs text-center text-gray-500 uppercase">
+                        {{ __('static.create_user_email') }}
+                    </a>
                     <span class="border-b w-1/5 lg:w-1/4"></span>
                 </div>
                 <div class="mt-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">
-                        البريد الإلكتروني
+                        {{ __('static.form_email') }}
                     </label>
                     <input
                         class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -59,8 +67,12 @@
                 @enderror
                 <div class="mt-4">
                     <div class="flex justify-between">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">كلمة المرور</label>
-                        <a href="{{ route('forget-password') }}" class="text-xs text-gray-500">نسيت كلمة المرور؟ </a>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            {{ __('static.form_password') }}
+                        </label>
+                        <a href="{{ route('forget-password') }}" class="text-xs text-gray-500">
+                            {{ __('static.forget_password') }}
+                        </a>
                     </div>
                     <input
                         class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -72,11 +84,15 @@
 
                 <div class="mt-6 w-full flex justify-end items-start">
                     <button type='submit'
-                        class="mo-btn btn-blue-bg font-bold py-2 px-4  rounded hover:bg-gray-600">اذهب</button>
+                        class="mo-btn btn-blue-bg font-bold py-2 px-4  rounded hover:bg-gray-600">
+                        {{ __('static.form_confirm_account') }}
+                    </button>
                 </div>
                 <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 md:w-1/4"></span>
-                    <a href="{{ route('create_user') }}" class="text-xs text-gray-500 uppercase">أو سجل حساب جديد</a>
+                    <a href="{{ route('create_user') }}" class="text-xs text-gray-500 uppercase">
+                        {{ __('static.create_new_account') }}
+                    </a>
                     <span class="border-b w-1/5 md:w-1/4"></span>
                 </div>
                 {{ csrf_field() }}

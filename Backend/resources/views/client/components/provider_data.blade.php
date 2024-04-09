@@ -47,7 +47,9 @@
                                     class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center"
                                     href="#">
                                     <i class="fa fa-fw fa-send"></i>
-                                    <span class="mr-1">انا متاح </span>
+                                    <span class="mr-1">
+                                            {{ __('static.freelancer_profile') }}
+                                    </span>
                                     <svg class="fill-current h-4 w-8" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20">
                                         <path style="color:white ; stroke: white;
@@ -62,7 +64,9 @@
                                         <a class="rounded-t bg-gray-200 hover:bg-gray-400 hover:bg-primary-light-gray hover:text-dark-gray p-2 block whitespace-no-wrap"
                                             href="{{ route('report_provider', $item->user_id) }}">
                                             {{-- <i class="fa fa-fw fa-flag"></i> --}}
-                                            التبليغ عن مستخدم</a>
+                                            {{ __('static.report_user') }}
+
+                                        </a>
 
                                     </li>
 

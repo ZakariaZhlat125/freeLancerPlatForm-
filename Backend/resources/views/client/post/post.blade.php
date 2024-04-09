@@ -22,7 +22,9 @@
 
     </style>
     <div class="container mt-20">
-        <h3 class="my-5  font-xl font-bold "> إضافة مشروع جديد</h3>
+        <h3 class="my-5  font-xl font-bold ">
+            {{ __('static.post_add') }}
+        </h3>
         <div class="row my-5 grid place-items-center">
             <div class="col-lg-8 col-sm-12">
                 <div class="card shadow-sm ">
@@ -32,12 +34,16 @@
                             @csrf
                             <!-- Name input -->
                             <div class="col-md-6">
-                                <label class="form-label font-md" for="name">عنوان المشروع</label>
+                                <label class="form-label font-md" for="name">
+                                     {{ __('static.post_title') }}
+                                </label>
                                 <input
                                     class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                     name='title' id="name" value="{{ old('title') }}" type="text"
                                     data-sb-validations="required" required />
-                                <p class="text-muted font-xs">أدرج عنوانا موجزا يصف مشروعك بشكل دقيق.</p>
+                                <p class="text-muted font-xs">
+                                    {{ __('static.post_add_title') }}
+                                </p>
                                 @error('title')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
                                         style="width: fit-content; position: fixed; top: 20% ; right: 0px ; z-index: 9999999">
@@ -49,7 +55,8 @@
                             {{-- category --}}
                             <div class=" pt-2 col-md-6">
                                 <div class="form-group  ">
-                                    <label class="font-md"> القسم
+                                    <label class="font-md">
+                                        {{ __('static.post_add_category') }}
                                     </label>
                                     <select
                                         class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -60,7 +67,9 @@
                                         @endforeach
 
                                     </select>
-                                    <p class="text-muted font-xs">اختر ميزانية مناسبة لتحصل على عروض جيدة</p>
+                                    <p class="text-muted font-xs">
+                                        {{ __('static.post_add_budget') }}
+                                    </p>
                                 </div>
                                 @error('category')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
@@ -82,19 +91,23 @@
                                             {{ $item->name }}</option>
                                     @endforeach
                                 </select>
-                                <p class="text-muted font-xs">اختر المهارات المطلوبه لهذا المنشور</p>
+                                <p class="text-muted font-xs">
+                                    {{ __('static.post_add_required_skills') }}
+                                </p>
                             </div>
 
 
 
                             <!-- Message input -->
                             <div>
-                                <label class="form-label font-md" for="message">تفاصيل المشروع</label>
+                                <label class="form-label font-md" for="message">
+                                    {{ __('static.post_detail_desc7') }}
+                                </label>
                                 <textarea class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                     name='message' id="message" type="text" style="height: 10rem;"
                                     data-sb-validations="required" required>{{ old('message') }}</textarea>
-                                <p class="text-muted font-xs">أدخل وصفاً مفصلاً لمشروعك وأرفق أمثلة لما تريد ان
-                                    أمكن.
+                                <p class="text-muted font-xs">
+                                    {{ __('static.post_detail_desc14') }}
                                 </p>
                                 @error('message')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
@@ -107,24 +120,27 @@
                             {{-- the cost --}}
                             <div class="col-sm-6 col-xs-12 pt-3">
                                 <div class="form-group  ">
-                                    <label class="font-md">الميزانية المتوقعة
+                                    <label class="font-md">
+                                        {{ __('static.post_estimeed_budget') }}
                                     </label>
                                     <select
                                         class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                         aria-label="Default select example" name="cost" value="{{ old('cost') }}"
                                         required="required">
-                                        <option value="0-25"> 0 -15 دولار</option>
-                                        <option value="50-25">50-25 دولار </option>
-                                        <option value="100-50">50-100 دولار </option>
-                                        <option value="250-100">250-100 دولار </option>
-                                        <option value="500-250">500-250 دولار </option>
-                                        <option value="1000-500">1000-500 دولار </option>
-                                        <option value="2500-5000">2500-5000 دولار </option>
-                                        <option value="5000-10000">5000-10000 دولار </option>
+                                        <option value="0-25"> 0 -15 $</option>
+                                        <option value="50-25">50-25 $</option>
+                                        <option value="100-50">50-100 $</option>
+                                        <option value="250-100">250-100 $</option>
+                                        <option value="500-250">500-250 $</option>
+                                        <option value="1000-500">1000-500 $</option>
+                                        <option value="2500-5000">2500-5000 $</option>
+                                        <option value="5000-10000">5000-10000 $</option>
 
 
                                     </select>
-                                    <p class="text-muted font-xs">اختر ميزانية مناسبة لتحصل على عروض جيدة</p>
+                                    <p class="text-muted font-xs">
+                                        {{ __('static.post_add_budget') }}
+                                    </p>
                                 </div>
                                 @error('cost')
                                     <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
@@ -137,7 +153,8 @@
 
                             {{-- duration --}}
                             <div class="col-sm-6 col-xs-12 pt-3 font-md">
-                                <label class="font-md">المدة المتوقعة للتسليم
+                                <label class="font-md">
+                                    {{ __('static.post_detail_desc12') }}
                                 </label>
                                 <div class="input-group ">
 
@@ -154,10 +171,13 @@
                                             aria-label="Username" />
                                         <div
                                             class=" flex items-center justify-center appearance-none  border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3  mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink w-8 bg-primary-light-pink">
-                                            ايام</div>
+                                            {{ __('static.post_detail_desc22') }}
+                                        </div>
 
                                     </div>
-                                    <span class="text-muted font-xs">متى تحتاج استلام مشروعك</span>
+                                    <span class="text-muted font-xs">
+                                        {{ __('static.post_add_submit_date') }}
+                                    </span>
                                     @error('duration')
                                         <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
                                             style="width: fit-content; position: fixed; top: 20% ; right: 0px ; z-index: 9999999">
@@ -168,7 +188,9 @@
                                 </div>
                             </div>
                             <div class="mb-1">
-                                <label class="font-md " for="message">ملفات توضيحية</label>
+                                <label class="font-md " for="message">
+                                    {{ __('static.post_detail_desc15') }}
+                                </label>
                                 <input
                                     class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                     id="dropzone" multiple name='files' type="file" value="{{ old('files') }}"
@@ -177,7 +199,9 @@
 
                             </div>
                             <div>
-                                <button class="mo-btn btn-blue-bg float-left font-md" type="submit">أحفظ</button>
+                                <button class="mo-btn btn-blue-bg float-left font-md" type="submit">
+                                    {{ __('static.post_save_deatils') }}
+                                </button>
                             </div>
                             <!-- Form submit button -->
                             {{-- <div class="row">

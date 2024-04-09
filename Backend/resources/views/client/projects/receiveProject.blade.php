@@ -76,7 +76,8 @@
 
                             {{-- estamte cost --}}
                             <div class="col-lg-6 col-sm-12 col-xs-12 pt-3">
-                                <label>المبلغ المتفق عليه
+                                <label>
+                                    {{ __('static.post_detail_desc28') }}
                                     <em class="text--danger">*</em>
                                 </label>
                                 <div class="input-group mb-3">
@@ -87,7 +88,9 @@
 
                             {{-- estamte cost --}}
                             <div class="col-lg-6 col-sm-12 col-xs-12 pt-3">
-                                <label>المبلغ بعد خصم الضريبه الموقع <em class="text--danger">*</em>
+                                <label>
+                                    {{ __('static.project_amount_site') }}
+                                    <em class="text--danger">*</em>
                                 </label>
                                 <div class="input-group mb-3">
                                     <div class="input-group mb-3">
@@ -99,26 +102,35 @@
                             </div>
                             {{-- duration --}}
                             <div class="col-lg-6 col-sm-12 col-xs-12 pt-3">
-                                <label>المدة المطلوبة للتسليم <em class="text--danger">*</em>
+                                <label>
+                                    {{ __('static.submit_duration') }}
+                                    <em class="text--danger">*</em>
                                 </label>
                                 <div class="input-group mb-3">
 
                                     <input name="duration" class='form-control' id="phone" type="number"
                                         value="{{ $project->duration }}" aria-label="Username"
                                         aria-describedby="basic-addon1" readonly>
-                                    <span class="input-group-text" id="basic-addon1">ايام</span>
+                                    <span class="input-group-text" id="basic-addon1">
+                                        {{ __('static.post_detail_desc22') }}
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="mt-4">
-                                <label class="form-label" for="post_description">وصف المشروع</label>
+                                <label class="form-label" for="post_description">
+                                    {{ __('static.post_detail_desc7') }}
+                                </label>
                                 <textarea class="form-control" name='post_description' id="post_description" type="text" style="height: 10rem;"
                                     data-sb-validations="required"
                                     readonly>{{ $project->post_description }}</textarea>
                             </div>
 
                             <div class="mt-4">
-                                <label class="form-label" for="comment_description">تفاصيل عرضك</label>
+                                <label class="form-label" for="comment_description">
+                                    {{ __('static.provider_deatils') }}
+
+                                </label>
                                 <textarea class="form-control" name='comment_description' id="comment_description" type="text" style="height: 10rem;"
                                     data-sb-validations="required"
                                     readonly>{{ $project->comment_description }}</textarea>
@@ -132,14 +144,18 @@
             {{-- receiving information --}}
             <div class=" col-md-4 col-sm-12">
                 <div class="card shadow-sm ">
-                    <h4>التسليم</h4>
+                    <h4>
+                        {{ __('static.project_submission') }}
+                    </h4>
                     <a href="/public/upload/{{ $project->files }}" download>
                         <i class="fa-solid fa-cloud-arrow-up"></i>
-                        ملفات المشروع قيم بتحميلها
+                        {{ __('static.submit_the_project_files') }}
                     </a>
 
                     <div class=" col-12 col-xs-12 pt-3">
-                        <label> الرابط التشعبي <em class="text--danger">*</em>
+                        <label>
+                            {{ __('static.project_link') }}
+                            <em class="text--danger">*</em>
                         </label>
                         <div class="input-group mb-3">
                             <input name="duration" class='form-control' id="url" type="url" value=" {{ $project->url }}"
@@ -148,22 +164,30 @@
                         </div>
                     </div>
                     <div class=" col-12 col-xs-12 pt-3">
-                        <label> الرابط التشعبي <em class="text--danger">*</em>
+                        <label>
+                            {{ __('static.project_link') }}
+                            <em class="text--danger">*</em>
                         </label>
                         <div class=" mb-3">
 
                             <input name="duration" class=' checkbox' id="checkbox" type="checkbox"
                                 @if ($project->other_way_send_files) checked={true} @endif aria-label="Username"
                                 aria-describedby="basic-addon1" readonly onclick="return false;">
-                            <span class="" id="basic-addon1">تم ارسالها بطريقه أخرى</span>
+                            <span class="" id="basic-addon1">
+                                {{ __('static.project_submit_way') }}
+                            </span>
                         </div>
                     </div>
 
                     <div class="mt-4">
                         <a class="mo-btn btn-blue-bg" type="submit" name="reject" data-bs-toggle="modal"
-                            data-bs-target="#evaluationModel"> تأكيد التسليم</a>
+                            data-bs-target="#evaluationModel">
+                            {{ __('static.confirm_submit') }}
+                        </a>
                         <a class="mo-btn btn-blue-rounderd  " type="submit" name="reject" data-bs-toggle="modal"
-                            data-bs-target="#deleteModel"> رفض التسليم </a>
+                            data-bs-target="#deleteModel">
+                            {{ __('static.reject_submit') }}
+                        </a>
 
                         {{-- <a tabindex="-1" class="mo-btn" data-bs-toggle="modal" data-bs-target="#deleteModel">
                             <i class="fa fa-xmark px-1"></i>
@@ -180,7 +204,9 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header ">
-                                <h5 class="modal-title " id="deleteModel">لماذا تريد رفض قبول المشروع</h5>
+                                <h5 class="modal-title " id="deleteModel">
+                                    {{ __('static.reject_submit_reason') }}
+                                </h5>
                                 {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                             </div>
 
@@ -190,8 +216,9 @@
                                     <input hidden type='text' name="provider_id" value='{{ $project->provider_id }}' />
                                     <input hidden type='text' name="project_id" value='{{ $project->project_id }}' />
                                     <div class="pt-3">
-                                        <label class="my-2">اكتب السبب الذي يمنعك من قبول المشروع <em
-                                                class="text--danger">*</em>
+                                        <label class="my-2">
+                                            {{ __('static.reject_submit_reason1') }}
+                                            <em class="text--danger">*</em>
                                         </label>
                                         <div class="input-group mb-3">
                                             <div class="input-group mb-3">
@@ -201,9 +228,13 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="mo-btn btn-pink-bg pink">تاكيد الرفض</button>
+                                        <button type="submit" class="mo-btn btn-pink-bg pink">
+                                            {{ __('static.confirm_reject_submit') }}
+                                        </button>
                                         <button type="button" class="mo-btn btn-blue-bg"
-                                            data-bs-dismiss="modal">الغاء</button>
+                                            data-bs-dismiss="modal">
+                                            {{ __('static.post_detail_desc6') }}
+                                        </button>
                                         {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
 
                                     </div>
@@ -223,7 +254,9 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="evaluationModel">تاكيد تسليم المشروع</h5>
+                                <h5 class="modal-title" id="evaluationModel">
+                                    {{ __('static.confirm_submit_project') }}
+                                </h5>
                                 {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                             </div>
 
@@ -233,8 +266,9 @@
                                     <input hidden type='text' name="provider_id" value='{{ $project->provider_id }}' />
                                     <input hidden type='text' name="project_id" value='{{ $project->project_id }}' />
                                     <div class="pt-3">
-                                        <label class="my-2">قم بتقيد اداء المشروع رجاء<em
-                                                class="text--danger">*</em>
+                                        <label class="my-2">
+                                            {{ __('static.project_evalute') }}
+                                            <em class="text--danger">*</em>
                                         </label>
                                         <div class="container">
                                             <div class="feedback">
@@ -258,8 +292,9 @@
                                         </div>
                                     </div>
                                     <div class="pt-3">
-                                        <label class="my-2">قم بدعم صاحب العمل برساله <em
-                                                class="text--danger">*</em>
+                                        <label class="my-2">
+                                            {{ __('static.project_support') }}
+                                            <em class="text--danger">*</em>
                                         </label>
                                         <div class="input-group mb-3">
                                             <div class="input-group mb-3">
@@ -269,9 +304,13 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="mo-btn btn-pink-bg pink">تاكيد التسليم</button>
+                                        <button type="submit" class="mo-btn btn-pink-bg pink">
+                                            {{ __('static.confirm_submit') }}
+                                        </button>
                                         <button type="button" class="mo-btn btn-blue-rounderd"
-                                            data-bs-dismiss="modal">الغاء</button>
+                                            data-bs-dismiss="modal">
+                                            {{ __('static.post_detail_desc6') }}
+                                        </button>
                                         {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
 
                                     </div>

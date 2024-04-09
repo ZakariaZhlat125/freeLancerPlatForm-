@@ -60,7 +60,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
 
-    
+
         try {
 
             // return response()->json($request->role);

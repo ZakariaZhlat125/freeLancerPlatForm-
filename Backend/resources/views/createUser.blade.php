@@ -42,8 +42,12 @@
                 </div>
             </div>
             <form action="{{ route('save_user') }}" method="POST" class="w-full p-8 lg:w-1/2">
-                <h2 class="logo-font  text-center ">متوفر</h2>
-                <p class="text-lg text-dark-gray text-gray-600 text-center">مرحبا بك !</p>
+                <h2 class="logo-font  text-center ">
+                    {{ __('static.title') }}
+                </h2>
+                <p class="text-lg text-dark-gray text-gray-600 text-center">
+                    {{ __('static.create_user_welcome') }}
+                </p>
 
 
                 <div id='register' class="hidden">
@@ -66,16 +70,20 @@
                                     fill="#1976D2" />
                             </svg>
                         </div>
-                        <h1 class=" w-5/6 text-center text-primary-pink ">سجل عن طريق غوغل</h1>
+                        <h1 class=" w-5/6 text-center text-primary-pink ">
+                            {{ __('static.create_user_google') }}
+                        </h1>
                     </a>
                     <div class="mt-4 flex items-center justify-between">
                         <span class="border-b w-1/5 lg:w-1/4"></span>
-                        <a href="#" class="text-xs text-center text-gray-500 uppercase">أو سجل عن طريق الإيميل </a>
+                        <a href="#" class="text-xs text-center text-gray-500 uppercase">
+                            {{ __('static.create_user_email') }}
+                        </a>
                         <span class="border-b w-1/5 lg:w-1/4"></span>
                     </div>
                     <div class="mt-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
-                            الاسم كاملاً
+                            {{ __('static.form_name') }}
                         </label>
                         <input
                             class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -88,7 +96,7 @@
 
                     <div class="mt-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
-                            البريد الإلكتروني
+                            {{ __('static.form_email') }}
                         </label>
                         <input
                             class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -101,7 +109,9 @@
                     {{-- password --}}
                     <div class="mt-4">
                         <div class="flex justify-between">
-                            <label class="block text-gray-700 text-sm font-bold mb-2">كلمة المرور</label>
+                            <label class="block text-gray-700 text-sm font-bold mb-2">
+                            {{ __('static.form_password') }}
+                            </label>
                         </div>
                         <input
                             class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -114,7 +124,9 @@
                     {{-- confirm password --}}
                     <div class="mt-4">
                         <div class="flex justify-between">
-                            <label class="block text-gray-700 text-sm font-bold mb-2"> تأكيد كلمة المرور</label>
+                            <label class="block text-gray-700 text-sm font-bold mb-2">
+                                {{ __('static.form_confirm_password') }}
+                            </label>
                         </div>
                         <input
                             class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -125,15 +137,21 @@
                     @enderror
                     <div class="mt-6 w-full flex justify-between items-start">
                         <a onclick="goBack()"
-                            class=" bg-transparent rounded-full  border-2  border-primary-light-gray cursor-pointer  hover:bg-primary-light-gray font-bold py-2 px-4   hover:bg-gray-600">السابق</a>
+                            class=" bg-transparent rounded-full  border-2  border-primary-light-gray cursor-pointer  hover:bg-primary-light-gray font-bold py-2 px-4   hover:bg-gray-600">
+                            {{ __('static.create_user_go_back') }}
+                        </a>
                         <button type='submit'
-                            class="mo-btn btn-blue-bg font-bold py-2 px-4   hover:bg-gray-600">اذهب</button>
+                            class="mo-btn btn-blue-bg font-bold py-2 px-4   hover:bg-gray-600">
+                                {{ __('static.form_confirm_account') }}
+                        </button>
 
                     </div>
 
                     <div class="mt-4 flex items-center justify-between">
                         <span class="border-b w-1/5 md:w-1/4"></span>
-                        <a href="{{ route('login') }}" class="text-xs text-gray-500 uppercase">لدي حساب </a>
+                        <a href="{{ route('login') }}" class="text-xs text-gray-500 uppercase">
+                            {{ __('static.user_has_account') }}
+                        </a>
                         <span class="border-b w-1/5 md:w-1/4"></span>
                     </div>
                     {{ csrf_field() }}
@@ -141,7 +159,9 @@
 
 
                 <div id='role-form' class="">
-                    <h2> اختر نوع الحساب</h2>
+                    <h2>
+                        {{ __('static.user_choose_acount') }}
+                    </h2>
                     <div class="flex w-full justify-around my-8">
 
                         <input type="radio" name="role" id="seeker" value="seeker" checked='checked' />
@@ -149,10 +169,10 @@
                             class="labl w-5/12 h-32 bg-primary-light-pink p-5 rounded-lg checked:bg-primary-pink">
                             <div class="role-element" class="rounded-xl text-black">
                                 <p class="font-md">
-                                    صاحب مشاريع
+                                    {{ __('static.user_choose_acount_type1') }}
                                 </p>
                                 <p class="font-xs  text-center mt-3">
-                                    شخص يملك مشاريع خاصه او يقوم بطلب خدمه
+                                    {{ __('static.user_choose_acount_type1_desc') }}
                                 </p>
                             </div>
                         </label>
@@ -163,10 +183,10 @@
                         <label for='provider' class="labl w-5/12 h-32 bg-primary-light-pink p-5 rounded-lg">
                             <div class="role-element" class="w-24 h-24 bg-primary-light-gray rounded-xl text-black">
                                 <p class="font-md">
-                                    متاح للعمل الحر
+                                    {{ __('static.user_choose_acount_type2') }}
                                 </p>
                                 <p class="font-xs  text-center mt-3">
-                                    شخص يقوم بالبحث عن مشروع لبدا العمل الحر
+                                    {{ __('static.user_choose_acount_type2_desc') }}
                                 </p>
                             </div>
                         </label>
@@ -175,7 +195,8 @@
                     </div>
                     <div class="mt-6 w-full flex justify-end items-start">
                         <a onclick="gotNext()" class="mo-btn btn-blue-bg font-bold py-2 px-4  hover:bg-gray-600">
-                            التالي</a>
+                            {{ __('static.create_user_next') }}
+                        </a>
                     </div>
                 </div>
             </form>
