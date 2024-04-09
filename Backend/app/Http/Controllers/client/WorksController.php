@@ -84,11 +84,11 @@ class WorksController extends Controller
                 // 'more_file.*' => 'mimes:pdf,xlx,csv,png,jepg,rar',
 
             ], [
-                'title.required' => 'يجب ان تقوم بأدخال عنوان لعملك',
+                'title.required' => __('request.works.title'),
 
-                'comple_date.required' => 'رجاء ادخل تاريخ الانجاز ',
+                'comple_date.required' => __('request.works.comple_date'),
 
-                'details.required' => 'اضف وصف للعمل',
+                'details.required' => __('request.works.details'),
 
                 // 'more_file.mimes' => ' يجب ان يكون pdf,csv,xlx,png,jepg,rar',
 
@@ -134,12 +134,12 @@ class WorksController extends Controller
                         }
                     }
                 return redirect()->route('myWorks')
-                    ->with(['message' => 'تم اضافة عمل جديدة بنجاح', 'type' => 'alert-success']);
+                    ->with(['message' => __('messges.works.add_success'), 'type' => 'alert-success']);
             } else
-                return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
         } catch (Expectation   $th) {
             // throw $th;
-            return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return back()->with(['message' =>  __('messges.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
 
@@ -167,8 +167,8 @@ class WorksController extends Controller
             $work->main_image = $this->uploadFile($request->file('main_image'));
 
         if ($work->save())
-            return redirect()->route('myWorks')->with(['message' => 'تم التعديل بنجاح', 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return redirect()->route('myWorks')->with(['message' => __("messges.works.update_success"), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' =>  __('messges.update_failed_message'), 'type' => 'alert-danger']);
     }
 
 
@@ -183,11 +183,11 @@ class WorksController extends Controller
 
                 //         return back()->with(['message' => 'تم تعطيل العمل بنجاح', 'type' => 'alert-success']);
                 //     else
-                return redirect()->route('myWorks')->with(['message' => 'تم حذف العمل بنجاح', 'type' => 'alert-success']);
+                return redirect()->route('myWorks')->with(['message' =>__('messges.works.delete_success'), 'type' => 'alert-success']);
             else
-                return back()->with(['message' => 'فشلت عمليه الحذف الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messges.delete_failed_message'), 'type' => 'alert-danger']);
         } catch (Expectation   $th) {
-            return back()->with(['message' => 'فشلت عمليه الحذف الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messges.delete_failed_message'), 'type' => 'alert-danger']);
         }
     }
 

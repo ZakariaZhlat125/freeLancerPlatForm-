@@ -137,16 +137,16 @@ class postController extends Controller
                 'message' => ['required', 'min:100'],
                 'duration' => ['required', 'numeric', 'gt:0'],
             ], [
-                'title.required' => 'يجب ان تقوم بأدخال عنوان للمشروع',
-                'title.min' => 'يجب ان يحتوي العنوان على 15 حرف على الاقل',
-                'title.max' => 'يجب ان يحتوي العنوان على 35 حرف على الاكثر',
-                'category.required' => 'رجاء ادخل القسم ',
-                'cost.required' => 'رجاء قم بأدخال التكلفه لهذا المشروع',
-                'message.required' => 'اضف وصف للمشروع',
-                'message.min' => 'حقل الوصف يجب ان يحتوي على 255 حرف على الاقل',
-                'duration.required' => 'حقل المده مطلوب',
-                'duration.numeric' => 'يجب ان يكون حقل المده من نوع رقمي',
-                'duration.gt' => 'يجب ان يكون حقل المده اكبر من صفر',
+                'title.required' => __('request.project.title.required'),
+                'title.min' => __("request.title.min"),
+                'title.max' => __('request.title.max'),
+                'category.required' => __('request.category.required'),
+                'cost.required' => __('request.cost.required'),
+                'message.required' => __('request.project.details'),
+                'message.min' => __('request.message.min'),
+                'duration.required' => __('request.duration.required'),
+                'duration.numeric' => __("request.duration.numeric"),
+                'duration.gt' => __('request.duration.gt'),
 
             ]);
 
@@ -204,12 +204,12 @@ class postController extends Controller
                     }
 
                 return redirect('/posts/details/' . $post->id)
-                    ->with(['message' => 'تم اضافة مشروع جديدة بنجاح', 'type' => 'alert-success']);
+                    ->with(['message' => __('messges.project.add_success'), 'type' => 'alert-success']);
             } else
-                return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
         } catch (Expectation   $th) {
             // throw $th;
-            return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
 
@@ -265,10 +265,10 @@ class postController extends Controller
             // return response()->json($projects);
             return view('client.post.myProject')->with('projects', $project);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (Expectation   $th) {
             // throw $th;
-            return back()->with(['message' => 'حدث خطأ   ', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messges.error_occurred'), 'type' => 'alert-danger']);
         }
     }
 
@@ -283,16 +283,17 @@ class postController extends Controller
                 'message' => ['required', 'min:100'],
                 'duration' => ['required', 'numeric', 'gt:0'],
             ], [
-                'title.required' => 'يجب ان تقوم بأدخال عنوان للمشروع',
-                'title.min' => 'يجب ان يحتوي العنوان على 15 حرف على الاقل',
-                'title.max' => 'يجب ان يحتوي العنوان على 35 حرف على الاكثر',
-                'category.required' => 'رجاء ادخل القسم ',
-                'cost.required' => 'رجاء قم بأدخال التكلفه لهذا المشروع',
-                'message.required' => 'اضف وصف للمشروع',
-                'message.min' => 'حقل الوصف يجب ان يحتوي على 255 حرف على الاقل',
-                'duration.required' => 'حقل المده مطلوب',
-                'duration.numeric' => 'يجب ان يكون حق المده من نوع رقمي',
-                'duration.gt' => 'يجب ان يكون حقل المده اكبر من صفر',
+
+                'title.required' => __('request.project.title.required'),
+                'title.min' => __("request.title.min"),
+                'title.max' => __('request.title.max'),
+                'category.required' => __('request.category.required'),
+                'cost.required' => __('request.cost.required'),
+                'message.required' => __('request.project.details'),
+                'message.min' => __('request.message.min'),
+                'duration.required' => __('request.duration.required'),
+                'duration.numeric' => __("request.duration.numeric"),
+                'duration.gt' => __('request.duration.gt'),
             ]);
 
 
@@ -311,14 +312,14 @@ class postController extends Controller
 
 
                 return redirect()->route('myProject')
-                    ->with(['message' => 'تم تعديل المشروع بنجاح', 'type' => 'alert-success']);
+                    ->with(['message' => __('messges.project.update_success'), 'type' => 'alert-success']);
             } else
-                return back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messges.update_failed_message'), 'type' => 'alert-danger']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (Expectation   $th) {
             // throw $th;
-            return back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messges.update_failed_message'), 'type' => 'alert-danger']);
         }
     }
 
@@ -330,7 +331,7 @@ class postController extends Controller
         $post = Posts::find($post_id);
         $post->is_active *= -1;
         if ($post->save())
-            return redirect()->route('myProject')->with(['message' => 'تم حذف المشروع بنجاح', 'type' => 'alert-success']);
-        return back()->with(['message' => 'فشلت عمليه الحذف الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return redirect()->route('myProject')->with(['message' =>__('messges.project.delete_success') , 'type' => 'alert-success']);
+        return back()->with(['message' => __('messges.delete_failed_message'), 'type' => 'alert-danger']);
     }
 }

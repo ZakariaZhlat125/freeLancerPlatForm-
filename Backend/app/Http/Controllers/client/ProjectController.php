@@ -50,9 +50,9 @@ class ProjectController extends Controller
                 return $this->showProviderConfirmation($request->provider_id, $request->offer_id, $project->id, $request->post_id);
             }
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (Expectation $th) {
-            return back()->with(['message' => 'فشلت عملية قبول الطلب!! أعد المحاولة', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messges.accept_request_failed'), 'type' => 'alert-danger']);
         }
     }
 
@@ -87,13 +87,13 @@ class ProjectController extends Controller
             $notify->AcceptOffersNotification($projects);
 
             // return response()->json($projects->title);
-            return redirect()->back()->with(['message' => 'لقد تم ارسال رسال قبول للعرض رجاء انتظر رد الطرف الاخر', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.offer_acceptance_message_sent'), 'type' => 'alert-success']);
             // return view('client.post.providerConfirmation')->with(['project' => $projects, 'amount' => $amount]);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Exception $th) {
             //     //throw $th;
-            return redirect()->back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return redirect()->back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
 
@@ -131,10 +131,10 @@ class ProjectController extends Controller
             //     return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
             // }
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-success']);
         } catch (\Exception $th) {
             //throw $th;
-            return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __('messges.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
 
@@ -189,11 +189,11 @@ class ProjectController extends Controller
 
 
             // return response()->json($seekerNotify);
-            return redirect()->route('profile')->with(['message' => 'لقد تم ارسال رساله القبول الطرف الاخر', 'type' => 'alert-success']);
+            return redirect()->route('profile')->with(['message' => __('messges.acceptance_message_sent'), 'type' => 'alert-success']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __("messges.access.unauthorized"), 'type' => 'alert-danger']);
         }
     }
 
@@ -224,11 +224,11 @@ class ProjectController extends Controller
             $notify = new NotificationController();
             $notify->rejectProjectNotifiction($project);
 
-            return redirect()->route('profile')->with(['message' => 'لقد تم ارسال رساله الرفض الطرف الاخر', 'type' => 'alert-success']);
+            return redirect()->route('profile')->with(['message' => __("messges.rejection_message_sent"), 'type' => 'alert-success']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __("messges.access.unauthorized"), 'type' => 'alert-danger']);
         }
     }
 

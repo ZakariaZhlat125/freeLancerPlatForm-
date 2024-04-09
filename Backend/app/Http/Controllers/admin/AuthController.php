@@ -52,7 +52,7 @@ class AuthController extends Controller
     {
         $request->fulfill();
 
-        return redirect()->route('profile')->with(['message' => __('messges.account_confirmed_message'), 'type' => 'alert-success']);; // <-- change this to whatever you want
+        return redirect()->route('profile')->with(['message' => __('messges.account_confirmed_message'), 'type' => 'alert-success']); // <-- change this to whatever you want
     }
 
 

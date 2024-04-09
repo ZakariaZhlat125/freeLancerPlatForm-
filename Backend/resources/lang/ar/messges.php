@@ -1,6 +1,8 @@
 <?php
 
 return [
+
+    'error_occurred' => 'حدث خطأ.',
     'password.old_incorrect' => 'الكلمة القديمة غير صحيحة!',
     'password_changed_message' => 'تم تغيير كلمة السر بنجاح!',
     'time_limit_exceeded' => 'لقد استغرت العملية أطول من الوقت المحدد لها.',
@@ -9,8 +11,6 @@ return [
     'access.unauthorized' => 'أنت لا تمتلك الصلاحيات اللازمة للوصول إلى هذه الصفحة.',
     'email_password.check' => 'يرجى التحقق من الايميل وكلمة السر.',
     'page_not_found' => 'حدث خطأ ما او ان الصفحه اللتي تحاول الوصول لها غير موجوده',
-    'project_rejected' => 'لقد قمت برفض التسليم مشروعك',
-    'project_resumed' => 'تم استأناف العمل على المشروع ',
     'confirmation_sent' => 'تم ارسال رسال التأكيد ',
     'account_activated_message' => 'تم تفعيل حسابك بنجاح',
     'account_created_message' => 'تم انشاء حسابك بنجاح',
@@ -21,8 +21,8 @@ return [
     'delete_failed_message' => 'فشلت عمليه الحذف الرجاء اعاده المحاوله ',
     'add_failed_message' => 'فشلت عملية الإضافة. الرجاء اعاده المحاولة.',
     'update_failed_message' => 'فشلت عملية التعديل. الرجاء اعاده المحاولة.',
+    'accept_request_failed' => 'فشلت عملية قبول الطلب!! أعد المحاولة.',
     'update_success' => 'تم التعديل بنجاح.',
-    'update_failed_message' => 'فشلت عملية التعديل. الرجاء اعاده المحاولة.',
     'password_changed_success' => 'تم تغيير كلمة المرور بنجاح.',
     'comment_added' => ':provider قام بإضافة تعليق على مشروعك :title',
     'offer_added_success' => 'تم اضافة عرضك  بنجاح',
@@ -31,4 +31,21 @@ return [
     'personal_info_updated_success' => 'تم تعديل معلومات الشخصيه بنجاح',
     // project
     'project_delivered_success' => 'تم تسليم المشروعك بنجاح.',
+    'acceptance_message_sent' => 'لقد تم إرسال رسالة القبول إلى الطرف الآخر.',
+    'offer_acceptance_message_sent' => 'لقد تم إرسال رسالة قبول للعرض. يرجى انتظار رد الطرف الآخر.',
+    'rejection_message_sent' => 'لقد تم إرسال رسالة الرفض إلى الطرف الآخر.',
+    'project.add_success' => 'تم اضافة مشروع جديدة بنجاح',
+    'project.update_success'=>'تم تعديل المشروع بنجاح',
+    'project.delete_success'=>'تم حذف المشروع بنجاح',
+    'project_rejected' => 'لقد قمت برفض التسليم مشروعك',
+    'project_resumed' => 'تم استأناف العمل على المشروع ',
+    // works
+    'works.add_success' => 'تم اضافة عمل جديدة بنجاح',
+    'works.update_success' => 'تم تعديل العمل بنجاح',
+    'works.delete_success' => 'تم حذف العمل بنجاح',
+    // profile skills
+    'add_new_skill' => 'يرجى إضافة مهارة جديدة.',
+    'skill_added_success' => 'لقد تم إضافة المهارة بنجاح.',
+    'skill_already_exists' => 'هناك مهارة بالفعل.',
+    'skill_deleted_success' => 'لقد تم حذف المهارة بنجاح.',
 ];

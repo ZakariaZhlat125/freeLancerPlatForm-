@@ -58,7 +58,7 @@ class ProfileController extends Controller
         $skills = $request->skills;
         print_r($skills);
         if (blank($skills)) {
-            return redirect()->back()->with(['message' => 'يرجى اضافة مهارة جديدة', 'type' => 'alert-danger']);
+            return redirect()->back()->with(['message' => __('messges.add_new_skill'), 'type' => 'alert-danger']);
         } else {
             $needToInsert = false;
             // insert if the skills are new
@@ -66,10 +66,10 @@ class ProfileController extends Controller
                 $findSkill = UserSkills::where('user_id', Auth::id())->where('skill_id', $value)->get();
 
                 if ($findSkill->isEmpty()) {
-                    $message = ['message' => 'لقد تم اضافة المهارة بنجاح', 'type' => 'alert-success'];
+                    $message = ['message' => __('messges.skill_added_success'), 'type' => 'alert-success'];
                     UserSkills::insert(['skill_id' => $value, 'user_id' => Auth::id()]);
                 } else {
-                    $message = ['message' => 'هناك مهارة بالفعل', 'type' => 'alert-danger'];
+                    $message = ['message' => __('messges.skill_already_exists'), 'type' => 'alert-danger'];
                 }
 
                 print_r(['skill_id' => $value, 'user_id' => Auth::id()]);
@@ -83,7 +83,7 @@ class ProfileController extends Controller
     {
         $skill = UserSkills::where(['skill_id' => $skill_id, 'user_id' => Auth::id()])->delete();
 
-        return redirect()->back()->with(['message' => 'لقد تم حذف المهارة بنجاح', 'type' => 'alert-danger']);
+        return redirect()->back()->with(['message' => __('messges.skill_deleted_success'), 'type' => 'alert-danger']);
     }
 
 
@@ -153,10 +153,10 @@ class ProfileController extends Controller
 
             ]);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
             throw $th;
-            return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
 }
