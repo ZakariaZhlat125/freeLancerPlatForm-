@@ -17,18 +17,17 @@
         .bootstrap-select[class*=col-] .dropdown-toggle {
             width: 675px;
         }
-
     </style>
     <!-- <div class="row mx-1  mt-2 col-12 d-flex justify-content-lg-between ">
-        <nav aria-label="breadcrumb" class="main-breadcrumb col-6 p-3">
-            <ol class="breadcrumb ms-3">
-                <li class=" fs-6 fw-bold"><a href="{{ route('home') }}">الرئيسية </a></li>/&nbsp&nbsp&nbsp
-                <li class=" active fs-6 fw-bold" aria-current="page"> <a href="{{ route('account') }}">
-                        عمل بلاغ </a></li>
-            </ol>
+            <nav aria-label="breadcrumb" class="main-breadcrumb col-6 p-3">
+                <ol class="breadcrumb ms-3">
+                    <li class=" fs-6 fw-bold"><a href="{{ route('home') }}">الرئيسية </a></li>/&nbsp&nbsp&nbsp
+                    <li class=" active fs-6 fw-bold" aria-current="page"> <a href="{{ route('account') }}">
+                            عمل بلاغ </a></li>
+                </ol>
 
-        </nav>
-    </div> -->
+            </nav>
+        </div> -->
     <div class="container pt-20">
         <div class="row my-5 grid place-items-center">
             <div class="col-md-8 col-sm-12">
@@ -52,27 +51,32 @@
                                 <div class=" form-group mx-4">
                                     @if (Route::currentRouteName() == 'report_content')
                                         <div class="radio">
-                                            <label class="font-sm"><input value=" هذا المحتوى لم  يعجبني" type="radio" name="type_report">
+                                            <label class="font-sm"><input value=" هذا المحتوى لم  يعجبني" type="radio"
+                                                    name="type_report">
                                                 هذا المحتوى لم يعجبني</label>
                                         </div>
                                         <div class="radio">
-                                            <label  class="font-sm"><input value="هذا المحتوى مزعج , متكرر" type="radio" name="type_report">
+                                            <label class="font-sm"><input value="هذا المحتوى مزعج , متكرر" type="radio"
+                                                    name="type_report">
                                                 هذا المحتوى مزعج , متكرر</label>
                                         </div>
 
                                         <div class="radio">
-                                            <label class="font-sm"><input value=" هذا المحتوى يخالف شروط استخدام الموقع" type="radio"
-                                                    name="type_report"> هذا المحتوى يخالف شروط استخدام الموقع</label>
+                                            <label class="font-sm"><input value=" هذا المحتوى يخالف شروط استخدام الموقع"
+                                                    type="radio" name="type_report"> هذا المحتوى يخالف شروط استخدام
+                                                الموقع</label>
                                         </div>
                                     @else
                                         <div class="radio">
-                                            <label class="font-sm"><input value="هذا المسخدم   يزعجني" type="radio" name="type_report"> هذا
+                                            <label class="font-sm"><input value="هذا المسخدم   يزعجني" type="radio"
+                                                    name="type_report"> هذا
                                                 المسخدم يزعجني</label>
                                         </div>
 
                                         <div class="radio ">
-                                            <label class="font-sm"><input value="هذا المسخدم يخالف شروط استخدام الموقع" type="radio"
-                                                    name="type_report"> هذا المسخدم يخالف شروط استخدام الموقع</label>
+                                            <label class="font-sm"><input value="هذا المسخدم يخالف شروط استخدام الموقع"
+                                                    type="radio" name="type_report"> هذا المسخدم يخالف شروط استخدام
+                                                الموقع</label>
                                         </div>
                                 </div>
                                 @endif
@@ -97,11 +101,11 @@
 
                         </div>
 
-<div>
+                        <div>
 
-                        <button class="mo-btn btn-blue-bg float-left font-md my-4" type="submit">أرسال</button>
+                            <button class="mo-btn btn-blue-bg float-left font-md my-4" type="submit">أرسال</button>
 
-</div>
+                        </div>
 
                         {{ csrf_field() }}
                     </form>

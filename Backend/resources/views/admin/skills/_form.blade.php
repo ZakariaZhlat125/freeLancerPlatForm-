@@ -28,36 +28,40 @@
                             @csrf
                             <div class="form-body">
                                 <div class="row">
-                                @csrf
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label" for="multicol-username">{{ __('dash.Skill_name') }}</label>
-                    <input name="name"  value="{{ $data->name ?? old('name') }}" type="text" id="multicol-username" class="form-control" placeholder="" />
-                    @error('name')
-                        <span class="text-danger w-100">{{ $message }}</span>              
-                    @enderror
-                  </div>
-              
-                  <div class="col-md-6 ">
-                    <label class="form-label" for="multicol-email">{{ __('dash.is_active') }} </label>
-                    <select  name="is_active" id="formtabs-country" class="select2 form-select" data-allow-clear="true">
-                                                    
-                                                    <option value="1">مفعل</option>
-                                                    <option value="-1">معطل</option>
-                                                </select>
+                                    @csrf
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label"
+                                                for="multicol-username">{{ __('dash.Skill_name') }}</label>
+                                            <input name="name" value="{{ $data->name ?? old('name') }}" type="text"
+                                                id="multicol-username" class="form-control" placeholder="" />
+                                            @error('name')
+                                                <span class="text-danger w-100">{{ $message }}</span>
+                                            @enderror
+                                        </div>
 
-              </div>
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="mo-btn btn-blue-bg">{{ __('dash.save') }}</button>
+                                        <div class="col-md-6 ">
+                                            <label class="form-label" for="multicol-email">{{ __('dash.is_active') }}
+                                            </label>
+                                            <select name="is_active" id="formtabs-country" class="select2 form-select"
+                                                data-allow-clear="true">
+
+                                                <option value="1">مفعل</option>
+                                                <option value="-1">معطل</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="mo-btn btn-blue-bg">{{ __('dash.save') }}</button>
+                                        </div>
                                     </div>
                                 </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- // Basic Vertical form layout section end -->
 @endsection

@@ -33,32 +33,38 @@
                                         <tr>
 
                                             <td class="text-bold-500">{{ $loop->iteration }}</td>
-                                
+
                                             <td class="text-bold-500">{{ $item->title }}</td>
-                                            
+
                                             <td>
-                                              @if($item->is_active == 1) 
-                                              <span class="bg-primary-blue" style="color:white;  padding: 5px 21px; border-radius: 5px;">مفعل</span>
-                                              @else
-                                              <span  class="bg-primary-pink " style="color:white; padding: 5px 21px; border-radius: 5px;"> معطل</span>
-                                              @endif
-                                              </td>
-                                             
-                                                <td>
-                                                <a  href="{{ route('edit_category', $item->id) }}" class="btn btn-icon btn-outline-dribbble">
-                                                     <i class="fas fa-edit bx bx-edit-alt me-1"> </i>
+                                                @if ($item->is_active == 1)
+                                                    <span class="bg-primary-blue"
+                                                        style="color:white;  padding: 5px 21px; border-radius: 5px;">مفعل</span>
+                                                @else
+                                                    <span class="bg-primary-pink "
+                                                        style="color:white; padding: 5px 21px; border-radius: 5px;">
+                                                        معطل</span>
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                <a href="{{ route('edit_category', $item->id) }}"
+                                                    class="btn btn-icon btn-outline-dribbble">
+                                                    <i class="fas fa-edit bx bx-edit-alt me-1"> </i>
                                                 </a>
-                                             
-                                                <a  href="{{ route('toggle_category', $item->id) }}" class="btn btn-icon btn-outline-dribbble">
-                                                    
-                                                        @if($item->is_active == 1) 
-                                                            <i class="fas fa-toggle-on bx bx-edit-alt me-1 blue " > </i>   
-                                                            @else
-                                                            <i class="fas fa-toggle-off bx bx-edit-alt me-1" style="color:#CD657C;" > </i>   
-                                                        @endif
-                                             
+
+                                                <a href="{{ route('toggle_category', $item->id) }}"
+                                                    class="btn btn-icon btn-outline-dribbble">
+
+                                                    @if ($item->is_active == 1)
+                                                        <i class="fas fa-toggle-on bx bx-edit-alt me-1 blue "> </i>
+                                                    @else
+                                                        <i class="fas fa-toggle-off bx bx-edit-alt me-1"
+                                                            style="color:#CD657C;"> </i>
+                                                    @endif
+
                                                 </a>
-                                          
+
                                             </td>
                                         </tr>
                                     @endforeach

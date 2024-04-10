@@ -79,8 +79,6 @@
             background-color: #373483;
             color: white;
         }
-
-
     </style>
 </head>
 

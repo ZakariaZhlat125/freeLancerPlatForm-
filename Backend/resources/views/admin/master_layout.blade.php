@@ -79,8 +79,6 @@
             background-color: #373483;
             color: white;
         }
-
-
     </style>
 </head>
 
@@ -119,9 +117,9 @@
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
-                                   style="   text-align: right;
+                                    style="   text-align: right;
             direction: rtl;
-            padding: 0px 15px;" >
+            padding: 0px 15px;">
                                     <li>
                                         @if (Auth::check())
                                             <h6 class="dropdown-header">اهلا, {{ auth()->user()->name }}</h6>
@@ -132,11 +130,13 @@
                                         </a></li>
                                     <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
                                             الاعدادات</a></li> -->
-                                    <li><a class="dropdown-item" href="{{ route('wallet') }}"><i class="icon-mid bi bi-wallet me-2"></i>
+                                    <li><a class="dropdown-item" href="{{ route('wallet') }}"><i
+                                                class="icon-mid bi bi-wallet me-2"></i>
                                             المحفظة</a></li>
 
                                     <li>
-                                    <li><a class="dropdown-item" href="{{ route('change-password') }}"><i class="fas fa-unlock-alt me-2"></i>
+                                    <li><a class="dropdown-item" href="{{ route('change-password') }}"><i
+                                                class="fas fa-unlock-alt me-2"></i>
                                             تغيير كلمة السر</a></li>
 
                                     <li>
@@ -189,13 +189,10 @@
                                             </li>
                                         @endforeach
                                     </ul>
-
-
-
                                 </li>
 
                             </ul>
-                        
+
                         </div>
                     </div>
                 </nav>

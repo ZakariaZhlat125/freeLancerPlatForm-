@@ -28,26 +28,29 @@
                             @csrf
                             <div class="form-body">
                                 <div class="row g-3">
-                                 
+
                                     <div class="col-md-6">
-                                        <label class="form-label" for="multicol-username">{{ __('dash.category_name') }}</label>
-                                        <input value="{{ $data->title ?? old('title') }}" name='title' type="text" id="multicol-username" class="form-control" placeholder="" />
+                                        <label class="form-label"
+                                            for="multicol-username">{{ __('dash.category_name') }}</label>
+                                        <input value="{{ $data->title ?? old('title') }}" name='title' type="text"
+                                            id="multicol-username" class="form-control" placeholder="" />
                                         @error('title')
-                                            <span class="text-danger w-100">{{ $message }}</span>              
+                                            <span class="text-danger w-100">{{ $message }}</span>
                                         @enderror
                                     </div>
-                  <div class="col-md-6 ">
-                    <label class="form-label" for="multicol-email">{{ __('dash.is_active') }} </label>
-                    <select  name="is_active" id="formtabs-country" class="select2 form-select" data-allow-clear="true">
-                                                    
-                                                    <option value="1">مفعل</option>
-                                                    <option value="-1">معطل</option>
-                                                </select>
+                                    <div class="col-md-6 ">
+                                        <label class="form-label" for="multicol-email">{{ __('dash.is_active') }} </label>
+                                        <select name="is_active" id="formtabs-country" class="select2 form-select"
+                                            data-allow-clear="true">
 
-              </div>
-                                 
+                                            <option value="1">مفعل</option>
+                                            <option value="-1">معطل</option>
+                                        </select>
+
+                                    </div>
+
                                     <div class="col-12 d-flex justify-content-end">
-                                         <button type="submit" class="mo-btn btn-blue-bg">{{ __('dash.save') }}</button>
+                                        <button type="submit" class="mo-btn btn-blue-bg">{{ __('dash.save') }}</button>
                                     </div>
                                 </div>
                             </div>
