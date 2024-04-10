@@ -1,8 +1,8 @@
 <?php
 
 return [
-
     'error_occurred' => 'حدث خطأ.',
+    'succes_process'=>'تمت العمليه بنجاح ',
     'password.old_incorrect' => 'الكلمة القديمة غير صحيحة!',
     'password_changed_message' => 'تم تغيير كلمة السر بنجاح!',
     'time_limit_exceeded' => 'لقد استغرت العملية أطول من الوقت المحدد لها.',
@@ -29,23 +29,34 @@ return [
     'offer_updated_success' => 'تم تعديل عرضك  بنجاح',
     'thank_you' => 'شكرا لتواصلك معنا',
     'personal_info_updated_success' => 'تم تعديل معلومات الشخصيه بنجاح',
+    'email_verification_sent' => 'لقد قمنا بارسال رسالة للايميل الخاص بك يرجى التحقق من الايميل!',
     // project
     'project_delivered_success' => 'تم تسليم المشروعك بنجاح.',
     'acceptance_message_sent' => 'لقد تم إرسال رسالة القبول إلى الطرف الآخر.',
     'offer_acceptance_message_sent' => 'لقد تم إرسال رسالة قبول للعرض. يرجى انتظار رد الطرف الآخر.',
     'rejection_message_sent' => 'لقد تم إرسال رسالة الرفض إلى الطرف الآخر.',
     'project.add_success' => 'تم اضافة مشروع جديدة بنجاح',
-    'project.update_success'=>'تم تعديل المشروع بنجاح',
-    'project.delete_success'=>'تم حذف المشروع بنجاح',
+    'project.update_success' => 'تم تعديل المشروع بنجاح',
+    'project.delete_success' => 'تم حذف المشروع بنجاح',
     'project_rejected' => 'لقد قمت برفض التسليم مشروعك',
     'project_resumed' => 'تم استأناف العمل على المشروع ',
+    'project_not_paid' => 'هذا المشروع لم يتم الدفع بعد.',
+
     // works
     'works.add_success' => 'تم اضافة عمل جديدة بنجاح',
     'works.update_success' => 'تم تعديل العمل بنجاح',
     'works.delete_success' => 'تم حذف العمل بنجاح',
     // profile skills
     'add_new_skill' => 'يرجى إضافة مهارة جديدة.',
-    'skill_added_success' => 'لقد تم إضافة المهارة بنجاح.',
+    'update_skill_success' => 'تم تعديل المهارة بنجاح',
+    'skill_added_success' => ' تم إضافة المهارة بنجاح.',
     'skill_already_exists' => 'هناك مهارة بالفعل.',
-    'skill_deleted_success' => 'لقد تم حذف المهارة بنجاح.',
+    'skill_deleted_success' => 'تم حذف المهارة بنجاح.',
+    'skill_disabled_success' => 'تم تعطيل المهارة بنجاح.',
+    'skill_enabled_success' => 'تم تفعيل المهارة بنجاح.',
+    // specialization
+    'specialization_disabled_success' => 'تم تعطيل التخصص بنجاح.',
+    'specialization_enabled_success' => 'تم تفعيل التخصص بنجاح.',
+    'new_department_added_success' => 'تم إضافة قسم جديد بنجاح.',
+    'department_updated_success' => 'تم تعديل القسم بنجاح.',
 ];

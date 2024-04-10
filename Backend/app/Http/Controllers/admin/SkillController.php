@@ -33,8 +33,8 @@ class SkillController extends Controller
 
 
         ], [
-            'name.required' => 'ادخل اسم المهارة',
-            'name.max' => 'يجب ان يكون الاسم اقل من 25 حروف',
+            'name.required' => __('request.skill.name.required'),
+            'name.max' => __('request.skill.name.max'),
         ]);
 
         $skill = new Skill();
@@ -44,8 +44,8 @@ class SkillController extends Controller
 
         if ($skill->save())
             return redirect()->route('list_skills')
-                ->with(['message' => 'تم اضافة مهارة جديدة بنجاح', 'type' => 'alert-success']);
-        return back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                ->with(['message' => __('messges.skill_added_success'), 'type' => 'alert-success']);
+        return back()->with(['message' => __("messges.add_failed_message"), 'type' => 'alert-danger']);
     }
 
 
@@ -64,8 +64,8 @@ class SkillController extends Controller
         $skill->is_active = $request->is_active;
 
         if ($skill->save())
-            return redirect()->route('list_skills')->with(['message' => 'تم التعديل بنجاح', 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return redirect()->route('list_skills')->with(['message' => __("messges.update_skill_success"), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' => __("messges.update_failed_message"), 'type' => 'alert-danger']);
     }
 
 
@@ -75,9 +75,9 @@ class SkillController extends Controller
         $skill->is_active *= -1;
         if ($skill->save())
             if ($skill->is_active == -1)
-                return back()->with(['message' => 'تم تعطيل المهارة بنجاح', 'type' => 'alert-success']);
+                return back()->with(['message' => __('messges.skill_disabled_success'), 'type' => 'alert-success']);
             else
-                return back()->with(['message' => 'تم تفعيل المهارة بنجاح', 'type' => 'alert-success']);
-        return back()->with(['message' => 'فشلت عمليه الحذف الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messges.skill_enabled_success'), 'type' => 'alert-success']);
+        return back()->with(['message' =>  __("messges.delete_failed_message"), 'type' => 'alert-danger']);
     }
 }

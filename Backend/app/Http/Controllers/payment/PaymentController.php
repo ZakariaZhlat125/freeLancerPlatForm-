@@ -54,7 +54,7 @@ class PaymentController extends Controller
                 'products' =>  [$dataPayment],
                 // 'total_amount' => $project->totalAmount,
                 'total_amount' => $project->amount,
-                'currency' => 'YER',
+                'currency' => 'SY',
                 'success_url' => 'http://localhost:8000/ar/success-payment/' . $project_id,
                 'cancel_url' => 'http://localhost:8000/ar/cancel-payment/' .  $project_id,
                 'metadata' => (object)$dataMeta
@@ -68,9 +68,9 @@ class PaymentController extends Controller
             // return $response->json($key = null);
             return redirect(url($response['invoice']['next_url']));
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __("messges.access.unauthorized"), 'type' => 'alert-danger']);
         }
     }
     public static function successPayment($project_id,  $response)
@@ -118,10 +118,10 @@ class PaymentController extends Controller
             // return redirect()->route('profile')->with(['message' => 'لقد تم سداد المبلغ بنجاح', 'type' => 'alert-success']);
             // open the frontend page
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __('messges.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
 
@@ -167,7 +167,7 @@ class PaymentController extends Controller
                 $project->save();
                 return view('client.payAnimation.paySucces');
             } else {
-                return redirect()->route('admin')->with(['message' => 'حدث خطأ ما ', 'type' => 'alert-warning']);
+                return redirect()->route('admin')->with(['message' => __('messges.error_occurred'), 'type' => 'alert-warning']);
             }
 
             // ? here when we use the transaction
@@ -186,9 +186,9 @@ class PaymentController extends Controller
             // send the message back to the brovider
 
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __('messges.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
     static function sendTheMoneyBackTo(Request $request,  $project_id/*$invoice_referance*/)
@@ -237,9 +237,9 @@ class PaymentController extends Controller
                     'is_active' => 0,
                 ]);
                 // return view('client.payAnimation.paySucces');
-                return redirect()->route('admin')->with(['message' => 'تمت العمليه بنجاح ', 'type' => 'alert-success']);
+                return redirect()->route('admin')->with(['message' => __('messges.succes_process'), 'type' => 'alert-success']);
             } else {
-                return redirect()->route('admin')->with(['message' => 'هذا المشروع لم يتم الدفع بعد ', 'type' => 'alert-warning']);
+                return redirect()->route('admin')->with(['message' => __('messges.project_not_paid'), 'type' => 'alert-warning']);
             }
 
             // ? here when we use the transaction
@@ -258,9 +258,9 @@ class PaymentController extends Controller
             // send the message back to the brovider
 
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('admin')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
+            return redirect()->route('admin')->with(['message' =>__('messges.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
 }

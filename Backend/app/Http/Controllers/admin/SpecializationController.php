@@ -43,10 +43,10 @@ class SpecializationController extends Controller
 
         if ($special->save())
             if ($special->is_active == -1)
-                return back()->with(['message' => 'تم تعطيل التخصص بنجاح', 'type' => 'alert-success']);
+                return back()->with(['message' => __('messges.specialization_disabled_success'), 'type' => 'alert-success']);
             else
-                return back()->with(['message' => 'تم تفعيل التخصص بنجاح', 'type' => 'alert-success']);
-        return back()->with(['message' => 'فشلت عمليه الحذف الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messges.specialization_enabled_success'), 'type' => 'alert-success']);
+        return back()->with(['message' => __('messges.delete_failed_message'), 'type' => 'alert-danger']);
     }
 
 
@@ -56,10 +56,8 @@ class SpecializationController extends Controller
             'title' => ['required'],
             'category_id' => ['required'],
         ], [
-            'title.required' => 'this field is required',
-            'category_id.required' => 'this field is required',
-
-
+            'title.required' => __('request.field.required'),
+            'category_id.required' => __('request.field.required'),
         ]);
 
         $new_special = new specialization();
@@ -68,8 +66,8 @@ class SpecializationController extends Controller
         $new_special->is_active = $request->is_active;
 
         if ($new_special->save())
-            return redirect()->route('list_specialization')->with(['message' => 'تم اضافة قسم جديد بنجاح', 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' => 'فشلت عمليه الاضافة الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return redirect()->route('list_specialization')->with(['message' => __('messges.new_department_added_success'), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' =>  __('messges.add_failed_message'), 'type' => 'alert-danger']);
     }
 
     public function update(Request $request, $special_id)
@@ -80,7 +78,7 @@ class SpecializationController extends Controller
         $special->is_active = $request->is_active;
 
         if ($special->save())
-            return redirect()->route('list_specialization')->with(['message' => 'تم التعديل بنجاح', 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' => 'فشلت عمليه التعديل الرجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
+            return redirect()->route('list_specialization')->with(['message' => __('messges.department_updated_success'), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' => __('messges.update_failed_message'), 'type' => 'alert-danger']);
     }
 }

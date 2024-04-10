@@ -71,17 +71,17 @@ class AuthController extends Controller
                 'confirm_pass' => ['same:user_pass']
 
             ], [
-                'name.required' => 'ادخل الاسم',
+                'name.required' => __("request.name.required"),
                 // 'name.regex' => 'يجب ان يحتوي على حروف كبيرة "A-Z"وصغيرة"a-z" ',
-                'name.min' => 'يجب ان يكون الاسم اكثر من 8 حروف',
-                'email.unique' => 'الايميل موجود مسبقا',
-                'email.required' => 'ادخل الايميل',
-                'email.email' => 'ادخل الايميل بشكل صحيح',
-                'user_pass.required' => 'ادخل كلمة السر',
-                'user_pass.min' => 'يجب ام تكون كلمة السر اكثر من 8 خانات',
-                'user_pass.max' => 'يجب ام تكون كلمة السر اقل من 20 خانات',
-                'user_pass.regex' => 'كلمه المرور يجيب ان تحتوي على حروف كبيره وصغيره وارقام اورموز ',
-                'confirm_pass.same' => 'كلمة السر غير متطابقة ',
+                'name.min' => __('request.name.min'),
+                'email.unique' => __('request.email.unique'),
+                'email.required' =>  __('request.email.required'),
+                'email.email' =>  __('request.email.email'),
+                'user_pass.required' => __('request.password.required'),
+                'user_pass.min' => __('request.password.min'),
+                'user_pass.max' => __('request.password.max'),
+                'user_pass.regex' => __('request.password.regex'),
+                'confirm_pass.same' => __('confirm_pass.same'),
 
 
             ]);
@@ -179,12 +179,9 @@ class AuthController extends Controller
 
 
         ], [
-            'email.required' => 'ادخل بريدك الالكتروني',
-            'email.email' => 'ادخل بريدك الالكتروني بشكل صحيح',
-            'user_pass.required' => 'ادخل كلمة السر',
-
-
-
+            'email.required' =>  __('request.email.required'),
+            'email.email' =>  __('request.email.email'),
+            'user_pass.required' => __('request.password.required'),
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->user_pass, 'is_active' => 1])) {
@@ -238,12 +235,9 @@ class AuthController extends Controller
 
 
         ], [
-            'old_password.required' => 'ادخل كلمة السر القديمة ',
-            'new_password.confirmed' => 'الكلمة ليست متطابقة',
-            'new_password.required' => 'ادخل كلمة السر الجديدة',
-
-
-
+            'old_password.required' => __('request.old_password.required'),
+            'new_password.confirmed' => __('request.new_password.confirmed'),
+            'new_password.required' => __("request.new_password.required"),
         ]);
 
 

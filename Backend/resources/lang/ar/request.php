@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'field.required' => 'هذا الحقل مطلوب.',
     // comment controller
     'duration.required' => 'حقل المده مطلوب',
     'duration.numeric' => 'يجب ان يكون حق المده من نوع رقمي',
@@ -21,6 +22,17 @@ return [
     // email
     'email.required' => 'رجاء قم بأدخال الايميل',
     'email.email' => 'ادخل الايميل بشكل صحيح',
+    'email.unique' => 'الايميل موجود مسبقا',
+
+    // password
+    'password.required' => 'ادخل كلمة السر',
+    'password.min' => 'يجب ام تكون كلمة السر اكثر من 8 خانات',
+    'password.max' => 'يجب ام تكون كلمة السر اقل من 20 خانات',
+    'password.regex' => 'كلمه المرور يجيب ان تحتوي على حروف كبيره وصغيره وارقام اورموز ',
+    'confirm_pass.same' => 'كلمة السر غير متطابقة ',
+    'old_password.required' => 'ادخل كلمة السر القديمة ',
+    'new_password.confirmed' => 'الكلمة ليست متطابقة',
+    'new_password.required' => 'ادخل كلمة السر الجديدة',
     // messges
     'message.required' => 'رجاء قم بأدخال رسالتك',
     'details.required' => 'اضف تفاصيل للعرض',
@@ -39,8 +51,11 @@ return [
     'project.amount' => 'المبلغ المتفق عليه مطلوب *',
     'project.title.required' => 'يجب ان تقوم بأدخال عنوان للمشروع',
     'cost.required' => 'رجاء قم بأدخال التكلفه لهذا المشروع',
-    'project.details'=>'اضف وصف للمشروع',
+    'project.details' => 'اضف وصف للمشروع',
 
+    // skill
+    'skill.name.required' => 'ادخل اسم المهارة',
+    'skill.name.max' => 'يجب ان يكون الاسم اقل من 25 حروف',
 
 
 ];
