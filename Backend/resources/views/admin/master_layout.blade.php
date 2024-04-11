@@ -192,7 +192,17 @@
                                 </li>
 
                             </ul>
-
+                            <div class="d-flex align-items-center justify-content-end">
+                                @if (session()->get('lang') == 'en')
+                                    <a class="language-link d-flex" href="javascript:void(0);" onclick="changeLanguage('ar')">
+                                        <span class="align-self-center">{{ __('Arabic') }}</span>
+                                    </a>
+                                @else
+                                    <a class="language-link d-flex" href="javascript:void(0);" onclick="changeLanguage('en')">
+                                        <span class="align-self-center">{{ __('English') }}</span>
+                                    </a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </nav>
@@ -214,6 +224,33 @@
 
         <script src="{{ asset('assets/client/js/report.js') }}"></script>
 
+        <script>
+            function changeLanguage(lang) {
+                // Send an AJAX request to update the language
+                fetch('{{ route('LanguageSwitcher') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            lang: lang
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Reload the page to reflect the language change
+                            window.location.reload();
+                        } else {
+                            // Handle errors
+                            console.error('Failed to change language');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        </script>
 
 
 </body>
