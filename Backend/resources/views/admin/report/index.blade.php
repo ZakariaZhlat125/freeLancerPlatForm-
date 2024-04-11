@@ -12,13 +12,13 @@
     </div>
     <div class="my-4 d-flex justify-content-evenly flex-wrap">
         <button id="users" class="btn  btn-blue-rounderd rounded-pill my-2">
-            المستخدم
+            {{ __('static.the_report_user') }}
         </button>
         <button id="posts" class="btn  btn-blue-rounderd rounded-pill my-2">
-            المحتوى
+            {{ __('static.the_report_content') }}
         </button>
         <button id="projects" class="btn  btn-blue-rounderd rounded-pill my-2">
-            المشاريع
+            {{ __('static.the_report_projects') }}
         </button>
     </div>
     <!-- Table head options start -->
@@ -37,7 +37,9 @@
                                         <th>{{ __('dash.user_id') }}</th>
                                         <th id="post_m">{{ __('dash.provider_ids') }}</th>
                                         <th id="user_m">{{ __('dash.post_id') }}</th>
-                                        <th id="date_m">التاريخ</th>
+                                        <th id="date_m">
+                                                 {{ __('static.the_report_date') }}
+                                        </th>
                                         <th id="mes_m">{{ __('dash.massege') }}</th>
                                         <th>{{ __('dash.State') }}</th>
                                         <th>{{ __('dash.ACTION') }}</th>
@@ -56,11 +58,15 @@
                                             <td>
                                                 @if ($item->is_active == 0)
                                                     <span class="bg-primary-blue "
-                                                        style="color:white;   padding: 5px 21px; border-radius: 5px;">مفعل</span>
+                                                        style="color:white;   padding: 5px 21px; border-radius: 5px;">
+                                                            {{ __('static.admin_category_enabled') }}
+                                                    </span>
                                                 @else
                                                     <span class="bg-primary-pink "
                                                         style="color:white; padding: 5px 21px; border-radius: 5px;">
-                                                        معطل</span>
+                                                            {{ __('static.admin_category_disabled') }}
+
+                                                    </span>
                                                 @endif
                                             </td>
 
@@ -94,11 +100,15 @@
                                             <td>
                                                 @if ($item->is_active == 0)
                                                     <span class="bg-primary-blue "
-                                                        style="color:white;padding: 5px 21px; border-radius: 5px;">مفعل</span>
+                                                        style="color:white;padding: 5px 21px; border-radius: 5px;">
+                                                            {{ __('static.admin_category_enabled') }}
+                                                    </span>
                                                 @else
                                                     <span class="bg-primary-pink"
                                                         style="color:white;padding: 5px 21px; border-radius: 5px;">
-                                                        معطل</span>
+                                                             {{ __('static.admin_category_disabled') }}
+
+                                                    </span>
                                                 @endif
                                             </td>
 
@@ -129,11 +139,15 @@
                                             <td>
                                                 @if ($item->is_active == 0)
                                                     <span class="bg-primary-blue "
-                                                        style="color:white;  padding: 5px 21px; border-radius: 5px;">مفعل</span>
+                                                        style="color:white;  padding: 5px 21px; border-radius: 5px;">
+                                                            {{ __('static.admin_category_enabled') }}
+                                                    </span>
                                                 @else
                                                     <span class="bg-primary-pink "
                                                         style="color:white; padding: 5px 21px; border-radius: 5px;">
-                                                        معطل</span>
+                                                            {{ __('static.admin_category_disabled') }}
+
+                                                    </span>
                                                 @endif
                                             </td>
 

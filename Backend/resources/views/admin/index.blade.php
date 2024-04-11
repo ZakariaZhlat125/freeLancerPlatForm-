@@ -60,7 +60,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold"> الاقسام </h6>
+                                        <h6 class="text-muted font-semibold">
+                                            {{ __('static.admin_categories') }}
+                                        </h6>
                                         <h6 class="font-extrabold mb-0">{{ $cates }}</h6>
                                     </div>
                                 </div>
@@ -76,7 +78,9 @@
                                         <i class="fa-solid fa-flag-checkered"></i>                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">البلاغات</h6>
+                                        <h6 class="text-muted font-semibold">
+                                            {{ __('static.project_reports') }}
+                                        </h6>
                                         <h6 class="font-extrabold mb-0">{{ $reports }}</h6>
                                     </div>
                                 </div>
@@ -97,8 +101,8 @@
                         </div>
                     </div>
                 </div>
-            
-               
+
+
             </div>
             <div class="col-12 col-lg-3">
                 <div class="card">
@@ -114,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <!-- <div class="card">
                     <div class="card-header">
                         <h4>Visitors Profile</h4>
@@ -128,22 +132,22 @@
     </div>
 
 
- 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  
+
 
 <script type="text/javascript">
 
-  
+
 
       var labels =  {{ Js::from($labels) }};
 
       var users =  {{ Js::from($data) }};
 
-  
+
 
       const data = {
 
@@ -163,7 +167,7 @@
 
       };
 
-  
+
 
       const config = {
 
@@ -175,7 +179,7 @@
 
       };
 
-  
+
 
       const myChart = new Chart(
 
@@ -185,7 +189,7 @@
 
       );
 
-  
+
 
 </script>
 @endsection

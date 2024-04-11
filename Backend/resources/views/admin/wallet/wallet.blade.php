@@ -17,7 +17,9 @@
                     <div class="col-12 col-xl-4 mx-4">
                         <div class="card">
                             <div class="card-header">
-                                <h3>الرصيد الكلي</h3>
+                                <h3>
+                                    {{ __('static.user_total_balance') }}
+                                </h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -32,7 +34,9 @@
                     <div class="col-12 col-xl-4 mx-4">
                         <div class="card">
                             <div class="card-header">
-                                <h3>الارباح</h3>
+                                <h3>
+                                    {{ __('static.user_fees') }}
+                                </h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -62,22 +66,36 @@
                                     <button
                                         :class="{ ' text-primary-pink font-bold': deposit == true }
                                         'font-sm mx-2'"
-                                        @click="deposit = true ; withdraw = false"> أضافه للمحفظه</button>
+                                        @click="deposit = true ; withdraw = false">
+                                            {{ __('static.deposit_wallet') }}
+                                    </button>
                                     <span class="font-bold mx-3">|</span>
                                     <button
                                         :class="{ ' text-primary-pink font-bold': withdraw == true }
                                         'font-sm mx-2'"
-                                        @click="deposit = false ; withdraw = true">سحب من المحفظه</button>
+                                        @click="deposit = false ; withdraw = true">
+                                            {{ __('static.withdraw_wallet') }}
+                                    </button>
                                 </div>
                                 <table class="table border">
                                     <thead>
                                         <tr>
-                                            <th class="font-md">الرقم</th>
-                                            <th class="font-md">المسلم </th>
+                                            <th class="font-md">
+                                                {{ __('static.transation_number') }}
+                                            </th>
+                                            <th class="font-md">
+                                                {{ __('static.transation_type') }}
+                                            </th>
                                             {{-- <th class="font-md">المستلم</th> --}}
-                                            <th class="font-md">المبلغ </th>
-                                            <th class="font-md">المشروع </th>
-                                            <th class="font-md">التاريخ</th>
+                                            <th class="font-md">
+                                                {{ __('static.transation_amount') }}
+                                            </th>
+                                            <th class="font-md">
+                                                {{ __('static.transation_project') }}
+                                            </th>
+                                            <th class="font-md">
+                                                {{ __('static.transation_date') }}
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-light">

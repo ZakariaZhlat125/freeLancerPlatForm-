@@ -40,11 +40,15 @@
                                             <td>
                                                 @if ($item->is_active == 1)
                                                     <span class="bg-primary-blue"
-                                                        style="color:white;  padding: 5px 21px; border-radius: 5px;">مفعل</span>
+                                                        style="color:white;  padding: 5px 21px; border-radius: 5px;">
+                                                            {{ __('static.admin_category_enabled') }}
+                                                </span>
                                                 @else
                                                     <span class="bg-primary-pink"
                                                         style="color:white;padding: 5px 21px; border-radius: 5px;">
-                                                        معطل</span>
+                                                            {{ __('static.admin_category_disabled') }}
+
+                                                    </span>
                                                 @endif
                                             </td>
 

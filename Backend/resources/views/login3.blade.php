@@ -50,14 +50,18 @@
                             <p class="text-center font-sm mt-3">
                                 <span>{{ __('login.reset_password') }}</span>
                                 <a href="/forget-password">
-                                    <span style="color: #0d41fd"> نسيت كلمة السر! </span>
+                                    <span style="color: #0d41fd">
+                                        {{ __('static.forget_password') }}
+                                    </span>
                                 </a>
                             </p>
                             <p class="text-center font-sm mt-3">
                                 <span>{{ __('login.have_account') }}</span>
 
                                 <a href="{{ route('create_user') }}">
-                                    <span style="color: #0d41fd">انشاء حساب </span>
+                                    <span style="color: #0d41fd">
+                                        {{ __('static.create_new_account') }}
+                                    </span>
 
                                 </a>
                             </p>

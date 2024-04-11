@@ -4,7 +4,9 @@
         <!-- top nav start -->
         <div class="row mx-1   col-12 d-flex justify-content-lg-between ">
             <nav aria-label="breadcrumb" class="main-breadcrumb col-6 p-3">
-                <h3 class="m-3 font-md font-bold"> الابلاغ عن </h3>
+                <h3 class="m-3 font-md font-bold">
+                    {{ __('static.report_deatails') }}
+                </h3>
             </nav>
         </div>
         <!-- top nav end -->
@@ -16,26 +18,28 @@
                         <div class="flex justify-between">
                             <p class="font-sm font-bold ">
                             <h3 class="font-sm font-bold">
-                                أسم المشروع :
+                                {{ __('static.report_deatails_project_name') }}
                             </h3>
                             {{ $items->title }}
                             </p>
                             <button class="mo-btn btn-blue-bg">{{ $items->status }}</button>
                         </div>
-                        <p class="font-sm font-bold mt-4"> معلومات إضافية</p>
+                        <p class="font-sm font-bold mt-4">
+                            {{ __('static.report_deatails_add_info') }}
+                        </p>
                     </div>
                     <div class="content mt-3">
                         <div class="flex items-center gap-x-2 my-4">
                             <h3 class="font-sm font-bold">
-                                الوقت :
+                                {{ __('static.report_deatails_time') }}
                             </h3>
                             <p class="font-sm text-dark-gray">
-                                {{ $items->duration }} ايام
+                                {{ $items->duration }}  {{ __('static.post_detail_desc22') }}
                             </p>
                         </div>
                         <div class="flex items-center gap-x-2 my-4">
                             <h3 class="font-sm font-bold">
-                                التكلفة :
+                                {{ __('static.project_cost') }}
                             </h3>
                             <p class="font-sm text-dark-gray">
                                 $ {{ $items->amount }}
@@ -46,7 +50,9 @@
             @endforeach
         </div>
 
-        <p class="font-md font-bold my-8 mr-4"> البلاغات</p>
+        <p class="font-md font-bold my-8 mr-4">
+            {{ __('static.project_reports') }}
+=       </p>
 
         <div class="flex justify-between flex-wrap flex-col md:flex-row items-center justify-start gap-x-4 ">
             @foreach ($report as $item)
@@ -57,7 +63,9 @@
                             <div class="w-full md:w-1/2 mb-6 md:mb-0">
                                 <label class="block font-sm mx-4 my-4 tracking-wide text-gray-700 text-xs  mb-2"
                                     for="grid-first-name">
-                                    <b> الاسم </b>:
+                                    <b>
+                                        {{ __('static.project_report_name') }}
+                                  </b>
                                     {{ $item->name }}
                                 </label>
 
@@ -66,23 +74,32 @@
                                 <div class="w-full md:w-1/2 ">
                                     <label class="block font-sm my-4  tracking-wide text-gray-700 text-xs  mb-2"
                                         for="grid-last-name">
-                                        <b> النوع:</b>
-                                        مقدم خدمة
+                                        <b>
+                                            {{ __('static.project_report_type') }}
+                                        </b>
+                                            {{ __('static.project_report_type_provider') }}
+
+
                                     </label>
                                 </div>
                             @else
                                 <div class="w-full md:w-1/2 ">
                                     <label class="block font-sm my-4  tracking-wide text-gray-700 text-xs  mb-2"
                                         for="grid-last-name">
-                                        <b> النوع:</b>
-                                        طالب خدمة
+                                        <b>
+                                            {{ __('static.project_report_type') }}
+                                        </b>
+                                            {{ __('static.project_report_seeker') }}
+
                                     </label>
                                 </div>
                             @endif
                             <div class="w-full px-3">
                                 <label class="block font-sm mx-4 my-4 tracking-wide text-gray-700 text-xs  mb-2"
                                     for="grid-first-name">
-                                    <b> البلاغ </b>
+                                    <b>
+                                        {{ __('static.project_report_message') }}
+                                    </b>
                                 </label>
                                 <p class="text-right block font-sm  tracking-wide text-gray-700 text-xs  mb-2 mx-8 my-4">
                                     {{ $item->massege }} </p>
@@ -97,14 +114,13 @@
 
                         @if ($item->role_id == 4)
                             <a class='mo-btn m-3 float-left'
-                                href='{{ route('payment.sendMoenyBackTo', ['who' => 'provider', 'project_id' => $item->project_id]) }}'>ارجاع
-                                الفلوس
-                                مقدم الخدمه
+                                href='{{ route('payment.sendMoenyBackTo', ['who' => 'provider', 'project_id' => $item->project_id]) }}'>
+                                     {{ __('static.return_money_provider') }}
                             </a>
                         @else
                             <a class='mo-btn m-3 float-left'
-                                href='{{ route('payment.sendMoenyBackTo', ['who' => 'seeker', 'project_id' => $item->project_id]) }}'>ارجاع
-                                الفلوس طالب الخدمه
+                                href='{{ route('payment.sendMoenyBackTo', ['who' => 'seeker', 'project_id' => $item->project_id]) }}'>
+                                     {{ __('static.return_money_seeker') }}
                             </a>
                         @endif
                         <div>

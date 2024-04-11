@@ -23,23 +23,29 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
                             style="">
                             <li>
-                                <h6 class="dropdown-header">اهلا, {{ auth()->user()->name }}</h6>
+                                <h6 class="dropdown-header">
+                                    {{ __('static.create_user_welcome') }}  {{ auth()->user()->name }}</h6>
                             </li>
 
 
                             <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-wallet me-2"></i>
-                                    المحفظة</a></li>
+                                {{ __('static.admin_wallet') }}
+                            </a></li>
 
                             <li>
                             <li><a class="dropdown-item" href="{{ route('change-password') }}"><i
                                         class="icon-mid bi bi-wallet me-2"></i>
-                                    تغيير كلمة السر</a></li>
+                                {{ __('static.cahnge_password') }}
+
+                            </a></li>
 
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="/logout"><i
-                                        class="icon-mid bi bi-box-arrow-left me-2"></i> تسجيل خروج</a></li>
+                                        class="icon-mid bi bi-box-arrow-left me-2"></i>
+                                {{ __('static.logout') }}
+                            </a></li>
                         </ul>
                     </div>
                     <ul class="navbar-nav  mb-2 mb-lg-0">
@@ -71,9 +77,12 @@
                                             style=' color: gray ; border-right: 4px solid {{ $notification->read_at == null ? 'red' : 'gray' }}  ; padding-right: 2px ; width:inherit; height: fit-content; '>
                                             @if ($notification->data['type'] == 'comment')
                                                 {{-- <a href="{{ route('markAsReadOne', $notification->id) }}"> --}}
-                                                <span> قام بأضافه
-                                                    {{ $notification->data['name'] }}
-                                                    عرض جديد على مشروعك</span>
+                                                <span>
+                                                        {{ __('static.project_notfi') }}
+                                                        {{ $notification->data['name'] }}
+                                                        {{ __('static.project_notfi2') }}
+
+                                                </span>
                                                 {{-- </a> --}}
                                             @else
                                                 {{-- <a href="{{ route('markAsReadOne', $notification->id) }}"> --}}

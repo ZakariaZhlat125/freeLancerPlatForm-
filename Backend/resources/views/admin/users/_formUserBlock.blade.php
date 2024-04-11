@@ -49,8 +49,13 @@
                                                 <select name="isban" id="formtabs-country" class="select2 form-select"
                                                     data-allow-clear="true">
 
-                                                    <option value="1">متاح</option>
-                                                    <option value="-1">محضور</option>
+                                                    <option value="1">
+                                                        {{ __('static.user_available') }}
+
+                                                    </option>
+                                                    <option value="-1">
+                                                        {{ __('static.user_blocked') }}
+                                                    </option>
                                                 </select>
 
                                             </div>

@@ -66,14 +66,17 @@
                             {{ csrf_field() }}
                             <div class="d-flex mt-4  colot-black  w-100 mt-3">
                                 <a href="{{ route('loginWithGoogle') }} " class="text-center wak_btn green_border ">
-                                    {{ __('login.register') }} مع Google
+                                    {{ __('login.register') }}
+                                    {{ __('static.with_google') }}
                                     <i class="fab fa-google fa-fw"></i>
                                 </a>
                             </div>
                             <p class="text-center font-sm mt-3">
                                 <span>{{ __('login.have_account') }}</span>
                                 <a href="{{ route('login') }}">
-                                    <span style="color: #0d41fd">تسجيل الدخول</span>
+                                    <span style="color: #0d41fd">
+                                        {{ __('static.Signup') }}
+                                    </span>
                                 </a>
                             </p>
                         </form>

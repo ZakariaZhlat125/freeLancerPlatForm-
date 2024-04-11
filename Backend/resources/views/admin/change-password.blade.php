@@ -5,7 +5,9 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header ">
-                        <h1 class="text-center text-primary-blue font-lg">تغيير كلمة السر</h1>
+                        <h1 class="text-center text-primary-blue font-lg">
+                            {{ __('static.cahnge_password') }}
+                        </h1>
                     </div>
 
                     <form action="{{ route('update-password') }}" class="m-4 " method="POST">
@@ -22,7 +24,10 @@
                             @endif
 
                             <div class="mb-3">
-                                <label for="oldPasswordInput" class="form-label">كلمة السر القديمة</label>
+                                <label for="oldPasswordInput" class="form-label">
+                                     {{ __('static.old_password') }}
+
+                                </label>
                                 <input name="old_password" type="password"
                                     class="form-control @error('old_password') is-invalid @enderror" id="oldPasswordInput"
                                     placeholder="اكتب كلمة السر القديمة">
@@ -31,7 +36,9 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="newPasswordInput" class="form-label">كلمة السر الجديدة</label>
+                                <label for="newPasswordInput" class="form-label">
+                                    {{ __('static.new_password') }}
+                                </label>
                                 <input name="new_password" type="password"
                                     class="form-control @error('new_password') is-invalid @enderror" id="newPasswordInput"
                                     placeholder=" اكتب كلمة السر جديدة">
@@ -40,7 +47,9 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="confirmNewPasswordInput" class="form-label">تأكيد كلمة السر الجديدة</label>
+                                <label for="confirmNewPasswordInput" class="form-label">
+                                    {{ __('static.confirm_new_password') }}
+                                </label>
                                 <input name="new_password_confirmation" type="password" class="form-control"
                                     id="confirmNewPasswordInput" placeholder=" اعد كتابة كلمة السرالجديدة">
                             </div>

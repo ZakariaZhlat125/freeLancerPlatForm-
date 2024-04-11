@@ -43,8 +43,13 @@
                                         <select name="is_active" id="formtabs-country" class="select2 form-select"
                                             data-allow-clear="true">
 
-                                            <option value="1">مفعل</option>
-                                            <option value="-1">معطل</option>
+                                            <option value="1">
+                                                    {{ __('static.admin_category_enabled') }}
+
+                                            </option>
+                                            <option value="-1">
+                                                {{ __('static.admin_category_disabled') }}
+                                            </option>
                                         </select>
 
                                     </div>

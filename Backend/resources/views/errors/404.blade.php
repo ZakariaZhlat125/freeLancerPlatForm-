@@ -9,8 +9,9 @@
                 </h1>
 
                 <h1 class="font-bold text-2xl text-sacondary-red w-6/6 text-center">
+                    {{ __('static.error_page') }}
 
-                    الصفحة غير متوفرة
+
 
                     </p>
 
@@ -20,8 +21,8 @@
 
                 </lottie-player>
                 <a href='{{ route('profile') }}' class="mo-btn btn-blue-bg  font-semibold px-4 py-3 w-full" style="text-align: center">
+                    {{ __('static.error_back') }}
 
-                دعنا ننتقل الى الصفحة السابقة
 
                 </a>
             </div>
