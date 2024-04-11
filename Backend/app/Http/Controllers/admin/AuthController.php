@@ -93,7 +93,6 @@ class AuthController extends Controller
             if (is_null($checkUsers)) {
                 $role = 'admin';
             }
-
             $name = $request->name;
             $u = new User();
             $u->name = $name;
@@ -106,7 +105,7 @@ class AuthController extends Controller
             if ($u->save()) {
                 // try {
 
-                $u->attachRole($role);
+                $u->addRole($role);
                 $to_name = $request->name;
                 $to_email = $request->email;
                 $data = array('name' => $request->name, 'activation_url' => URL::to('/') . "/verify_email/" . $token);
@@ -130,8 +129,7 @@ class AuthController extends Controller
                     if ($role == 'seeker')
                         $u->deposit(10000);
                 }
-
-
+                dd('test');
 
 
                 return redirect()->route('login')

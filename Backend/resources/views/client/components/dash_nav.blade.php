@@ -41,12 +41,12 @@
             <a href='{{ route('profile') }}' id="personal" style="cursor: pointer"
                 class="text-prof d-flex align-items-center d-inline-block ms-3 border-bottom pb-2">
                 <i class="fa fa-user pe-2"></i>
-                <span class="fs-6 font-md fw-bold mx-4">{{ __('profile.Personal_Info') }}</span>
+                <span class="fs-6 font-md fw-bold mx-4">{{ __('static.profile.Personal_Info') }}</span>
             </a>
             <a id="skill" href='{{ route('skills') }}'
                 class="text-secondary d-flex align-items-center d-inline-block ms-3 border-bottom pb-2">
                 <i class="fa fa-object-group pe-2"></i>
-                <span class="fs-6 font-md fw-bold mx-4">{{ __('profile.skills') }}</span>
+                <span class="fs-6 font-md fw-bold mx-4">{{ __('static.profile.skills') }}</span>
             </a>
             @if (Auth::check())
                 @role('provider')
@@ -64,7 +64,7 @@
             <a style="cursor: pointer" id="note" href='{{ route('mywallet') }}'
                 class="text-secondary d-flex align-items-center d-inline-block ms-3 border-bottom pb-2">
                 <i class="fa  fa-wallet pe-2"></i>
-                <span class="fs-6 font-md fw-bold mx-4">{{ __('profile.wallet') }}</span>
+                <span class="fs-6 font-md fw-bold mx-4">{{ __('static.profile.wallet') }}</span>
             </a>
 
 

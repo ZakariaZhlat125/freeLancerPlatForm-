@@ -1,18 +1,20 @@
 <?php
 
+use App\Models\category;
+
 return [
     'title' => 'Motwfer',
-    'Home'=>'Home',
+    'Home' => 'Home',
     "Available_projects" => "Available Projects",
     "Service_providers" => "Service Providers",
     "Signup" => "Sign Up",
     "new_account" => "New Account",
-    "descrption1" => ".An innovative platform that brings together project owners and freelancers",
-    "descrption2" =>".To facilitate work and ensure rights with ease and high quality",
+    "descrption1" => "An innovative platform that brings together project owners and freelancers",
+    "descrption2" => "To facilitate work and ensure rights with ease and high quality",
     "your_profile" => "Your Profile",
     "add_project" => "Add Project",
     "add_work" => "Add Work",
-    "my_wallet" => "My Wallet" ,
+    "my_wallet" => "My Wallet",
     "ongoing_projects" => "Ongoing Projects",
     "my_projects" => "My Projects",
     "logout" => "Sign Out",
@@ -21,8 +23,8 @@ return [
     "option2" => "Or you can search for Freelancers to work for you",
     "option3" => "What are you waiting for... start now!",
     "seeker" => "I'm a service seeker",
-    "seeker_option1" =>"I present a new project",
-    "seeker_option2" =>"I evaluate a completed project",
+    "seeker_option1" => "I present a new project",
+    "seeker_option2" => "I evaluate a completed project",
     "seeker_option3" => "I'm looking for Freelancers",
     "provider" => "I'm a service provider",
     "provider_option1" => "I'm looking for projects",
@@ -50,9 +52,17 @@ return [
     "features" => "What are our services?",
     "start_project" => "Start Your Project",
     "freelancers" => "Freelancers",
-
+    // profile
+    'profile.type' => 'Profile type',
+    'category' => 'category',
+    'job_title'=>'Job Title',
+    'bio' => "Bio",
+    'video'=>'Video',
+    'profile.Personal_Info'=> " Personal Info",
+    'profile.skills'=>'Skills',
+    'profile.wallet'=>'Wallet',
     //chat
-    "chat_desc" =>"Select a user to start chatting with",
+    "chat_desc" => "Select a user to start chatting with",
     "chat_online" => "We Are Online",
     "chat_no_messages" => "No messages to show",
     "uploading_done" => "Uploading Done",
@@ -149,7 +159,7 @@ return [
     "post_detail_desc37" => "Closed",
     "post_detail_desc38" => "Project Owner",
     //create user
-    "create_user_welcome" => "!Welcome",
+    "create_user_welcome" => "Welcome !",
     "create_user_google" => "Sign Up Via Google",
     "create_user_email" => "Sign Up Using Email",
     "form_password" => "Password",
@@ -163,7 +173,7 @@ return [
     "user_choose_acount_type2" => "Freelancer",
     "user_choose_acount_type2_desc" => "A person who is searching for a project to engage in freelance work",
     "create_user_next" => "Next",
-    "forget_password" => "?Did you forget the password",
+    "forget_password" => "Did you forget the password ?",
     "create_new_account" => "Or create a new account",
     //post
     "post_add" => "Add a new project",
@@ -187,7 +197,7 @@ return [
     "project_status" => "Project Status: ",
     "project_status1" => "Waiting for offers",
     "project_status2" => "Waiting for payment",
-    "project_status3" => "in progress" ,
+    "project_status3" => "in progress",
     "project_status4" => "The project has been submitted",
     "project_status5" => "The project submission was not accepted",
     "project_status6" => "The project submission was accepted",
@@ -351,17 +361,5 @@ return [
 
     //create user
     "with_google" => "With Google",
-    
-
-
-
-
-
-
-
-
-
-
-
 
 ];

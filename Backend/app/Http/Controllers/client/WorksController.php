@@ -6,6 +6,7 @@ use App\Constants\GlobalConstants;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\Skill;
+use App\Models\User;
 use App\Models\work;
 use App\Models\WorkSkill;
 use Illuminate\Http\Request;

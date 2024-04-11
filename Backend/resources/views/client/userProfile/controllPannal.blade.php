@@ -31,18 +31,18 @@
 
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0 font-md">{{ __('profile.type') }}</h6>
+                                            <h6 class="mb-0 font-md">{{ __('static.profile.type') }}</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <div class="mx-2 my-2 px-2">
                                                 @role('seeker')
-                                                    <strong>{{ __('profile.person1') }}</strong>
+                                                    <strong>{{ __('static.seeker_role') }}</strong>
                                                     (
                                                         {{ __('static.looking_for_freelancers') }}
                                                     )
                                                 @endrole
                                                 @role('provider')
-                                                    <strong>{{ __('profile.person2') }}</strong>
+                                                    <strong>{{ __('static.provider_role') }}</strong>
                                                     (
                                                         {{ __('static.looking_for_projects') }}
                                                     )
@@ -60,7 +60,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="" class="col-md-6 col-form-label font-md">
-                                                {{ __('profile.person3') }}</label>
+                                                {{ __('static.category') }}</label>
                                             <select
                                                 class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                                 name="category_id" data-actions-box="true">
@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="" class="col-md-6 col-form-label font-md">
-                                                {{ __('profile.person4') }}</label>
+                                                {{ __('static.job_title') }}</label>
                                             <div class="col-sm-10">
                                                 <input type="text"
                                                     class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -85,10 +85,10 @@
 
                                     <div class="row">
                                         <label for="" class="col-md-6 col-form-label font-md">
-                                            {{ __('profile.person5') }}</label>
+                                            {{ __('static.bio') }}</label>
                                         <textarea
                                             class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink font-md"
-                                            placeholder=" {{ __('profile.person5') }}" id="" name="bio">{{ $item->bio }}</textarea>
+                                            placeholder=" {{ __('static.bio') }}" id="" name="bio">{{ $item->bio }}</textarea>
                                         @error('bio')
                                             <span class="text-danger w-100">{{ $message }}</span>
                                         @enderror
@@ -98,7 +98,7 @@
 
                                     <div class="row mt-4">
                                         <label for="" class="col-md-12 col-form-label font-md">
-                                            {{ __('profile.person6') }}</label>
+                                            {{ __('static.video') }}</label>
                                         <input type="url"
                                             class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                             id="" name="video" value="{{ $item->video }}">
@@ -143,25 +143,25 @@
                 <section class="col-lg-8 col-md-8 col-12" id="perso">
                     <div class="card shadow-sm ">
                         <div class="card-body">
-                            <p>{{ $data }}</p>
+                            {{-- <p>{{ $data }}</p> --}}
                             <form action="{{ route('profile_save') }}" method="POST" class="login-form"
                                 enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0 font-md">{{ __('profile.type') }}</h6>
+                                        <h6 class="mb-0 font-md">{{ __('static.profile.type') }}</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <div class="mx-2 my-2 px-2">
                                             @role('seeker')
-                                                <strong>{{ __('profile.person1') }}</strong>
+                                                <strong>{{ __('static.seeker_role') }}</strong>
                                                 (
                                                         {{ __('static.looking_for_freelancers') }}
                                                 )
                                             @endrole
                                             @role('provider')
-                                                <strong>{{ __('profile.person2') }}</strong>
+                                                <strong>{{ __('static.provider_role') }}</strong>
                                                 (
                                                         {{ __('static.looking_for_projects') }}
                                                 )
@@ -179,7 +179,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="" class="col-md-6 col-form-label font-md">
-                                            {{ __('profile.person3') }}</label>
+                                            {{ __('static.category') }}</label>
                                         <select
                                             class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                             name="category_id" data-actions-box="true">
@@ -190,7 +190,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="" class="col-md-6 col-form-label font-md">
-                                            {{ __('profile.person4') }}</label>
+                                            {{ __('static.job_title') }}</label>
                                         <div class="col-sm-10">
                                             <input type="text"
                                                 class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
@@ -204,10 +204,10 @@
 
                                 <div class="row">
                                     <label for="" class="col-md-6 col-form-label font-md">
-                                        {{ __('profile.person5') }}</label>
+                                        {{ __('static.bio') }}</label>
                                     <textarea
                                         class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink font-md"
-                                        placeholder=" {{ __('profile.person5') }}" id="" name="bio">Your bio</textarea>
+                                        placeholder=" {{ __('static.bio') }}" id="" name="bio">Your bio</textarea>
                                     @error('bio')
                                         <span class="text-danger w-100">{{ $message }}</span>
                                     @enderror
@@ -217,7 +217,7 @@
 
                                 <div class="row mt-4">
                                     <label for="" class="col-md-12 col-form-label font-md">
-                                        {{ __('profile.person6') }}</label>
+                                        {{ __('static.video') }}</label>
                                     <input type="url"
                                         class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                         id="" name="video" value="">

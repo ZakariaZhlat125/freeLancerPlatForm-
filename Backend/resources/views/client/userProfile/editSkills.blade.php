@@ -50,7 +50,7 @@
                 <div class="card p-3">
 
                     <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                        <h3 class=" fs-5 font-lg">{{ __('profile.skills') }}</h3>
+                        <h3 class=" fs-5 font-lg">{{ __('static.user_skills') }} </h3>
                     </div>
 
 
