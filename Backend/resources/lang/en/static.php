@@ -283,7 +283,80 @@ return [
     "add_user_work_title" => "Work Title",
     "add_work_pic" => "Thumbnail image",
     "add_work_link" => "Work Link",
+    //admin categories form
+    "admin_category_enabled" => "Enabled",
+    "admin_category_disabled" => "Disabled",
+    //admin report
+    "report_type" => "Report Type",
+    "report_type_reason1" => "I didn't like this content",
+    "report_type_reason2" => "This content is annoying and repetitive",
+    "report_type_reason3" => "This content violates the terms of use of the website",
+    "report_type_reason4" => "This user annoys me",
+    "report_type_reason5" => "This user violates the terms of use of the website",
+    "the_report" => "The Report",
+    "the_report_user" => "The User",
+    "the_report_content" => "The Content",
+    "the_report_projects" => "The Projects",
+    "the_report_date" => "The Date",
+    "report_deatails" => "Report About",
+    "report_deatails_project_name" => ":Project Name",
+    "report_deatails_add_info" => "Additional Information",
+    "report_deatails_time" => ":Time",
+    "project_reports" => "Reports",
+    "project_report_name" => ":Name",
+    "project_report_type" => ":Type",
+    "project_report_type_provider" => "Provider",
+    "project_report_seeker" => "Seeker",
+    "project_report_message" => "The Report",
+    "return_money_provider" => "Return money to the provider",
+    "return_money_seeker" => "Return money to the seeker",
+    //admin users form user block
+    "user_available" => "Available",
+    "user_blocked" => "Blocked",
+    //admin wallet
+    "user_total_balance" => "Total Balance",
+    "user_fees" => "Profits",
+    //change password
+    "cahnge_password" => "Change Password",
+    "old_password" => "Old Password",
+    "new_password" => "New Password",
+    "confirm_new_password" => "Confirm New Password",
+    //admin index
+    "admin_categories" => "Categories",
+    //admin master layout
+    "admin_dashboard" => "Admin Dashboard",
+    "admin_wallet" => "Wallet",
+    //admin users
+    "username" => "Username",
+    "user_state" => "State",
+    "user_operations" => "Operations",
+    "user_active" => "Active",
+    "user_unactive" => "Inactive",
+
+    //email welcome
+    "welcome_user" => "Welcome ",
+    "welcome_user_message" => "We are delighted to have you on board. Only one step remains to complete the registration process. Please click on the following link to activate your account",
+    "press_activate" => "Click here to activate your account",
+    //error
+    "error_page" => "Page not available",
+    "error_back" => "Let's go back to the previous page",
+    //livewire post
+    "choose_skill" => "Choose Skill",
+    "photoshop" => "Photoshop",
+    "grahpic_design" => "Graphic Design",
+    "time1" => "Less than one week",
+    "time2" => "From one to two weeks",
+    "time3" => "From two weeks to month",
+    "time4" => "More than 3 months",
+
+    //create user
+    "with_google" => "With Google",
     
+
+
+
+
+
 
 
 

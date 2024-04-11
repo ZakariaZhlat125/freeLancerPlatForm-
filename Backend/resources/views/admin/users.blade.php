@@ -5,13 +5,21 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>اسم المستخدم</th>
-                        <th>الايميل</th>
+                        <th>
+                            {{ __('static.username') }}
+                        </th>
+                        <th>
+                            {{ __('static.form_email') }}
+                        </th>
 
 
 
-                        <th>الحالة</th>
-                        <th>العمليات</th>
+                        <th>
+                            {{ __('static.user_state') }}
+                        </th>
+                        <th>
+                            {{ __('static.user_operations') }}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,9 +32,13 @@
 
                             <td>
                                 @if ($user->is_active == 1)
-                                    <span class="badge bg-label-success me-1">مفعل</span>
+                                    <span class="badge bg-label-success me-1">
+                                        {{ __('static.user_active') }}
+                                    </span>
                                 @else
-                                    <span class="badge bg-label-danger me-1">غير مفعل</span>
+                                    <span class="badge bg-label-danger me-1">
+                                        {{ __('static.user_unactive') }}
+                                    </span>
                                 @endif
                             </td>
                             <td>

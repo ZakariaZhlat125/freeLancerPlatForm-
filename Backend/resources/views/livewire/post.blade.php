@@ -38,9 +38,15 @@
                                                 <h6 class="title font-md color-gray-dark">{{ __('filter.skill') }} </h6>
                                                 <div style="mt-2">
                                                     <select class="combobox wak_input" name="normal">
-                                                        <option value="" selected="selected">اختر المهارة </option>
-                                                        <option value="AL">فتشوب</option>
-                                                        <option value="AK">تصميم الجرافيك</option>
+                                                        <option value="" selected="selected">
+                                                                 {{ __('static.choose_skill') }}
+                                                        </option>
+                                                        <option value="AL">
+                                                            {{ __('static.photoshop') }}
+                                                        </option>
+                                                        <option value="AK">
+                                                            {{ __('static.grahpic_design') }}
+                                                        </option>
                                                         <option value="AZ">illustrator</option>
                                                     </select>
                                                 </div>
@@ -53,16 +59,8 @@
                                                             <input type="checkbox" checked="checked">
                                                             <span class="checkmark"></span>
                                                         </label>
-                                                        <p class="my-auto px-2"> أقل من أسبوع واحد</p>
-                                                    </div>
-                                                </div>
-                                                <div style="">
-                                                    <div class="card-body d-flex align-items-center ">
-                                                        <label class="wak_checkbox">
-                                                            <input type="checkbox" checked="checked">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <p class="my-auto px-2"> من 1 إلى 2 أسابيع
+                                                        <p class="my-auto px-2">
+                                                            {{ __('static.time1') }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -72,7 +70,10 @@
                                                             <input type="checkbox" checked="checked">
                                                             <span class="checkmark"></span>
                                                         </label>
-                                                        <p class="my-auto px-2"> أمن 2 أسابيع إلى شهر
+                                                        <p class="my-auto px-2">
+                                                            {{ __('static.time2') }}
+
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div style="">
@@ -81,7 +82,18 @@
                                                             <input type="checkbox" checked="checked">
                                                             <span class="checkmark"></span>
                                                         </label>
-                                                        <p class="my-auto px-2"> أكثر من 3 أشهر
+                                                        <p class="my-auto px-2"> أ
+                                                            {{ __('static.time3') }}
+                                                    </div>
+                                                </div>
+                                                <div style="">
+                                                    <div class="card-body d-flex align-items-center ">
+                                                        <label class="wak_checkbox">
+                                                            <input type="checkbox" checked="checked">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <p class="my-auto px-2">
+                                                            {{ __('static.time4') }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -94,7 +106,9 @@
                                                             <input type="checkbox" checked="checked">
                                                             <span class="checkmark"></span>
                                                         </label>
-                                                        <p class="my-auto px-2"> أقل من أسبوع واحد</p>
+                                                        <p class="my-auto px-2">
+                                                            {{ __('static.time1') }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <form>

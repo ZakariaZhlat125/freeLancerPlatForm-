@@ -7,10 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-<h1> مرحبا بك يا {{ $name }}</h1>
-<p> نحن سعداء بإنظمامك لنا تبقى خطوة
-     لاكمال عملية التسجيل يرجى الضغط على الرابط التالي لتفعيل حسابك </p>
-     <a href="{{ $activation_url }}">اضغط هنا لتفعيل حسابك</a>
-     
+<h1>
+    {{ __('static.welcome_user') }} {{ $name }}
+</h1>
+<p>
+    {{ __('static.welcome_user_message') }}
+</p>
+     <a href="{{ $activation_url }}">
+        {{ __('static.press_activate') }}
+    </a>
+
 </body>
 </html>

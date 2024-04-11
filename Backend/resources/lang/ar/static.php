@@ -286,7 +286,96 @@ return [
     "add_user_work_title" => "عنوان العمل",
     "add_work_pic" => "صورة مصغرة",
     "add_work_link" => "رابط العمل",
-   
+   //admin categories
+   "admin_category_enabled" => "مفعل",
+   "admin_category_disabled" => "معطل",
+   //admin report
+   "report_type" => "نوع الشكوى",
+   "report_type_reason1" => "هذا المحتوى لم يعجبني",
+   "report_type_reason2" => "هذا المحتوى مزعج و متكرر",
+   "report_type_reason3" => "هذا المحتوى يخالف شروط استخدام الموقع",
+   "report_type_reason4" => "هذا المستخدم يزعجني",
+   "report_type_reason5" => "هذا المستخدم يخالف شروط استخدام الموقع",
+   "the_report" => "الشكوى",
+   "the_report_user" => "المستخدم",
+   "the_report_content" => "المحتوى",
+   "the_report_projects" => "المشاريع",
+   "the_report_date" => "التاريخ",
+   "report_deatails" => "الإبلاغ عن",
+   "report_deatails_project_name" => ":اسم المشروع",
+   "report_deatails_add_info" => "معلومات إضافية",
+   "report_deatails_time" => ":الوقت",
+   "project_reports" => "البلاغات",
+   "project_report_name" => ":الاسم",
+   "project_report_type" => ":النوع",
+   "project_report_type_provider" => "مقدم خدمة",
+   "project_report_seeker" => "طالب خدمة",
+   "project_report_message" => "البلاغ",
+   "return_money_provider" => "إرجاع المال لمقدم الخدمة",
+   "return_money_seeker" => "إرجاع المال لطالب الخدمة",
+   //admin users form user block
+   "user_available" => "متاح",
+   "user_blocked" => "محظور",
+   //admin wallet
+   "user_total_balance" => "الرصيد الكلي",
+   "user_fees" => "الأرباح",
+   //change password
+   "cahnge_password" => "تغيير كلمةالسر",
+   "old_password" => "كلمة السر القديمة",
+   "new_password" => "كلمة السر الجديدة",
+   "confirm_new_password" => "تأكيد كلمة السر الجديدة",
+   //admin index
+   "admin_categories" => "الأقسام",
+   //admin master layout
+   "admin_dashboard" => "واجهة لوحة التحكم بالنظام ",
+   "admin_wallet" => "المحفظة",
+   //admin users
+   "username" => "اسم المستخدم",
+   "user_state" => "الحالة",
+   "user_operations" => "العمليات",
+   "user_active" => "نشط",
+   "user_unactive" => "غير نشط",
+
+   //email welcome
+    "welcome_user" => " مرحبًا بك يا",
+    "welcome_user_message" => "نحن سعداء بانضمامك لنا تبقى خطوة واحدة لإتمام عملية التسجيل يرجى الضغط على الرابط التالي لتفعيل حسابك",
+    "press_activate" => "اضغط هنا لتفعيل حسابك",
+    //error
+    "error_page" => "الصفحة غير متوفرة",
+    "error_back" => "دعنا ننتقل إلى الصفحة السابقة",
+    //livewire post
+    "choose_skill" => "اختر المهارة",
+    "photoshop" => "فوتوشوب",
+    "grahpic_design" => "تصميم الغرافيك",
+    "time1" => "أقل من أسبوع واحد",
+    "time2" => "من 1 إلى 2 أسابيع",
+    "time3" => "من 2 أسابيع إلى شهر",
+    "time4" => "أكثر من 3 أشهر",
+
+    //create user
+    "with_google" => "مع Google",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

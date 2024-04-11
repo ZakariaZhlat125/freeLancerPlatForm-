@@ -47,36 +47,48 @@
                             <div class="col-md-12 my-2">
 
                                 <label for="" class="col-md-6 font-md my-2">
-                                    نوع الشكوى</label>
+                                        {{ __('static.report_type') }}
+
+                                </label>
                                 <div class=" form-group mx-4">
                                     @if (Route::currentRouteName() == 'report_content')
                                         <div class="radio">
                                             <label class="font-sm"><input value=" هذا المحتوى لم  يعجبني" type="radio"
                                                     name="type_report">
-                                                هذا المحتوى لم يعجبني</label>
+                                                    {{ __('static.report_type_reason1') }}
+
+                                            </label>
                                         </div>
                                         <div class="radio">
                                             <label class="font-sm"><input value="هذا المحتوى مزعج , متكرر" type="radio"
                                                     name="type_report">
-                                                هذا المحتوى مزعج , متكرر</label>
+                                                    {{ __('static.report_type_reason2') }}
+
+                                            </label>
                                         </div>
 
                                         <div class="radio">
                                             <label class="font-sm"><input value=" هذا المحتوى يخالف شروط استخدام الموقع"
-                                                    type="radio" name="type_report"> هذا المحتوى يخالف شروط استخدام
-                                                الموقع</label>
+                                                    type="radio" name="type_report">
+                                                    {{ __('static.report_type_reason3') }}
+
+                                            </label>
                                         </div>
                                     @else
                                         <div class="radio">
                                             <label class="font-sm"><input value="هذا المسخدم   يزعجني" type="radio"
-                                                    name="type_report"> هذا
-                                                المسخدم يزعجني</label>
+                                                    name="type_report">
+                                                    {{ __('static.report_type_reason4') }}
+
+                                            </label>
                                         </div>
 
                                         <div class="radio ">
                                             <label class="font-sm"><input value="هذا المسخدم يخالف شروط استخدام الموقع"
-                                                    type="radio" name="type_report"> هذا المسخدم يخالف شروط استخدام
-                                                الموقع</label>
+                                                    type="radio" name="type_report">
+                                                    {{ __('static.report_type_reason5') }}
+
+                                            </label>
                                         </div>
                                 </div>
                                 @endif
@@ -90,7 +102,9 @@
                         </div>
                         <div class="row col-md-12">
 
-                            <label for="" class="col-md-4 col-form-label font-md my-2"> الشكوى</label>
+                            <label for="" class="col-md-4 col-form-label font-md my-2">
+                                {{ __('static.the_report') }}
+                            </label>
                             <textarea class="form-control mx-4" placeholder="  الشكوى" id="" value="" name="massege"></textarea>
                             @error('massege')
                                 <div id='alert ' class="   px-4 alert position-fixed  alert-warning" role="alert"
@@ -103,7 +117,9 @@
 
                         <div>
 
-                            <button class="mo-btn btn-blue-bg float-left font-md my-4" type="submit">أرسال</button>
+                            <button class="mo-btn btn-blue-bg float-left font-md my-4" type="submit">
+                                {{ __('static.send_complimnt') }}
+                            </button>
 
                         </div>
 

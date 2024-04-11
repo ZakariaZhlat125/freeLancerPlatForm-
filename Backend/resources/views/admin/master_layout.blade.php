@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>واجهة لوحة التحكم بالنظام</title>
+    <title>
+        {{ __('static.admin_dashboard') }}
+    </title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
@@ -132,18 +134,24 @@
                                             الاعدادات</a></li> -->
                                     <li><a class="dropdown-item" href="{{ route('wallet') }}"><i
                                                 class="icon-mid bi bi-wallet me-2"></i>
-                                            المحفظة</a></li>
+                                            {{ __('static.admin_wallet') }}
+
+                                    </a></li>
 
                                     <li>
                                     <li><a class="dropdown-item" href="{{ route('change-password') }}"><i
                                                 class="fas fa-unlock-alt me-2"></i>
-                                            تغيير كلمة السر</a></li>
+                                            {{ __('static.cahnge_password') }}
+
+                                    </a></li>
 
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li><a class="dropdown-item" href="/logout"><i
-                                                class="icon-mid bi bi-box-arrow-left me-2"></i> تسجيل خروج</a></li>
+                                                class="icon-mid bi bi-box-arrow-left me-2"></i>
+                                            {{ __('static.logout') }}
+                                    </a></li>
                                 </ul>
                             </div>
                             <ul class="navbar-nav  mb-2 mb-lg-0">
@@ -173,9 +181,12 @@
                                                     style=' color: gray ; border-right: 4px solid {{ $notification->read_at == null ? 'red' : 'gray' }}  ; padding-right: 2px ; width:inherit; height: fit-content; '>
                                                     @if ($notification->data['type'] == 'comment')
                                                         {{-- <a href="{{ route('markAsReadOne', $notification->id) }}"> --}}
-                                                        <span> قام بأضافه
+                                                        <span>
+                                                                {{ __('static.project_notfi') }}
+
                                                             {{ $notification->data['name'] }}
-                                                            عرض جديد على مشروعك</span>
+                                                            {{ __('static.project_notfi2') }}
+                                                        </span>
                                                         {{-- </a> --}}
                                                     @else
                                                         {{-- <a href="{{ route('markAsReadOne', $notification->id) }}"> --}}
