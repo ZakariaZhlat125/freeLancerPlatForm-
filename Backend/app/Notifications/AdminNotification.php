@@ -10,13 +10,14 @@ use Illuminate\Notifications\Notification;
 class AdminNotification extends Notification
 {
     use Queueable;
+    protected $data;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -26,7 +27,7 @@ class AdminNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail', 'datebase'];
     }
 
     /**
@@ -34,10 +35,13 @@ class AdminNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+
+        $message = 'لديك بلاغات جديده';
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        ->subject(Lang::get(' لديك بلاغات جديده'))
+        ->line($message)
+        ->action('دعني اراها', $this->data['url'])
+        ->line('شكرا');
     }
 
     /**
@@ -45,6 +49,11 @@ class AdminNotification extends Notification
      *
      * @return array<string, mixed>
      */
+
+     public function toDatabase(){
+
+     }
+     
     public function toArray(object $notifiable): array
     {
         return [

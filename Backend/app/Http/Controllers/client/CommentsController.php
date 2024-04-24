@@ -18,6 +18,8 @@ use Symfony\Component\Mailer\Exception\TransportException;
 class CommentsController extends Controller
 {
     //
+
+
     public function save(Request $request)
     {
         try {
@@ -63,7 +65,7 @@ class CommentsController extends Controller
                 $data = [
                     'name' =>  $postOwner->user_name,
                     'post_title' => $postOwner->title,
-                    'message' => __('messges.comment_added', ['provider' => $provider->name, 'title' => $postOwner->title]),
+                    'message' => __('message.comment_added', ['provider' => $provider->name, 'title' => $postOwner->title]),
                     'url' => url('posts/details/' . $postOwner->id),
                     'userId' => $postOwner->userid
                 ];
@@ -85,20 +87,20 @@ class CommentsController extends Controller
                 $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
 
                 return redirect()->back()
-                    ->with(['message' => __('messges.offer_added_success'), 'type' => 'alert-success']);
+                    ->with(['message' => __('message.offer_added_success'), 'type' => 'alert-success']);
             } else {
-                return back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-danger']);
             }
 
         } catch (FatalError $e) {
-            return redirect()->back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-success']);
         } catch (ApiErrorException $e) {
-            return redirect()->back()->with(['message' => __('messges.check_internet_connection'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('message.check_internet_connection'), 'type' => 'alert-success']);
         } catch (TransportException $e) {
-            return redirect()->back()->with(['message' =>  __('messges.check_internet_connection'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' =>  __('message.check_internet_connection'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
             throw $th;
-            return back()->with(['message' => __('messges.add_failed_message'), 'type' => 'alert-danger']);
+            return back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
     // update comment
@@ -134,13 +136,13 @@ class CommentsController extends Controller
 
             if ($comment->save()) {
                 return redirect()->back()
-                    ->with(['message' => __('messges.offer_updated_success'), 'type' => 'alert-success']);
+                    ->with(['message' => __('message.offer_updated_success'), 'type' => 'alert-success']);
             } else
-                return back()->with(['message' => __('messges.update_failed_message'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('message.update_failed_message'), 'type' => 'alert-danger']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('messges.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return back()->with(['message' => __('messges.update_failed_message'), 'type' => 'alert-danger']);
+            return back()->with(['message' => __('message.update_failed_message'), 'type' => 'alert-danger']);
         }
     }
 }

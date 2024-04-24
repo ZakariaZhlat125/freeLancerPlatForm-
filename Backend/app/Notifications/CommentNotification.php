@@ -10,13 +10,14 @@ use Illuminate\Notifications\Notification;
 class CommentNotification extends Notification
 {
     use Queueable;
+    protected $data;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -26,7 +27,7 @@ class CommentNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -34,10 +35,11 @@ class CommentNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+        $message =  __('notification.comment_reply', ['name' => $this->data['name']]);
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line($message)
+            ->action('دعني اراها', $this->data['url'])
+            ->line('شكرا');
     }
 
     /**
@@ -45,10 +47,31 @@ class CommentNotification extends Notification
      *
      * @return array<string, mixed>
      */
+
+    public function toDatabase(object $notifiable): array
+    {
+        return [
+            'name' => $this->data['name'],
+            'post_title' => $this->data['post_title'],
+            'url' => $this->data['url'],
+            'type' => 'comment',
+            'message' => $this->data['message'],
+            'userId' => $this->data['userId']
+        ];
+    }
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'id' => $this->id,
+            'read_at' => null,
+            'data' => [
+                'name' => $this->data['name'],
+                'post_title' => $this->data['post_title'],
+                'url' => $this->data['url'],
+                'type' => 'comment',
+                'messsges' => $this->data['message'],
+                'userId' => $this->data['userId'],
+            ]
         ];
     }
 }

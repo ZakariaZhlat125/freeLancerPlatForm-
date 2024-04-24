@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Messages;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -26,29 +27,60 @@ class Show extends Component
         ]);
     }
 
-    public function mountComponent() {
-        if (auth()->user()->is_active == false) {
-            $this->messages = \App\Models\Messages::where('user_id', auth()->id())
-                                                    ->orWhere('receiver', auth()->id())
-                                                    ->orderBy('id', 'DESC')
-                                                    ->get();
-        } else {
-            $this->messages = \App\Models\Messages::where('user_id', $this->sender->id)
-                                                    ->orWhere('receiver', $this->sender->id)
-                                                    ->orderBy('id', 'DESC')
-                                                    ->get();
-        }
-        $not_seen = \App\Models\Messages::where('user_id', $this->sender->id)->where('receiver', auth()->id());
-        $not_seen->update(['is_seen' => true]);
-    }
+    // public function mountComponent()
+    // {
+    //     if (auth()->user()->is_active == false) {
+    //         $this->messages = Messages::where('user_id', auth()->id())
+    //             ->orWhere('receiver', auth()->id())
+    //             ->orderBy('id', 'DESC')
+    //             ->get();
+    //     } else {
+    //         $this->messages = Messages::where('user_id', $this->sender->id)
+    //             ->orWhere('receiver', $this->sender->id)
+    //             ->orderBy('id', 'DESC')
+    //             ->get();
+    //     }
+    //     $not_seen = Messages::where('user_id', $this->sender->id)->where('receiver', auth()->id());
+    //     $not_seen->update(['is_seen' => true]);
+    // }
+
+    // public function mount()
+    // {
+    //     return $this->mountComponent();
+    // }
+
 
     public function mount()
     {
-        return $this->mountComponent();
+        $this->loadMessages();
     }
 
-    public function SendMessage() {
-        $new_message = new \App\Models\Messages();
+    public function loadMessages()
+    {
+        if (auth()->user()->is_active == false) {
+            $this->messages = Messages::where('user_id', auth()->id())
+                ->orWhere('receiver', auth()->id())
+                ->orderBy('id', 'DESC')
+                ->get();
+        } else {
+            $this->messages = Messages::where('user_id', $this->sender->id)
+                ->orWhere('receiver', $this->sender->id)
+                ->orderBy('id', 'DESC')
+                ->get();
+        }
+
+        $this->markMessagesAsSeen();
+    }
+    public function markMessagesAsSeen()
+    {
+        // dd('test');
+        $not_seen =Messages::where('user_id', $this->sender->id)->where('receiver', auth()->id());
+        $not_seen->update(['is_seen' => true]);
+    }
+    public function SendMessage()
+    {
+
+        $new_message = new Messages();
         $new_message->message = $this->message;
         $new_message->user_id = auth()->id();
         $new_message->receiver = $this->sender->id;
@@ -71,11 +103,13 @@ class Show extends Component
         $this->reset('file');
     }
 
-    public function uploadFile() {
+    public function uploadFile()
+    {
         $file = $this->file->store('public/files');
         $path = url(Storage::url($file));
         $file_name = $this->file->getClientOriginalName();
         return [$path, $file_name];
     }
-
 }
+
+

@@ -21,6 +21,8 @@ class NotificationController extends Controller
     function addcommentNotificatoin($post_id)
     {
 
+
+
         try {
             $postOwner = User::select(
                 'posts.id',
@@ -67,6 +69,8 @@ class NotificationController extends Controller
 
     function AcceptOffersNotification($projects)
     {
+
+        dd('test');
         $providerNotify = User::find($projects->provider_id);
         $data = [
             'project_id' => $projects->project_id,
