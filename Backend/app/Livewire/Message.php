@@ -36,21 +36,21 @@ class Message extends Component
     public function mountComponent()
     {
 
-        if (auth()->user()->is_active == false) {
-            $this->messages = Messages::where('user_id', auth()->id())
-                ->orWhere('receiver', auth()->id())
-                ->orderBy('id', 'DESC')
-                ->get();
-        } else {
-            $this->messages = Messages::where('user_id', $this->clicked_user)
-                ->orWhere('receiver', $this->clicked_user)
-                ->orderBy('id', 'DESC')
-                ->get();
-        }
-        $this->admin = User::where('is_active', true)->first();
+        // if (auth()->user()->is_active == false) {
+        //     $this->messages = Messages::where('user_id', auth()->id())
+        //         ->orWhere('receiver', auth()->id())
+        //         ->orderBy('id', 'DESC')
+        //         ->get();
+        // } else {
+        //     $this->messages = Messages::where('user_id', $this->clicked_user)
+        //         ->orWhere('receiver', $this->clicked_user)
+        //         ->orderBy('id', 'DESC')
+        //         ->get();
+        // }
+        // $this->admin = User::where('is_active', true)->first();
     }
 
-    public function SendMessage()
+    public function sendMessage()
     {
 
         $new_message = new Messages();
@@ -76,6 +76,8 @@ class Message extends Component
         // $this->reset(['message']);
         $this->file = '';
     }
+
+
 
     public function getUser($user_id)
     {

@@ -171,6 +171,8 @@ class AuthController extends Controller
     ///////////////// check account in  hogin page //////////////////
     public function login(Request $request)
     {
+
+       
         FacadesValidator::validate($request->all(), [
             'email' => ['email', 'required'],
             'user_pass' => ['required']

@@ -29,7 +29,11 @@ class Project extends Component
             ->join('profiles as reportesr', 'reportesr.user_id', '=', 'projects.seeker_id')
             ->join('profiles as reporteds', 'reporteds.user_id', '=', 'projects.provider_id')
             ->join('posts', 'posts.id', '=', 'projects.post_id')
-            ->where('posts.is_active', 1)->get();
+            // ->where('posts.is_active', 1)
+            ->get();
+
+
+
         } else {
             $this->project = Project::select(
                 'projects.id',
@@ -57,4 +61,5 @@ class Project extends Component
         }
         return view('livewire.projects');
     }
+
 }

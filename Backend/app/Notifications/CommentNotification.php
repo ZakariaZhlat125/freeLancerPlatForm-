@@ -35,6 +35,7 @@ class CommentNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+
         $message =  __('notification.comment_reply', ['name' => $this->data['name']]);
         return (new MailMessage)
             ->line($message)
@@ -49,7 +50,7 @@ class CommentNotification extends Notification
      */
 
     public function toDatabase(object $notifiable): array
-    {
+    { 
         return [
             'name' => $this->data['name'],
             'post_title' => $this->data['post_title'],

@@ -94,7 +94,7 @@
                                         <div class="inline-block bg-gray rounded-full p-2 px-6 text-gray-700">
                                             <span>{{ $message->message }}</span>
                                         </div>
-                                        @if (isPhoto($message->file))
+                                        {{-- @if (isPhoto($message->file))
                                             <div class="w-100 my-2">
                                                 <img class="img-fluid rounded" loading="lazy" style="height: 250px"
                                                     src="{{ $message->file }}">
@@ -112,7 +112,7 @@
                                                     {{ $message->file_name }}
                                                 </a>
                                             </div>
-                                        @endif
+                                        @endif --}}
                                         <div class="pl-4"><small
                                                 class="text-gray-500">{{ $message->created_at }}</small>
                                         </div>
@@ -182,7 +182,7 @@
                                         </label>
 
                                     </div>
-                                @endif 
+                                @endif
                                 <div class="flex-1">
                                     <button class="bg-blue-400 w-10 h-10 rounded-full inline-block">
                                         <span class="inline-block align-text-bottom">

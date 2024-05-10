@@ -13,17 +13,16 @@ use App\Notifications\MarkAsRejectReceviceNotification;
 use App\Notifications\RejectProjectNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Pusher\Pusher;
 
 class NotificationController extends Controller
 {
     //
-    function addcommentNotificatoin($post_id)
+    public function addcommentNotification($post_id)
     {
-
-
-
-        try {
+        // try {
+            // Fetch necessary data
             $postOwner = User::select(
                 'posts.id',
                 'posts.title',
@@ -34,7 +33,7 @@ class NotificationController extends Controller
                 ->first();
 
             $user = User::join('profiles', 'profiles.user_id', 'users.id')->where('id', $postOwner->userid)->first();
-            return response()->json($user);
+
             $data = [
                 'name' =>  $user->name,
                 'post_title' => $postOwner->title,
@@ -42,29 +41,19 @@ class NotificationController extends Controller
                 'url' => url('posts/details/' . $postOwner->id),
                 'userId' => $postOwner->userid
             ];
+            dd('test');
 
+            // Send notification
+            Notification::send($user, new CommentNotification($data));
 
-            $options = array(
-                'cluster' => env('PUSHER_APP_CLUSTER'),
-                'encrypted' => true
-            );
-            $pusher = new Pusher(
-                env('PUSHER_APP_KEY'),
-                env('PUSHER_APP_SECRET'),
-                env('PUSHER_APP_ID'),
-                $options
-            );
-
-
-            $user->notify(new CommentNotification($data));
-            $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
-        } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => 'لقد استغرت العمليه اطول من الوقت المحدد لها ', 'type' => 'alert-success']);
-        } catch (\Throwable $th) {
-            //throw $th;
-            return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
-        }
+            return response()->json($user); // Consider what response to return upon success
+        // } catch (\Illuminate\Http\Client\ConnectionException $e) {
+        //     // Handle exceptions
+        // } catch (\Throwable $th) {
+        //     // Handle exceptions
+        // }
     }
+
 
 
     function AcceptOffersNotification($projects)

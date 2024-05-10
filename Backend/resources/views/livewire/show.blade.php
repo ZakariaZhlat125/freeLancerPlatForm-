@@ -40,16 +40,6 @@
                                     </div>
                                 @endif
                             </div>
-                            {{--
-                    <!-- <div class="flex-2 text-right">
-                                                    <div><small class="text-gray-500">15 April</small></div>
-                                                    <div>
-                                                        <small class="text-xs bg-red-500 text-white rounded-full h-6 w-6 leading-6 text-center inline-block">
-                                                            23
-                                                        </small>
-                                                    </div>
-                                                </div> -->
-                    --}}
                         </div>
                     </a>
                 @endforeach
@@ -63,7 +53,7 @@
             </h2>
         </div>
         <div class="messages flex-1 flex flex-col flex-col-reverse overflow-auto scrollbar" id="style-7"
-            dir="ltr" wire:poll.10ms="mountComponent()">
+            dir="ltr">
             @if (filled($messages))
                 @foreach ($messages as $message)
                     <div class="message mb-4 flex @if ($message->user_id !== auth()->id()) received @else sent @endif">
@@ -73,7 +63,7 @@
                                     class="inline-block bg-primary-blue text-primary-light-gray rounded-full p-2 px-6 text-gray-700">
                                     <span>{{ $message->message }}</span>
                                 </div>
-                                @if (isPhoto($message->file))
+                                {{-- @if (isPhoto($message->file))
                                     <div class="w-100 my-2">
                                         <img class="img-fluid rounded" loading="lazy" style="height: 250px"
                                             src="{{ $message->file }}" />
@@ -91,7 +81,7 @@
                                             {{ $message->file_name }}
                                         </a>
                                     </div>
-                                @endif
+                                @endif --}}
                                 <div class="pl-4">
                                     <small class="text-gray-500">{{ $message->created_at }}</small>
                                 </div>
@@ -101,7 +91,7 @@
                                 <div class="inline-block bg-primary-light-gray rounded-full p-2 px-6 text-gray-700">
                                     <span>{{ $message->message }}</span>
                                 </div>
-                                @if (isPhoto($message->file))
+                                {{-- @if (isPhoto($message->file))
                                     <div class="w-100 my-2">
                                         <img class="img-fluid rounded" loading="lazy" style="height: 250px"
                                             src="{{ $message->file }}" />
@@ -119,7 +109,7 @@
                                             {{ $message->file_name }}
                                         </a>
                                     </div>
-                                @endif
+                                @endif --}}
                                 <div class="pl-4">
                                     <small class="text-gray-500">{{ $message->created_at }}</small>
                                 </div>
@@ -127,28 +117,15 @@
                         @endif
                     </div>
 
-                    {{--
-            <div class="message me mb-4 flex text-right">
-                <div class="flex-1 px-2">
-                    <div
-                        class="inline-block bg-gray rounded-full p-2 px-6 text-white"
-                    >
-                        <span>It's like a dream come true</span>
-                    </div>
-                    <div class="pr-4">
-                        <small class="text-gray-500">15 April</small>
-                    </div>
-                </div>
-            </div>
-            --}}
                 @endforeach
             @else
                 {{ __('static.chat_no_messages') }}
             @endif
         </div>
         <div class="flex-2 pt-4 pb-10">
-            <form wire:submit.prevent="SendMessage" enctype="multipart/form-data">
-                <div wire:loading wire:target="SendMessage">
+            <form  method="POST" action="{{ route('sendMessage', $sender) }}" >
+                @csrf
+                <div wire:loading wire:target="sendMessage">
                     Sending message . . .
                 </div>
                 <div wire:loading wire:target="file">Uploading file . . .</div>
@@ -174,7 +151,7 @@
                         </span>
                     </div>
                     <div class="flex-1">
-                        <textarea name="message" wire:model="message" class="w-full block outline-none py-4 px-4 bg-transparent" rows="1"
+                        <textarea name="message" class="w-full block outline-none py-4 px-4 bg-transparent" rows="1"
                             placeholder="Type a message..." autofocus @if (!$file) required @endif></textarea>
                     </div>
                     <div class="flex-2 w-32 p-2 flex content-center items-center">

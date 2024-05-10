@@ -257,7 +257,7 @@
                                                     class="hidden bg-black border-2 -top-16  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
 
                                                     {{ __('static.logout') }}
-                                            
+
                                                 </div>
                                                 @if (request()->segment(2) == 'logout')
                                                     <ion-icon name="log-out"
@@ -423,6 +423,7 @@
     </script>
 
     @livewireScripts
+    
 
     @stack('scripts')
 

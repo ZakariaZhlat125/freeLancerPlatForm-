@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Messages;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -54,30 +55,37 @@ class Show extends Component
     {
         $this->loadMessages();
     }
-
     public function loadMessages()
     {
-        if (auth()->user()->is_active == false) {
-            $this->messages = Messages::where('user_id', auth()->id())
-                ->orWhere('receiver', auth()->id())
-                ->orderBy('id', 'DESC')
-                ->get();
-        } else {
-            $this->messages = Messages::where('user_id', $this->sender->id)
-                ->orWhere('receiver', $this->sender->id)
-                ->orderBy('id', 'DESC')
-                ->get();
-        }
 
+        $id = $this->sender;
+;
+        $this->messages = Messages::where(function ($query) use ($id) {
+            $query->where('user_id', auth()->id())->where('receiver', $id);
+        })->orWhere(function ($query) use ($id) {
+            $query->where('user_id', $id)->where('receiver', auth()->id());
+        })->orderBy('created_at', 'ASC')->get();
+
+        dump(['sender' => $this->sender, 'loggedInUserId' => auth()->id(), 'messages' =>$this->messages ]);
+        // Retrieve all active users except the logged-in user and the sender
+        $this->users = User::where('is_active', true)
+            ->where('id', '!=', auth()->id())
+            ->where('id', '!=', $this->sender)
+            ->orderBy('id', 'ASC')
+            ->get();
+
+        // Mark messages as seen
         $this->markMessagesAsSeen();
     }
+
+
     public function markMessagesAsSeen()
     {
         // dd('test');
-        $not_seen =Messages::where('user_id', $this->sender->id)->where('receiver', auth()->id());
+        $not_seen = Messages::where('user_id', $this->sender->id)->where('receiver', auth()->id());
         $not_seen->update(['is_seen' => true]);
     }
-    public function SendMessage()
+    public function sendMessage()
     {
 
         $new_message = new Messages();
@@ -111,5 +119,3 @@ class Show extends Component
         return [$path, $file_name];
     }
 }
-
-

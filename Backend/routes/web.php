@@ -134,13 +134,6 @@ Route::group([], function () {
     // check if the user is login in
     Route::group(['middleware' => ['auth', 'role:provider|seeker']], function () {
 
-
-
-
-
-
-
-
         // ----------------------------------------------------------------
         // user must be vaild
         // ----------------------------------------------------------------
@@ -238,6 +231,8 @@ Route::group([], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/inbox', [ChatController::class, 'index'])->name('inbox.index');
         Route::get('/inbox/{id}', [ChatController::class, 'show'])->name('inbox.show');
+        Route::post('/send-message/{sender}', [ChatController::class, 'sendMessage'])->name('sendMessage');
+
     });
 
 

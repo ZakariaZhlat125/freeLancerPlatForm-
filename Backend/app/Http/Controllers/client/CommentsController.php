@@ -71,20 +71,9 @@ class CommentsController extends Controller
                 ];
 
 
-                $options = array(
-                    'cluster' => env('PUSHER_APP_CLUSTER'),
-                    'encrypted' => true
-                );
-                $pusher = new Pusher(
-                    env('PUSHER_APP_KEY'),
-                    env('PUSHER_APP_SECRET'),
-                    env('PUSHER_APP_ID'),
-                    $options
-                );
 
 
-                $user->notify(new CommentNotification($data));
-                $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
+                // $user->notify(new CommentNotification($data));
 
                 return redirect()->back()
                     ->with(['message' => __('message.offer_added_success'), 'type' => 'alert-success']);
