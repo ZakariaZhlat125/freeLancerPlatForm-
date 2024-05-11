@@ -85,7 +85,7 @@ class ControllPannelController extends Controller
 
         );
         return redirect()->route('profile')
-            ->with(['message' => __('message.personal_info_updated_success'), 'type' => 'alert-success']);
+            ->with(['message' => __('messages.personal_info_updated_success'), 'type' => 'alert-success']);
         // } else {
         //     return redirect()->back()
         //         ->with(['message' => 'يرجى تحديد نوع الحساب رجاء', 'type' => 'alert-danger']);

@@ -44,8 +44,8 @@ class SkillController extends Controller
 
         if ($skill->save())
             return redirect()->route('list_skills')
-                ->with(['message' => __('message.skill_added_success'), 'type' => 'alert-success']);
-        return back()->with(['message' => __("message.add_failed_message"), 'type' => 'alert-danger']);
+                ->with(['message' => __('messages.skill_added_success'), 'type' => 'alert-success']);
+        return back()->with(['message' => __("messages.add_failed_message"), 'type' => 'alert-danger']);
     }
 
 
@@ -64,8 +64,8 @@ class SkillController extends Controller
         $skill->is_active = $request->is_active;
 
         if ($skill->save())
-            return redirect()->route('list_skills')->with(['message' => __("message.update_skill_success"), 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' => __("message.update_failed_message"), 'type' => 'alert-danger']);
+            return redirect()->route('list_skills')->with(['message' => __("messages.update_skill_success"), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' => __("messages.update_failed_message"), 'type' => 'alert-danger']);
     }
 
 
@@ -75,9 +75,9 @@ class SkillController extends Controller
         $skill->is_active *= -1;
         if ($skill->save())
             if ($skill->is_active == -1)
-                return back()->with(['message' => __('message.skill_disabled_success'), 'type' => 'alert-success']);
+                return back()->with(['message' => __('messages.skill_disabled_success'), 'type' => 'alert-success']);
             else
-                return back()->with(['message' => __('message.skill_enabled_success'), 'type' => 'alert-success']);
-        return back()->with(['message' =>  __("message.delete_failed_message"), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.skill_enabled_success'), 'type' => 'alert-success']);
+        return back()->with(['message' =>  __("messages.delete_failed_message"), 'type' => 'alert-danger']);
     }
 }

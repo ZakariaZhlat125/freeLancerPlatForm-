@@ -1,8 +1,10 @@
 <?php
 
-if (!function_exists('isPhoto')) 
+use App\Http\Controllers\client\ChatController;
+
+if (!function_exists('isPhoto'))
 {
-    function isPhoto($path) 
+    function isPhoto($path)
     {
         // Get the file extension from the path
         $exploded = explode('.', $path);
@@ -17,9 +19,9 @@ if (!function_exists('isPhoto'))
     }
 }
 
-if (!function_exists('isVideo')) 
+if (!function_exists('isVideo'))
 {
-    function isVideo($path) 
+    function isVideo($path)
     {
         // Get the file extension from the path
         $exploded = explode('.', $path);
@@ -31,5 +33,14 @@ if (!function_exists('isVideo'))
             return true;
         }
         return false;
+    }
+}
+
+
+if(!function_exists('countMessages'))
+{
+    function countMessages()
+    {
+        return app(ChatController::class)->countMessages();
     }
 }

@@ -34,7 +34,7 @@ class ContactController extends Controller
 
         return redirect()->back()
 
-        ->with(['message' => __('message.thank_you') ,'type' => 'alert-success']);
+        ->with(['message' => __('messages.thank_you') ,'type' => 'alert-success']);
 
     }
 }

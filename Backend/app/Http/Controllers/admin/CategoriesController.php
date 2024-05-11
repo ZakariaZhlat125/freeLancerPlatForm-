@@ -49,10 +49,10 @@ class CategoriesController extends Controller
 
         if ($cat->save())
             if ($cat->is_active == -1)
-                return back()->with(['message' => __('message.department_disabled_message'), 'type' => 'alert-success']);
+                return back()->with(['message' => __('messages.department_disabled_message'), 'type' => 'alert-success']);
             else
-                return back()->with(['message' => __('message.department_enabled_message'), 'type' => 'alert-success']);
-        return back()->with(['message' => __('message.delete_failed_message'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.department_enabled_message'), 'type' => 'alert-success']);
+        return back()->with(['message' => __('messages.delete_failed_message'), 'type' => 'alert-danger']);
     }
 
     public function store(Request $request)
@@ -70,8 +70,8 @@ class CategoriesController extends Controller
         $new_cat->is_active = $request->is_active;
 
         if ($new_cat->save())
-            return redirect()->route('list_categories')->with(['message' => __('message.department_added_success'), 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-danger']);
+            return redirect()->route('list_categories')->with(['message' => __('messages.department_added_success'), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' => __('messages.add_failed_message'), 'type' => 'alert-danger']);
     }
 
 
@@ -83,7 +83,7 @@ class CategoriesController extends Controller
         $cat->is_active = $request->is_active;
 
         if ($cat->save())
-            return redirect()->route('list_categories')->with(['message' => __('message.update_success'), 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' =>  __('message.update_failed_message'), 'type' => 'alert-danger']);
+            return redirect()->route('list_categories')->with(['message' => __('messages.update_success'), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' =>  __('messages.update_failed_message'), 'type' => 'alert-danger']);
     }
 }

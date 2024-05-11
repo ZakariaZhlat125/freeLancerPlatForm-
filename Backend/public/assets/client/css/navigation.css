@@ -146,3 +146,18 @@
     color: black;
 }
 /* ============= /Image avatar of nav ========= */
+
+/* notification */
+.notififcationCount {
+    background-color: red;
+    font-size: 12px;
+    color: white;
+    padding: 0 8px;
+    /* border: 1px solid transparent; */
+    border-radius: 100px;
+}
+
+
+.right-notification {
+    /* right: 5px; */
+}

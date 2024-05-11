@@ -204,12 +204,12 @@ class postController extends Controller
                     }
 
                 return redirect('/posts/details/' . $post->id)
-                    ->with(['message' => __('message.project.add_success'), 'type' => 'alert-success']);
+                    ->with(['message' => __('messages.project.add_success'), 'type' => 'alert-success']);
             } else
-                return back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.add_failed_message'), 'type' => 'alert-danger']);
         } catch (Expectation   $th) {
             // throw $th;
-            return back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messages.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
 
@@ -265,10 +265,10 @@ class postController extends Controller
             // return response()->json($projects);
             return view('client.post.myProject')->with('projects', $project);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (Expectation   $th) {
             // throw $th;
-            return back()->with(['message' => __('message.error_occurred'), 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messages.error_occurred'), 'type' => 'alert-danger']);
         }
     }
 
@@ -312,14 +312,14 @@ class postController extends Controller
 
 
                 return redirect()->route('myProject')
-                    ->with(['message' => __('message.project.update_success'), 'type' => 'alert-success']);
+                    ->with(['message' => __('messages.project.update_success'), 'type' => 'alert-success']);
             } else
-                return back()->with(['message' => __('message.update_failed_message'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.update_failed_message'), 'type' => 'alert-danger']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (Expectation   $th) {
             // throw $th;
-            return back()->with(['message' => __('message.update_failed_message'), 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messages.update_failed_message'), 'type' => 'alert-danger']);
         }
     }
 
@@ -331,7 +331,7 @@ class postController extends Controller
         $post = Posts::find($post_id);
         $post->is_active *= -1;
         if ($post->save())
-            return redirect()->route('myProject')->with(['message' =>__('message.project.delete_success') , 'type' => 'alert-success']);
-        return back()->with(['message' => __('message.delete_failed_message'), 'type' => 'alert-danger']);
+            return redirect()->route('myProject')->with(['message' =>__('messages.project.delete_success') , 'type' => 'alert-success']);
+        return back()->with(['message' => __('messages.delete_failed_message'), 'type' => 'alert-danger']);
     }
 }

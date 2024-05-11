@@ -41,12 +41,12 @@ class ForgotPasswordController extends Controller
                 $message->subject('اشعار استعادة  رمز الدخول');
                 $message->from('kalefnyinfo@gmail.com', 'متاح');
             });
-            $message =  ['message' =>__('message.email_verification_sent')  , 'type' => 'alert-success'];
+            $message =  ['message' =>__('messages.email_verification_sent')  , 'type' => 'alert-success'];
 
             return redirect()->route('login')->with($message);
         } catch (\Throwable $th) {
             //throw $th;
-            return back()->with('message', __('message.error_occurred'));
+            return back()->with('message', __('messages.error_occurred'));
         }
     }
 }

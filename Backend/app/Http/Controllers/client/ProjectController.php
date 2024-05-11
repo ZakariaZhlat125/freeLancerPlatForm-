@@ -121,10 +121,10 @@ class ProjectController extends Controller
             //     return redirect()->route('profile')->with(['message' => 'انت لمن تعد مصرح له بالدخول لهذه الصفحه ', 'type' => 'alert-danger']);
             // }
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messages.add_failed_message'), 'type' => 'alert-success']);
         } catch (\Exception $th) {
             //throw $th;
-            return redirect()->route('profile')->with(['message' => __('message.access.unauthorized'), 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __('messages.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
 
@@ -179,11 +179,11 @@ class ProjectController extends Controller
 
 
             // return response()->json($seekerNotify);
-            return redirect()->route('profile')->with(['message' => __('message.acceptance_message_sent'), 'type' => 'alert-success']);
+            return redirect()->route('profile')->with(['message' => __('messages.acceptance_message_sent'), 'type' => 'alert-success']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('profile')->with(['message' => __("message.access.unauthorized"), 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __("messages.access.unauthorized"), 'type' => 'alert-danger']);
         }
     }
 
@@ -214,11 +214,11 @@ class ProjectController extends Controller
             $notify = new NotificationController();
             $notify->rejectProjectNotifiction($project);
 
-            return redirect()->route('profile')->with(['message' => __("message.rejection_message_sent"), 'type' => 'alert-success']);
+            return redirect()->route('profile')->with(['message' => __("messages.rejection_message_sent"), 'type' => 'alert-success']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('profile')->with(['message' => __("message.access.unauthorized"), 'type' => 'alert-danger']);
+            return redirect()->route('profile')->with(['message' => __("messages.access.unauthorized"), 'type' => 'alert-danger']);
         }
     }
 

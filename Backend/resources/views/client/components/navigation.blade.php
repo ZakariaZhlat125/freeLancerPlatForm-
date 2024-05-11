@@ -32,14 +32,14 @@
                 <ul class="flex flex-col md:flex-row gap-x-4 ">
                     <li class="nav_item font-sm cursor-pointer {{ request()->segment(2) == '' ? 'active_link' : '' }}">
                         <a href="{{ route('home') }}">
-                              {{ __('static.Home') }}
+                            {{ __('static.Home') }}
                         </a>
                     </li>
 
                     <li
                         class="nav_item font-sm cursor-pointer {{ request()->segment(2) == 'posts' ? 'active_link' : '' }}">
                         <a href="{{ route('projectlancer') }}">
-                             {{ __('static.Available_projects') }}
+                            {{ __('static.Available_projects') }}
 
                         </a>
                     </li>
@@ -66,7 +66,7 @@
                     </a>
                     <a href="{{ route('create_user') }}" class="mo-btn btn-light-pink-rounderd">
                         {{ __('static.new_account') }}
-                
+
                     </a>
 
                 </div>
@@ -79,13 +79,14 @@
                             <span id='notify-mark'
                                 class=" hidden w-3 h-3 bg-primary-pink left-2 rounded-full absolute"></span></span>
                     </button>
+                    {{-- @if (session()->get('lang') == 'en') --}}
                     <div x-show="open" x-transition:enter="transition ease-out duration-100"
                         x-transition:enter-start="transform opacity-0 scale-95"
                         x-transition:enter-end="transform opacity-100 scale-100"
                         x-transition:leave="transition ease-in duration-75"
                         x-transition:leave-start="transform opacity-100 scale-100"
                         x-transition:leave-end="transform opacity-0 scale-95"
-                        class="absolute left-0 w-full mt-2 origin-top-right  rounded-md shadow-lg z-50 md:w-96"
+                        class="absolute {{ session()->get('lang') == 'en' ? 'right-0' : 'left-0' }} w-full mt-2 origin-top-right  rounded-md shadow-lg z-50 md:w-96"
                         style='z-index: 19999;'>
                         <div class="px-2 py-2 bg-white rounded-md shadow " id='notify'>
                             @foreach (auth()->user()->unreadNotifications as $notification)
@@ -99,7 +100,13 @@
                 </div>
                 <a class="flex items-center px-3 py-1 mt-2 text-lg font-semibold text-primary rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="{{ route('inbox.index') }}">
-                    <i class="fas fa-envelope text-white"></i>
+                    <i class="fas fa-envelope text-white "></i>
+                    @php
+                        $unreadMessageCount = countMessages();
+                    @endphp
+                    @if ($unreadMessageCount > 0)
+                        <span class=" notififcationCount">{{ $unreadMessageCount }}</span>
+                    @endif
                 </a>
             @endif
 

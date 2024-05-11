@@ -17,7 +17,9 @@ class ChatController extends Controller
     public function index()
     {
         // Show just the users and not the admins as well
-        $users = User::where('is_active', true)->where('last_activity', '!=', '')
+        $users = User::where('is_active', true)
+            ->where('last_activity', '!=', '')
+            ->where('id', '!=', auth()->id())
             ->get();
 
         if (auth()->user()->is_active == true) {
@@ -36,12 +38,6 @@ class ChatController extends Controller
     {
         $sender = User::findOrFail($id);
 
-        // Ensure the sender is active
-        // if (!$sender->is_active) {
-        //     abort(404);
-        // }
-
-        // Retrieve messages based on the logged-in user and the sender
         $messages = Messages::where(function ($query) use ($id) {
             $query->where('user_id', auth()->id())->where('receiver', $id);
         })->orWhere(function ($query) use ($id) {
@@ -50,10 +46,10 @@ class ChatController extends Controller
 
         // Retrieve all active users
         $users = User::where('is_active', true)
-        ->where('id', '!=', auth()->id())
-        ->where('id', '!=', $id)
-        ->orderBy('id', 'ASC')
-        ->get();
+            ->where('id', '!=', auth()->id())
+            ->where('id', '!=', $id)
+            ->orderBy('id', 'ASC')
+            ->get();
         $this->markMessagesAsSeen($id);
         return view('client.chat.show', [
             'users' => $users,
@@ -64,40 +60,37 @@ class ChatController extends Controller
 
     public function markMessagesAsSeen($id)
     {
-        // dd('test');
         $not_seen = Messages::where('user_id', $id)->where('receiver', auth()->id());
         $not_seen->update(['is_seen' => true]);
     }
 
     public function sendMessage($sender, Request $request)
     {
-        // Validate the request if needed
         $request->validate([
             'message' => 'required|string',
         ]);
 
         $user_id = auth()->user()->id;
-        // if (!auth()->user()->is_active == true) {
-        //     $admin = User::where('is_active', true)->first();
-        //     $this->user_id = $admin->id;
-        // } else {
-        //     $this->user_id = $this->clicked_user->id;
-        // }
-        // Retrieve the message content from the request
         $messageContent = $request->input('message');
 
-        // Save the message to the database or perform any other actions
         Messages::create([
             'message' => $messageContent,
             'user_id' => $user_id,
             'receiver' => $sender
-            // Other fields...
         ]);
 
-        // Optionally, you can return a response
         return redirect()->back()->with('success', 'Message sent successfully');
     }
 
+    public  function countMessages()
+    {
+
+        $user_id = auth()->id();
+        $messages_unseen = Messages::Where(function ($query) use ($user_id) {
+            $query->where('receiver', $user_id);
+        })->where('is_seen', false)->count();
+        return $messages_unseen;
+    }
 
     public function resetFile()
     {

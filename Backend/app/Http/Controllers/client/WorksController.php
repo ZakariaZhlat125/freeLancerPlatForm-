@@ -135,12 +135,12 @@ class WorksController extends Controller
                         }
                     }
                 return redirect()->route('myWorks')
-                    ->with(['message' => __('message.works.add_success'), 'type' => 'alert-success']);
+                    ->with(['message' => __('messages.works.add_success'), 'type' => 'alert-success']);
             } else
-                return back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.add_failed_message'), 'type' => 'alert-danger']);
         } catch (Expectation   $th) {
             // throw $th;
-            return back()->with(['message' =>  __('message.add_failed_message'), 'type' => 'alert-danger']);
+            return back()->with(['message' =>  __('messages.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
 
@@ -168,8 +168,8 @@ class WorksController extends Controller
             $work->main_image = $this->uploadFile($request->file('main_image'));
 
         if ($work->save())
-            return redirect()->route('myWorks')->with(['message' => __("message.works.update_success"), 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' =>  __('message.update_failed_message'), 'type' => 'alert-danger']);
+            return redirect()->route('myWorks')->with(['message' => __("messages.works.update_success"), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' =>  __('messages.update_failed_message'), 'type' => 'alert-danger']);
     }
 
 
@@ -184,11 +184,11 @@ class WorksController extends Controller
 
                 //         return back()->with(['message' => 'تم تعطيل العمل بنجاح', 'type' => 'alert-success']);
                 //     else
-                return redirect()->route('myWorks')->with(['message' =>__('message.works.delete_success'), 'type' => 'alert-success']);
+                return redirect()->route('myWorks')->with(['message' =>__('messages.works.delete_success'), 'type' => 'alert-success']);
             else
-                return back()->with(['message' => __('message.delete_failed_message'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.delete_failed_message'), 'type' => 'alert-danger']);
         } catch (Expectation   $th) {
-            return back()->with(['message' => __('message.delete_failed_message'), 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messages.delete_failed_message'), 'type' => 'alert-danger']);
         }
     }
 

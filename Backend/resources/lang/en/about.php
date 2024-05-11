@@ -1,12 +1,11 @@
 <?php
 return [
 
-
     //////////////////about us//////////////////
 
-    "about_title" => " متاح هي أكبر منصة للعمل الحر في العالم العربي",
-    "about_text" => "منصه ابداعيه تجمع بين اصحاب الاعمال والمطور الحر لتسهيل العمل وضمان الحقوق بجوده عاليه وسهوله",
-    "read_more" => "إقرا اكثر",
-    "team" => "فريقنا",
+    "about_title" => "mutwfer is the largest platform for freelancing in the Arab world",
+    "about_text" => "A creative platform that brings together business owners and freelancers to facilitate work and ensure rights with high quality and ease",
+    "read_more" => "Read more",
+    "team" => "Our Team",
 
 ];

@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'search_keys' => 'كلمات مفتاحية',
-    'majers' => 'التخصص',
-    'job_name' => 'المسمى الوظيفي',
-    'skills' => 'المهارات',
-    'rating' => 'التقييم',
-    'freelancers' => 'المستقلون',
-    'category' => 'التصنيف',
-    'skill' => 'المهارات',
-    'time' => 'مدة التسليم',
-    'balance' => 'الميزانية '
+    'search_keys' => 'Search Keywords',
+    'majers' => 'Specialization',
+    'job_name' => 'Job Title',
+    'skills' => 'Skills',
+    'rating' => 'Rating',
+    'freelancers' => 'Freelancers',
+    'category' => 'Category',
+    'skill' => 'Skills',
+    'time' => 'Delivery Time',
+    'balance' => 'Budget'
 ];

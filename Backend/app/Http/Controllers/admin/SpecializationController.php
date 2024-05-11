@@ -43,10 +43,10 @@ class SpecializationController extends Controller
 
         if ($special->save())
             if ($special->is_active == -1)
-                return back()->with(['message' => __('message.specialization_disabled_success'), 'type' => 'alert-success']);
+                return back()->with(['message' => __('messages.specialization_disabled_success'), 'type' => 'alert-success']);
             else
-                return back()->with(['message' => __('message.specialization_enabled_success'), 'type' => 'alert-success']);
-        return back()->with(['message' => __('message.delete_failed_message'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.specialization_enabled_success'), 'type' => 'alert-success']);
+        return back()->with(['message' => __('messages.delete_failed_message'), 'type' => 'alert-danger']);
     }
 
 
@@ -66,8 +66,8 @@ class SpecializationController extends Controller
         $new_special->is_active = $request->is_active;
 
         if ($new_special->save())
-            return redirect()->route('list_specialization')->with(['message' => __('message.new_department_added_success'), 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' =>  __('message.add_failed_message'), 'type' => 'alert-danger']);
+            return redirect()->route('list_specialization')->with(['message' => __('messages.new_department_added_success'), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' =>  __('messages.add_failed_message'), 'type' => 'alert-danger']);
     }
 
     public function update(Request $request, $special_id)
@@ -78,7 +78,7 @@ class SpecializationController extends Controller
         $special->is_active = $request->is_active;
 
         if ($special->save())
-            return redirect()->route('list_specialization')->with(['message' => __('message.department_updated_success'), 'type' => 'alert-success']);
-        return redirect()->back()->with(['message' => __('message.update_failed_message'), 'type' => 'alert-danger']);
+            return redirect()->route('list_specialization')->with(['message' => __('messages.department_updated_success'), 'type' => 'alert-success']);
+        return redirect()->back()->with(['message' => __('messages.update_failed_message'), 'type' => 'alert-danger']);
     }
 }

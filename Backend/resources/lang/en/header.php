@@ -1,4 +1,4 @@
 <?php
 return [
-    'addProject' => 'أضف مشروع',
+    'addProject' => 'Add Project',
 ];

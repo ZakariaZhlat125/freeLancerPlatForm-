@@ -172,7 +172,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-       
+
         FacadesValidator::validate($request->all(), [
             'email' => ['email', 'required'],
             'user_pass' => ['required']
@@ -193,7 +193,7 @@ class AuthController extends Controller
                 // return redirect()->route('home');
             }
         } else {
-            return redirect()->route('login')->with(['message' =>    __('message.email_password.check'),  'type' => 'alert-danger']);
+            return redirect()->route('login')->with(['message' =>    __('messages.email_password.check'),  'type' => 'alert-danger']);
         }
     }
 
@@ -215,7 +215,7 @@ class AuthController extends Controller
             $user->email_verified_at = Carbon::now()->timestamp;
             $user->save();
             Auth::login($user);
-            return redirect()->route('profile')->with(['message' => __('message.account_activated_message'), 'type' => 'alert-success']);;
+            return redirect()->route('profile')->with(['message' => __('messages.account_activated_message'), 'type' => 'alert-success']);;
         } else
             echo "invalid token";
     }
@@ -246,7 +246,7 @@ class AuthController extends Controller
 
 
         if (!Hash::check($request->old_password, auth()->user()->password)) {
-            return back()->with("error", __('message.password.old_incorrect'));
+            return back()->with("error", __('messages.password.old_incorrect'));
         }
 
 
@@ -256,7 +256,7 @@ class AuthController extends Controller
         ]);
 
 
-        return back()->with("status", __('message.password_changed_message'));
+        return back()->with("status", __('messages.password_changed_message'));
     }
     // end change password
 

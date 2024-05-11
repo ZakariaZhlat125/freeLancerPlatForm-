@@ -1,20 +1,17 @@
 <?php
 return [
-    "Links" => "روابط",
-    "ContactUs"=>" تواصل معنا  ",
-    "aboutus" => "بشأننا",
-    "Services" => "خدماتنا",
-    "text"=>" منصه ابداعيه تجمع بين اصحاب الاعمال والمطور الحر لتسهيل العمل وضمان الحقوق بجوده عاليه وسهوله ",
-    "help"=>"مركز المساعدة",
-    "works"=>"معرض الأعمال",
-
-
+    "Links" => "Links",
+    "ContactUs" => "Contact Us",
+    "aboutus" => "About Us",
+    "Services" => "Our Services",
+    "text" => "A creative platform that brings together business owners and freelancers to facilitate work and ensure rights with high quality and ease.",
+    "help" => "Help Center",
+    "works" => "Portfolio",
 
     //////////////////about us//////////////////
 
-    "about_title" =>" وكلني هو أكبر منصة للعمل الحر في العالم العربي",
-    "about_text" =>"يعمل مستقل على وصل الشركات وأصحاب المشاريع بأفضل المستقلين المحترفين لمساعدتهم على تنفيذ أفكارهم ومشاريعهم، وفي الوقت نفسه يتيح للمستقلين مكانا لإيجاد مشاريع يعملون عليها وزيادة مصادر دخلهم.",
-    "read_more" => "إقرا اكثر",
-    "team" => "فريقنا",
-
+    "about_title" => "And each is the largest platform for freelancing in the Arab world",
+    "about_text" => "A freelancer connects companies and project owners with the best professional freelancers to help them execute their ideas and projects, while at the same time providing freelancers with a place to find projects to work on and increase their sources of income.",
+    "read_more" => "Read More",
+    "team" => "Our Team",
 ];

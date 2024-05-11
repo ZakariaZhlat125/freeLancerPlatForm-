@@ -55,12 +55,12 @@ return [
     // profile
     'profile.type' => 'Profile type',
     'category' => 'category',
-    'job_title'=>'Job Title',
+    'job_title' => 'Job Title',
     'bio' => "Bio",
-    'video'=>'Video',
-    'profile.Personal_Info'=> " Personal Info",
-    'profile.skills'=>'Skills',
-    'profile.wallet'=>'Wallet',
+    'video' => 'Video',
+    'profile.Personal_Info' => " Personal Info",
+    'profile.skills' => 'Skills',
+    'profile.wallet' => 'Wallet',
     //chat
     "chat_desc" => "Select a user to start chatting with",
     "chat_online" => "We Are Online",

@@ -66,10 +66,10 @@ class ProfileController extends Controller
                 $findSkill = UserSkills::where('user_id', Auth::id())->where('skill_id', $value)->get();
 
                 if ($findSkill->isEmpty()) {
-                    $message = ['message' => __('message.skill_added_success'), 'type' => 'alert-success'];
+                    $message = ['message' => __('messages.skill_added_success'), 'type' => 'alert-success'];
                     UserSkills::insert(['skill_id' => $value, 'user_id' => Auth::id()]);
                 } else {
-                    $message = ['message' => __('message.skill_already_exists'), 'type' => 'alert-danger'];
+                    $message = ['message' => __('messages.skill_already_exists'), 'type' => 'alert-danger'];
                 }
 
                 print_r(['skill_id' => $value, 'user_id' => Auth::id()]);
@@ -83,7 +83,7 @@ class ProfileController extends Controller
     {
         $skill = UserSkills::where(['skill_id' => $skill_id, 'user_id' => Auth::id()])->delete();
 
-        return redirect()->back()->with(['message' => __('message.skill_deleted_success'), 'type' => 'alert-danger']);
+        return redirect()->back()->with(['message' => __('messages.skill_deleted_success'), 'type' => 'alert-danger']);
     }
 
 
@@ -153,10 +153,10 @@ class ProfileController extends Controller
 
             ]);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
             throw $th;
-            return back()->with(['message' => __('message.add_failed_message'), 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messages.add_failed_message'), 'type' => 'alert-danger']);
         }
     }
 }

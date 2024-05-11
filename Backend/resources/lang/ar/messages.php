@@ -24,7 +24,7 @@ return [
     'accept_request_failed' => 'فشلت عملية قبول الطلب!! أعد المحاولة.',
     'update_success' => 'تم التعديل بنجاح.',
     'password_changed_success' => 'تم تغيير كلمة المرور بنجاح.',
-    'comment_added' => ':provider قام بإضافة تعليق على مشروعك :title',
+    'comment_added' => ':provider  بإضافة تعليق على مشروعك :title قام',
     'offer_added_success' => 'تم اضافة عرضك  بنجاح',
     'offer_updated_success' => 'تم تعديل عرضك  بنجاح',
     'thank_you' => 'شكرا لتواصلك معنا',

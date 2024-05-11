@@ -47,13 +47,13 @@ class MyWorkOnProjectController extends Controller
                 ->get();
             // return response()->json($data);
             if (empty($data)) {
-                return back()->with(['message' => __('message.page_not_found'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.page_not_found'), 'type' => 'alert-danger']);
             } else
                 return view('client.projects.myProjects')->with('data', $data);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Exception $th) {
-            return back()->with(['message' =>  __('message.page_not_found'), 'type' => 'alert-danger']);
+            return back()->with(['message' =>  __('messages.page_not_found'), 'type' => 'alert-danger']);
         }
     }
 
@@ -83,13 +83,13 @@ class MyWorkOnProjectController extends Controller
                 ->get();
             // return response()->json($data);
             if (empty($data)) {
-                return back()->with(['message' => __('message.page_not_found'), 'type' => 'alert-danger']);
+                return back()->with(['message' => __('messages.page_not_found'), 'type' => 'alert-danger']);
             } else
                 return view('client.projects.myProjects')->with('data', $data);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' =>  __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' =>  __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Exception $th) {
-            return back()->with(['message' => __('message.page_not_found'), 'type' => 'alert-danger']);
+            return back()->with(['message' => __('messages.page_not_found'), 'type' => 'alert-danger']);
         }
     }
 
@@ -128,9 +128,9 @@ class MyWorkOnProjectController extends Controller
             // return response()->json($project);
             return back()->with(['message' => 'تم تسليم المشروع رجاء انتظر الطرف الاخر', 'type' => 'alert-success']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' => __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return back()->with(['message' =>  __('message.page_not_found'), 'type' => 'alert-danger']);
+            return back()->with(['message' =>  __('messages.page_not_found'), 'type' => 'alert-danger']);
         }
     }
 
