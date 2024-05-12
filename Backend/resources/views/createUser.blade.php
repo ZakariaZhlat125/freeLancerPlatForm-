@@ -21,7 +21,6 @@
             color: white
                 /* border: 1px solid #ff6600; */
         }
-
     </style>
 
     {{-- Header --}}
@@ -29,13 +28,15 @@
         <div class="flex  bg-white border-md  rounded-l-none shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
             <div style='border-right: none;' class="hidden lg:block lg:w-1/2 bg-cover bg-primary-pink ">
                 <div class=" relative  w-6/12 hidden md:flex  ">
-                     <div class="illstration_warrper w-full h-full ">
-                        <div class="motaah_illstration" style=" @if (session()->get('lang') == 'en')top: -34px; left: 40%; @else top: -34px; left: 210%; @endif ">
+                    <div class="illstration_warrper w-full h-full ">
+                        <div class="motaah_illstration"
+                            style=" @if (session()->get('lang') == 'en') top: -34px; left: 40%; @else top: -34px; left: 210%; @endif ">
                             <div class="motaah-circle__gray green white xl"></div>
                             <div class="motaah-circle__gray blue white lg"></div>
                             <div class="motaah-circle__gray white md"></div>
                             <div class="motaah-circle__gray white sm"></div>
-                            <div class="motaah-core bg-primary-green @if (session()->get('lang') == 'en') motaah-core-en @endif">
+                            <div
+                                class="motaah-core bg-primary-green @if (session()->get('lang') == 'en') motaah-core-en @endif">
                             </div>
                         </div>
                     </div>
@@ -107,42 +108,60 @@
                     @enderror
 
                     {{-- password --}}
-                    <div class="mt-4">
+                    {{-- password --}}
+                    <div class="my-4 relative">
                         <div class="flex justify-between">
                             <label class="block text-gray-700 text-sm font-bold mb-2">
-                            {{ __('static.form_password') }}
+                                {{ __('static.form_password') }}
                             </label>
                         </div>
-                        <input
-                            class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
-                            type="password" name="user_pass">
+                        <div class="relative">
+                            <input
+                                class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink pr-10"
+                                type="password" name="user_pass" id="user_pass">
+                            <button type="button" onclick="togglePasswordVisibility('user_pass')"
+                                class="absolute  top-3 left-2 flex items-center pr-3">
+                                <i class="fas fa-eye text-gray-700 cursor-pointer"></i>
+                            </button>
+                        </div>
                     </div>
                     @error('user_pass')
                         <span class="text-sacondary-red font-sm">{{ $message }}</span>
                     @enderror
 
                     {{-- confirm password --}}
-                    <div class="mt-4">
+                    <div class="my-4 relative">
                         <div class="flex justify-between">
                             <label class="block text-gray-700 text-sm font-bold mb-2">
                                 {{ __('static.form_confirm_password') }}
                             </label>
                         </div>
-                        <input
-                            class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
-                            type="password" name='confirm_pass'>
+                        <div class="relative mb-4">
+                            <input
+                                class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink pr-10"
+                                type="password" name="confirm_pass" id="confirm_pass">
+                            <button type="button" onclick="togglePasswordVisibility('confirm_pass')"
+                                class="absolute top-3   left-2 flex items-center pr-3">
+                                <i class="fas fa-eye text-gray-700 cursor-pointer"></i>
+                            </button>
+                        </div>
                     </div>
+
                     @error('confirm_pass')
                         <span class="text-sacondary-red font-sm">{{ $message }}</span>
                     @enderror
+
+                    @error('confirm_pass')
+                        <span class="text-sacondary-red font-sm">{{ $message }}</span>
+                    @enderror
+
                     <div class="mt-6 w-full flex justify-between items-start">
                         <a onclick="goBack()"
                             class=" bg-transparent rounded-full  border-2  border-primary-light-gray cursor-pointer  hover:bg-primary-light-gray font-bold py-2 px-4   hover:bg-gray-600">
                             {{ __('static.create_user_go_back') }}
                         </a>
-                        <button type='submit'
-                            class="mo-btn btn-blue-bg font-bold py-2 px-4   hover:bg-gray-600">
-                                {{ __('static.form_confirm_account') }}
+                        <button type='submit' class="mo-btn btn-blue-bg font-bold py-2 px-4   hover:bg-gray-600">
+                            {{ __('static.form_confirm_account') }}
                         </button>
 
                     </div>
@@ -218,6 +237,15 @@
             $('#register').fadeOut('');
             // $('#register').removeClass('hidden');
             // $('#role-form').addClass('hidden');
+        }
+
+        function togglePasswordVisibility(inputId) {
+            var input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
         }
     </script>
 @endpush

@@ -3,7 +3,6 @@
 namespace App\Models;
 use Laravel\Sanctum\HasApiTokens;
 use App\Constants\GlobalConstants;
-use App\Http\Livewire\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Auth\Events\Registered;
@@ -88,7 +87,7 @@ class User extends Authenticatable implements LaratrustUser
      */
     public function messages()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Messages::class);
     }
 
     public static function getProviders($search_keyword, $cates, $rateing)

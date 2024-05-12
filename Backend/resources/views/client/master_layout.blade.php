@@ -85,7 +85,7 @@
                     </svg> --}}
                     <div class="flex-1 space-y-1">
                         {{-- <p class="text-base leading-6 font-medium text-gray-700">Successfully saved!</p> --}}
-                        <p class="text-sm leading-5 text-gray-600"> {{ session()->get('message') }}</p>
+                        <p class="text-sm leading-5 text-gray-600">  {!! nl2br(e(session()->get('message'))) !!}</p>
                     </div>
                     <svg class="flex-shrink-0 h-5 w-5 text-gray-400 cursor-pointer" x-on:click="isShow = false"
                         stroke="currentColor" viewBox="0 0 20 20">
@@ -114,7 +114,7 @@
 
                             <div style='left:-1.75rem' data-hover='person'
                                 class="hidden bg-black border-2 -top-20  border-primary-light-pink rounded-sm text-white font-xs absolute p-2">
-                                 {{ __('static.your_profile') }}
+                                {{ __('static.your_profile') }}
                             </div>
                             @if (request()->segment(2) == 'controllPannal' ||
                                     (request()->segment(2) == 'skills' || request()->segment(2) == 'myWorks'))
@@ -219,7 +219,7 @@
                                                     <div data-hover='workonProject' style='left:-1.65rem'
                                                         class=" hidden absolute bg-black border-2 -top-16  border-primary-light-pink rounded-sm text-white font-xs  p-2">
 
-                                                            {{ __('static.ongoing_projects') }}
+                                                        {{ __('static.ongoing_projects') }}
 
                                                     </div>
                                                     @if (request()->segment(2) == 'workonProject')
@@ -423,7 +423,7 @@
     </script>
 
     @livewireScripts
-    
+
 
     @stack('scripts')
 

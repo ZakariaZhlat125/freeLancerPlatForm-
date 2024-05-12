@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -60,7 +61,6 @@ class AuthController extends Controller
     public function register(Request $request)
     {
 
-
         try {
 
             // return response()->json($request->role);
@@ -81,7 +81,7 @@ class AuthController extends Controller
                 'user_pass.min' => __('request.password.min'),
                 'user_pass.max' => __('request.password.max'),
                 'user_pass.regex' => __('request.password.regex'),
-                'confirm_pass.same' => __('confirm_pass.same'),
+                'confirm_pass.same' => __('request.confirm_pass.same'),
 
 
             ]);
@@ -126,25 +126,29 @@ class AuthController extends Controller
                     $profile->save();
 
 
-                    if ($role == 'seeker')
-                        $u->deposit(10000);
+                    // if ($role == 'seeker')
+                    //     $u->deposit(10000);
                 }
-                dd('test');
 
 
                 return redirect()->route('login')
-                    ->with(['message' => __('message.account_created_message'), 'type' => 'alert-success']);
+                    ->with(['message' => __('messages.account_created_message'), 'type' => 'alert-success']);
                 // } catch (\Throwable $th) {
                 //     return back()->with(['message' => 'فشلت عمليه تسجيل دخولك رجاء اعاده المحاوله   ', 'type' => 'alert-danger']);
                 // }
             }
-
-
             return back()->with(['message' => __('error.login.failed'), 'type' => 'alert-danger']);
+        } catch (ValidationException $e) {
+            $errors = $e->errors();
+            $errorMessage = '';
+            foreach ($errors as $error) {
+                $errorMessage .= implode(" \n", $error) . " ";
+            }
+            return back()->with(['message' => $errorMessage, 'type' => 'alert-danger']);
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' =>  __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+            return redirect()->back()->with(['message' =>  __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('admin')->with(['message' => __('message.access.unauthorized'), 'type' => 'alert-danger']);
+            return redirect()->route('admin')->with(['message' => __('messages.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
 
