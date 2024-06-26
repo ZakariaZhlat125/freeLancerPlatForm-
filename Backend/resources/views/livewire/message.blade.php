@@ -1,5 +1,4 @@
 <div>
-
     <div class="flex-1 flex flex-row-reverse h-full" wire:poll="mountComponent()">
 
         @if (auth()->user()->is_active == true)
@@ -36,18 +35,12 @@
 
                                     <div class="truncate w-32"><span class="text-gray-800">{{ $user->name }}</span>
                                     </div>
-                                    <div><small class="text-gray-600">{{ $user->last_activity }}</small></div>
-                                    @if (filled($not_seen))
-                                        <div class="badge badge-success rounded">{{ $not_seen->count() }}</div>
-                                    @endif
-                                </div>
-                                <div class="flex-2 text-right">
-                                    <div><small class="text-gray-500">15 April</small></div>
                                     <div>
-                                        <small
-                                            class="text-xs bg-red-500 text-white rounded-full h-6 w-6 leading-6 text-center inline-block">
-                                            23
-                                        </small>
+                                        <small class="text-gray-600"> {{ $user->last_activity }} </small>
+                                        @if (filled($not_seen))
+                                            <span class=" p-4  rounded-full">
+                                                {{ $not_seen->count() }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

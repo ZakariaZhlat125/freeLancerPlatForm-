@@ -5,12 +5,13 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\Skill;
+use App\Models\Transfer;
 use App\Models\UserSkills;
-// use App\Models\Wallet;
-use Bavix\Wallet\Models\Transfer;
-use Bavix\Wallet\Models\Wallet;
+use App\Models\Wallet;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 
 class ProfileController extends Controller
 {
@@ -94,7 +95,21 @@ class ProfileController extends Controller
         try {
             $profile = Profile::where('user_id', Auth::id())->first();
             $wallet = Wallet::where('holder_id', Auth::id())->first();
-            // $transactions = Transaction::select('*', DB::raw('JSON_EXTRACT(`meta`, "$.project_id")'))->where('payable_id', Auth::id())->get();
+            $user = Auth::user();
+            $userRoles = $user->roles;
+            $userRole= $userRoles->first()->name;
+
+            if (!$wallet) {
+                $wallet = Wallet::create([
+                    'holder_type' =>  $userRole,
+                    'holder_id' =>  Auth::id(),
+                    'name' => $profile->name . ' Wallet',
+                    'slug' => 'default',
+                    'uuid' => Uuid::uuid4()->toString(),
+                    'balance' => 10000,
+                    'decimal_places' => 2,
+                ]);
+            }
 
             $iAmSeeker = false;
             if (Auth::check() && Auth::user()->hasRole('seeker'))

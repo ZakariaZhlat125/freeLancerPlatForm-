@@ -27,6 +27,7 @@ return [
     'comment_added' => ':provider  بإضافة تعليق على مشروعك :title قام',
     'offer_added_success' => 'تم اضافة عرضك  بنجاح',
     'offer_updated_success' => 'تم تعديل عرضك  بنجاح',
+    "offer_accept" =>"  تم قبول عرضك على مشروع :Project",
     'thank_you' => 'شكرا لتواصلك معنا',
     'personal_info_updated_success' => 'تم تعديل معلومات الشخصيه بنجاح',
     'email_verification_sent' => 'لقد قمنا بارسال رسالة للايميل الخاص بك يرجى التحقق من الايميل!',

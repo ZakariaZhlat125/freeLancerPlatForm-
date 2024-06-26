@@ -32,6 +32,7 @@
                         <div class="row ">
                             <!-- 1 Item-->
                             @foreach ($works as $item)
+
                                 <div class="col-lg-6 mb-3 mb-lg-0 my-4">
                                     @if (Auth::user()->hasRole('provider'))
                                         <a href="{{ route('detailsWork', $item->id) }}">

@@ -1,6 +1,5 @@
 @extends('client.master_layout')
 @section('content')
-    {{--  --}}
     <div class="container relative">
         <div class="d-flex justify-content-between flex-wrap mt-20">
             <h3 class="my-5  font-xl font-bold "> {{ $post->title }}</h3>
@@ -31,16 +30,10 @@
                                                 {{ __('static.post_detail_desc2') }}
                                      </a>
                                 </li>
-
-
                             </ul>
                         </div>
-
-
                     </div>
                 @endif
-
-
                 <!-- confirm delete Modal -->
                 <div class="modal" id="deleteModel" tabindex="-1" aria-labelledby="deleteModel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -100,14 +93,8 @@
                                 <span class="me-1 font-sm">{{ $item->name }}</span>
                             </a>
                         @endforeach
-
                     </div>
                 </div>
-
-
-
-
-
                 {{-- add comments --}}
                 <?php $provider = \App\Models\Profile::where('user_id', Auth::id())->first(); ?>
                 {{-- @role('provider')
@@ -159,7 +146,6 @@
                                                 @enderror
 
                                             </div>
-
 
                                             {{-- estamte cost --}}
                                             {{-- <div class="col-sm-4 col-xs-12 pt-3">
@@ -233,8 +219,6 @@
                                                     </div>
                                                 @enderror
                                             </div>
-
-
                                             <div class="mb-1">
                                                 <label class="font-sm" for="message">
                                                     {{ __('static.post_detail_desc15') }}
@@ -243,8 +227,6 @@
                                                     class="appearance-none block w-full bg-sacondary-light-white-pinky border-primary-light-pink border-sm text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-primary-pink"
                                                     id="dropzone" multiple name='files' type="file"
                                                     value="{{ old('files') }}" data-sb-validations="required">
-
-
                                             </div>
                                             <div>
                                                 <button class="mo-btn btn-blue-bg float-left font-md" type="submit">
@@ -260,14 +242,6 @@
                         {{-- all comments --}}
                     </div>
                 @endif
-
-
-
-
-
-
-
-
                 <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -613,7 +587,6 @@
 
                                         </div>
 
-
                                         <!-- Acceptance Modal -->
                                         <div class="modal" id="exampleModal_{{ $item->user_id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -809,26 +782,3 @@
     </div>
     <script src="/assets/client/js/acceptance-modalNavigation.js"></script>
 @endsection
-{{-- <div class="card mt-3">
-            <h5 class="card-header">شارك المشروع</h5>
-
-            <div class=" mt-3">
-                <form class=" m-3">
-                    <input type="text">
-                </form>
-
-                <!-- Facebook -->
-                <a class="btn btn-primary" style="background-color: #3b5998;" href="#!" role="button"><i
-                        class="fab fa-facebook-f"></i></a>
-
-                <!-- Twitter -->
-                <a class="btn btn-primary" style="background-color: #55acee;" href="#!" role="button"><i
-                        class="fab fa-twitter"></i></a>
-
-
-                </a>
-                <!-- Linkedin -->
-                <a class="btn btn-primary" style="background-color: #0082ca;" href="#!" role="button"><i
-                        class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div> --}}

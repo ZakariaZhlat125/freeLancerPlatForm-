@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\client\ChatController;
+use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('isPhoto'))
 {
@@ -43,4 +44,25 @@ if(!function_exists('countMessages'))
     {
         return app(ChatController::class)->countMessages();
     }
+}
+
+
+function getUnreadNotificationsCount()
+{
+    if (Auth::check()) {
+        return Auth::user()->unreadNotifications->count();
+    }
+    return 0;
+}
+
+
+function markNotificationsAsRead()
+{
+    if (Auth::check()) {
+        $user = Auth::user();
+        $user->unreadNotifications->markAsRead();
+        return true;
+    }
+
+    return false;
 }

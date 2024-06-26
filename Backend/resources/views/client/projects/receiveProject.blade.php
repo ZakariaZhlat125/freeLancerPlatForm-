@@ -147,7 +147,7 @@
                     <h4>
                         {{ __('static.project_submission') }}
                     </h4>
-                    <a href="/public/upload/{{ $project->files }}" download>
+                    <a href="/upload/{{ $project->files }}" download>
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         {{ __('static.submit_the_project_files') }}
                     </a>

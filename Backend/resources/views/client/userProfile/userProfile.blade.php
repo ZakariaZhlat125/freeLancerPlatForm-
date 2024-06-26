@@ -396,7 +396,6 @@
 
                     @if ($role == 'provider' || $role == 'both')
                         <!-- works -->
-
                         <div class="col-sm-12 col-lg-12 color-black px-3 rating-section  tab-B subPage mb-3 flex-col lg:flex-row"
                             id="tab-C">
                             <div class="row row col-12">

@@ -15,6 +15,20 @@ class Posts extends Model
         'duration',
         'status',
         'offers',
-        'is_active'
+        'is_active',
+        'category_id',
+        'user_id'
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class, 'user_id', 'user_id');
+    }
 }

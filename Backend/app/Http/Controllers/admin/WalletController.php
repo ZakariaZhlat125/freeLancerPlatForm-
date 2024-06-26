@@ -4,9 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project as ModelsProject;
+use App\Models\Transfer;
 use App\Models\User;
-use Bavix\Wallet\Models\Transfer;
-use Bavix\Wallet\Models\Wallet as ModelsWallet;
+use App\Models\Wallet;
+
 
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class WalletController extends Controller
             ->where('finshed', 1)
             ->where('payment_status', 'received')
             ->first();
-        $wallet_id = ModelsWallet::where('holder_id', 1)->first();
+        $wallet_id = Wallet::where('holder_id', 1)->first();
 
         if ($wallet_id) {
 

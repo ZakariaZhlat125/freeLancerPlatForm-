@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Laravel\Sanctum\HasApiTokens;
 use App\Constants\GlobalConstants;
 use Illuminate\Support\Facades\DB;
@@ -11,32 +12,38 @@ use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\HasRolesAndPermissions;
 use Laratrust\Contracts\LaratrustUser;
+use Ramsey\Uuid\Uuid;
+
 class User extends Authenticatable implements LaratrustUser
 {
-    use HasRolesAndPermissions;
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasRolesAndPermissions, HasApiTokens, HasFactory, Notifiable;
 
 
 
-     /**
+    /**
      * Get the phone associated with the user.
      */
     public function profile()
     {
         return $this->hasOne(Profile::class);
     }
+
     public function inTheSameCategoriy()
     {
         return $this->belongsTo(Profile::class, 'category_id');
     }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'name',
         'email',
@@ -48,6 +55,7 @@ class User extends Authenticatable implements LaratrustUser
      *
      * @var array<int, string>
      */
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -58,11 +66,16 @@ class User extends Authenticatable implements LaratrustUser
      *
      * @var array<string, string>
      */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 
+    public function posts()
+    {
+        return $this->hasMany(Posts::class, 'user_id', 'user_id');
+    }
 
 
     // get all skills of the user
@@ -159,7 +172,72 @@ class User extends Authenticatable implements LaratrustUser
             ->action(Lang::get('تأكيد البريد الاكتروني'), $url)
             ->line(Lang::get('اذا واجهتك مشاكل في الضغط على الزرار يمكنك الضغط على الرابط ادناه'));
     }
-    public function message() {
+    public function message()
+    {
         return $this->hasMany("App\Models\Messages");
+    }
+
+    public function wallet(): HasOne
+    {
+        return $this->hasOne(Wallet::class, 'holder_id')->where('holder_type', self::class);
+    }
+
+    public function transactions(): MorphMany
+    {
+        return $this->morphMany(Transaction::class, 'payable');
+    }
+
+    public function transfers(): MorphMany
+    {
+        return $this->morphMany(Transfer::class, 'from');
+    }
+
+    public function transfer(User $recipient, float $amount, array $meta = []): Transfer
+    {
+
+        $senderWallet = Wallet::where('holder_id',$this->id)->first();
+        $recipientWallet = Wallet::where('holder_id', $recipient->id)->first();
+
+        if (!$senderWallet || !$recipientWallet) {
+            throw new \Exception('One or both users do not have wallets.');
+        }
+
+        if ($senderWallet->balance < $amount) {
+            throw new \Exception('Insufficient balance.');
+        }
+        $senderWallet->balance -= $amount;
+        $senderWallet->save();
+
+        $recipientWallet->balance += $amount;
+        $recipientWallet->save();
+
+        $withdraw = $this->transactions()->create([
+            'wallet_id' => $senderWallet->id,
+            'type' => 'withdraw',
+            'amount' => $amount,
+            'confirmed' => true,
+            'meta' => $meta,
+            'uuid' =>Uuid::uuid4()->toString(),
+        ]);
+
+        $deposit = $recipient->transactions()->create([
+            'wallet_id' => $recipientWallet->id,
+            'type' => 'deposit',
+            'amount' => $amount,
+            'confirmed' => true,
+            'meta' => $meta,
+            'uuid' => Uuid::uuid4()->toString(),
+        ]);
+
+        return Transfer::create([
+            'from_type' => self::class,
+            'from_id' => $this->id,
+            'to_type' => User::class,
+            'to_id' => $recipient->id,
+            'status' => 'transfer',
+            'deposit_id' => $deposit->id,
+            'withdraw_id' => $withdraw->id,
+            'uuid' => Uuid::uuid4()->toString(),
+        ]);
     }
 }

@@ -13,7 +13,6 @@ class ProfileSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         $admin = Profile::create([
             'user_id' => 1,
             // 'user_id' => User::all()->random()->id,
@@ -31,9 +30,9 @@ class ProfileSeeder extends Seeder
         $Dhoha = Profile::create([
             'user_id' => 2,
             // 'user_id' => User::all()->random()->id,
-            'name' => 'زكريا زحلط',
+            'name' => 'فادي خوري ',
             'gender' => 'male',
-            'mobile' => '773065471',
+            'mobile' => '0934522844',
             'country' => 'syria',
 
             'account_type' => 'provider',
@@ -61,5 +60,7 @@ class ProfileSeeder extends Seeder
             رضا الزبائن هو هدفي الاول واضمن لك تسليمك العمل في اقرب وقت وبافضل نتيجة.
             تواصل معي عبر الرسائل لمناقشة تفاصيل مشروعك.',
         ]);
+
+       
     }
 }

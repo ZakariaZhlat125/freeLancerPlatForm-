@@ -37,14 +37,15 @@ class MyWorkOnProjectController extends Controller
                 ->join('posts', 'posts.id', '=', 'projects.post_id')
                 ->join('profiles', 'profiles.user_id', '=', 'projects.seeker_id')
 
-                ->where('projects.status', 'at_work')
-                ->orWhere('projects.status', 'done')
-                ->orWhere('projects.status', 'nonrecevied')
+                // ->where('projects.status', 'at_work')
+                // ->orWhere('projects.status', 'done')
+                // ->orWhere('projects.status', 'nonrecevied')
                 ->where('posts.is_active', 1)
-                ->where('projects.provider_id', Auth::id())
-                ->where('projects.finshed', 0)
+                // ->where('projects.provider_id', Auth::id())
+                ->where('projects.finshed', 0)->get();
 
-                ->get();
+
+            // dd($data);
             // return response()->json($data);
             if (empty($data)) {
                 return back()->with(['message' => __('messages.page_not_found'), 'type' => 'alert-danger']);
@@ -114,7 +115,7 @@ class MyWorkOnProjectController extends Controller
                 if (!empty($request->url)) {
                     $project->url = $request->url;
                 }
-                if (!empty($request->upload) && !empty($request->url))
+                if (empty($request->upload) && empty($request->url))
                     return redirect()->back()->with(['message' => 'رجاء قم بارسال الملفات المطلوبه او اضغط على طريقه اخرى', 'type' => 'alert-danger']);
             }
 

@@ -15,64 +15,117 @@ class PaymentController extends Controller
 {
     //
 
+    // function doPayment($project_id, $seeker_id)
+    // {
+    //     // try {
+    //         $project = Project::select(
+    //             'posts.title',
+    //             'projects.amount',
+    //             'projects.totalAmount',
+    //             'projects.seeker_id',
+    //             'projects.post_id',
+    //             'projects.provider_id',
+    //             'projects.status',
+    //             'projects.payment_status',
+    //         )->join('posts', 'posts.id', 'projects.post_id')
+    //             ->where('projects.seeker_id', $seeker_id)
+    //             ->where('projects.id', $project_id)
+    //             ->where('projects.payment_status', 'unpaid')
+    //             ->where('projects.status', 'at_work')
+    //             ->first();
+
+    //         $dataPayment = [
+    //             "id" => $project_id,
+    //             "product_name" => $project->title,
+    //             "quantity" => 1,
+    //             "unit_amount" => $project->amount
+    //         ];
+
+    //         $dataMeta = [
+    //             "provider_id" => $project->provider_id,
+    //             "seeker_id" => $seeker_id
+    //         ];
+
+    //         // $response = Http::withHeaders([
+    //         //     'private-key' => env('PRIVATE_KEY'),
+    //         //     'public-key' => env('PUBLIC_KEY'),
+    //         //     'Content-Type' => 'application/x-www-form-url'
+    //         // ])->post('https://waslpayment.com/api/test/merchant/payment_order', [
+    //         //     'order_reference' =>  $project_id,
+    //         //     'products' =>  [$dataPayment],
+    //         //     // 'total_amount' => $project->totalAmount,
+    //         //     'total_amount' => $project->amount,
+    //         //     'currency' => 'SY',
+    //         //     'success_url' => 'http://localhost:8000/ar/success-payment/' . $project_id,
+    //         //     'cancel_url' => 'http://localhost:8000/ar/cancel-payment/' .  $project_id,
+    //         //     'metadata' => (object)$dataMeta
+    //         // ]);
+
+    //         Project::where('id', $project_id)->update([
+    //             'stated_at' => date("Y/m/d"),
+    //             'invoice' => $response['invoice']['invoice_referance']
+    //         ]);
+
+    //         // return $response->json($key = null);
+    //         return redirect(url($response['invoice']['next_url']));
+    //     // } catch (\Illuminate\Http\Client\ConnectionException $e) {
+    //     //     return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+    //     // } catch (\Throwable $th) {
+    //     //     return redirect()->route('profile')->with(['message' => __("message.access.unauthorized"), 'type' => 'alert-danger']);
+    //     // }
+    // }
+
+
+
+
     function doPayment($project_id, $seeker_id)
     {
         try {
-            $project = Project::select(
-                'posts.title',
-                'projects.amount',
-                'projects.totalAmount',
-                'projects.seeker_id',
-                'projects.post_id',
-                'projects.provider_id',
-                'projects.status',
-                'projects.payment_status',
-            )->join('posts', 'posts.id', 'projects.post_id')
-                ->where('projects.seeker_id', $seeker_id)
-                ->where('projects.id', $project_id)
-                ->where('projects.payment_status', 'unpaid')
-                ->where('projects.status', 'at_work')
-                ->first();
-            $dataPayment = [
-                "id" => $project_id,
-                "product_name" => $project->title,
-                "quantity" => 1,
-                "unit_amount" => $project->amount
-            ];
+        $project = Project::select(
+            'posts.title',
+            'projects.amount',
+            'projects.totalAmount',
+            'projects.seeker_id',
+            'projects.post_id',
+            'projects.provider_id',
+            'projects.status',
+            'projects.payment_status',
+        )->join('posts', 'posts.id', 'projects.post_id')
+            ->where('projects.seeker_id', $seeker_id)
+            ->where('projects.id', $project_id)
+            ->where('projects.payment_status', 'unpaid')
+            ->where('projects.status', 'at_work')
+            ->first();
 
-            $dataMeta = [
-                "provider_id" => $project->provider_id,
-                "seeker_id" => $seeker_id
-            ];
+        $dataPayment = [
+            "id" => $project_id,
+            "product_name" => $project->title,
+            "quantity" => 1,
+            "unit_amount" => $project->amount
+        ];
 
-            $response = Http::withHeaders([
-                'private-key' => env('PRIVATE_KEY'),
-                'public-key' => env('PUBLIC_KEY'),
-                'Content-Type' => 'application/x-www-form-url'
-            ])->post('https://waslpayment.com/api/test/merchant/payment_order', [
-                'order_reference' =>  $project_id,
-                'products' =>  [$dataPayment],
-                // 'total_amount' => $project->totalAmount,
-                'total_amount' => $project->amount,
-                'currency' => 'SY',
-                'success_url' => 'http://localhost:8000/ar/success-payment/' . $project_id,
-                'cancel_url' => 'http://localhost:8000/ar/cancel-payment/' .  $project_id,
-                'metadata' => (object)$dataMeta
-            ]);
+        $dataMeta = [
+            "provider_id" => $project->provider_id,
+            "seeker_id" => $seeker_id
+        ];
 
-            Project::where('id', $project_id)->update([
-                'stated_at' => date("Y/m/d"),
-                'invoice' => $response['invoice']['invoice_referance']
-            ]);
+        // Simulate payment process
+        $invoice_reference = 'INV-' . uniqid();
+        $next_url = url('/success-payment/'.$project_id.'/success');
 
-            // return $response->json($key = null);
-            return redirect(url($response['invoice']['next_url']));
-        } catch (\Illuminate\Http\Client\ConnectionException $e) {
-            return redirect()->back()->with(['message' => __('message.time_limit_exceeded'), 'type' => 'alert-success']);
+        Project::where('id', $project_id)->update([
+            'stated_at' => now()->format("Y/m/d"),
+            'invoice' => $invoice_reference
+        ]);
+
+        // Redirect to success URL with invoice reference
+        return redirect($next_url)->with(['invoice_reference' => $invoice_reference]);
+
         } catch (\Throwable $th) {
             return redirect()->route('profile')->with(['message' => __("message.access.unauthorized"), 'type' => 'alert-danger']);
         }
     }
+
     public static function successPayment($project_id,  $response)
     {
         try {
@@ -260,7 +313,7 @@ class PaymentController extends Controller
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
             return redirect()->back()->with(['message' => __('messages.time_limit_exceeded'), 'type' => 'alert-success']);
         } catch (\Throwable $th) {
-            return redirect()->route('admin')->with(['message' =>__('messages.access.unauthorized'), 'type' => 'alert-danger']);
+            return redirect()->route('admin')->with(['message' => __('messages.access.unauthorized'), 'type' => 'alert-danger']);
         }
     }
 }

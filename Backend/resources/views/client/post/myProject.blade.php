@@ -19,17 +19,17 @@
                     <span class="badge bg-primary-light-pink text-md-center text-black font-md float-start">
                         {{ __('static.project_status') }}
                         @if ($item->status == 'pending')
-                        {{ __('static.project_status1') }}
+                            {{ __('static.project_status1') }}
                         @elseif ($item->status == 'at_work' && $item->payment_status == 'unpaid')
-                        {{ __('static.project_status2') }}
+                            {{ __('static.project_status2') }}
                         @elseif ($item->status == 'at_work')
-                        {{ __('static.project_status3') }}
+                            {{ __('static.project_status3') }}
                         @elseif ($item->status == 'done')
-                        {{ __('static.project_status4') }}
+                            {{ __('static.project_status4') }}
                         @elseif ($item->status == 'rejected')
-                        {{ __('static.project_status5') }}
+                            {{ __('static.project_status5') }}
                         @elseif ($item->status == 'received')
-                        {{ __('static.project_status6') }}
+                            {{ __('static.project_status6') }}
                         @endif
                     </span>
                 </div>
@@ -53,7 +53,8 @@
 
                         <li class="text-muted font-sm color-gray-dark mx-5">
                             <i class="fa-regular fa-clock  ms-1"></i>
-                                {{ __('static.estimmed_duration') }} {{ $item->duration }} {{ __('static.estimmed_duration_days') }}
+                            {{ __('static.estimmed_duration') }} {{ $item->duration }}
+                            {{ __('static.estimmed_duration_days') }}
                         </li>
 
                     </ul>
@@ -64,25 +65,32 @@
             <div class="flex justify-between">
                 <div>
                     {{ __('static.project_cost') }}
-                     <span class="text-primary-pink font-bold mx-1"> ${{ $item->amount }}</span>
+                    <span class="text-primary-pink font-bold mx-1"> ${{ $item->amount }}</span>
 
                 </div>
                 <div class="flex justify-content-end gap-1 margin-right: -23px;">
 
-                    @if ($item->payment_status == 'unpaid' && $item->status == 'at_work')
+                    {{-- @if ($item->payment_status == 'unpaid' && $item->status == 'at_work')
                         <a href="{{ route('payment.do', [$item->project_id, $item->seeker_id]) }}"
                             class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center">
                             <p class="font-md">
                                  {{ __('static.project_cost_option1') }}
                             </p>
                         </a>
+                    @endif --}}
+                    @if ($item->payment_status == 'unpaid' && $item->status == 'at_work')
+                        <button type="button"
+                            class="mo-btn btn-pink-bg text-white text-gray-700 py-2 px-4 rounded inline-flex items-center"
+                            data-bs-toggle="modal" data-bs-target="#paymentModal{{ $item->project_id }}">
+                            <p class="font-md">{{ __('static.project_cost_option1') }}</p>
+                        </button>
                     @endif
                     @if ($item->status == 'done')
                         <a href="{{ route('markAsRecive', [$item->project_id, $item->provider_id]) }}"
                             class="mo-btn btn-pink-bg text-white text-gray-700  py-2 px-4 rounded inline-flex items-center">
                             <p class="font-md">
                                 {{ __('static.project_cost_option2') }}
-                           </p>
+                            </p>
                         </a>
                     @endif
                     {{-- <div class="card--actions hidden-xs   flex justify-content-end gap-1">
@@ -111,6 +119,44 @@
 
 
 
+        {{-- Modal for Payment --}}
+        <div class="modal fade" id="paymentModal{{ $item->project_id }}" tabindex="-1"
+            aria-labelledby="paymentModalLabel{{ $item->project_id }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="paymentModalLabel{{ $item->project_id }}">
+                            {{ __('static.payment_title') }}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="paymentForm{{ $item->project_id }}"
+                            action="{{ route('payment.do', [$item->project_id, $item->seeker_id]) }}" method="GET">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="paymentMethod" class="form-label">{{ __('static.payment_method') }}</label>
+                                <select class="form-select" id="paymentMethod" name="payment_method" required>
+                                    <option value="credit_card">{{ __('static.credit_card') }}</option>
+                                    <option value="paypal">{{ __('static.paypal') }}</option>
+                                    <option value="bank_transfer">{{ __('static.bank_transfer') }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cardNumber" class="form-label">{{ __('static.card_number') }}</label>
+                                <input type="text" class="form-control" id="cardNumber" name="card_number" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="mo-btn btn-blue-bg"
+                            data-bs-dismiss="modal">{{ __('static.close') }}</button>
+                        <button type="submit" class="mo-btn btn-pink-bg"
+                            form="paymentForm{{ $item->project_id }}">{{ __('static.complete_payment') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Button trigger modal -->

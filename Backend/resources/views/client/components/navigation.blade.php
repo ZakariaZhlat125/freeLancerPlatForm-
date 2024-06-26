@@ -6,12 +6,14 @@
         class="flex  items-center justify-between md:flex-rowflex-col md:flex-row  w-full h-fit p-3 px-8"
         :class="{ 'shadow-lg flex-col border-md': isOpen, '': !isOpen }">
         <div class=" flex justify-between md:w-fit w-full">
-            <div class="logo-font">
+            <a href="{{ route('home') }}" class="logo-font">
                 <p>
                     {{ __('static.title') }}
                 </p>
-            </div>
+            </a>
+
             <!-- toggle menu  -->
+
             <!-- <div class="inline md:hidden cursor-pointer" @click="isNavOpend = !isNavOpend">close</div> -->
             <button @click="isOpen = !isOpen" type="button"
                 class="block md:hidden px-2 text-gray-500 hover:text-white focus:outline-none focus:text-white"
@@ -72,25 +74,32 @@
                 </div>
             @endif
             @if (Auth::check() && !Auth::user()->hasRole('admin'))
+
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                    <button @click="open = !open"
+                    <button @click="open = !open; if (open) markAsRead()"
                         class="flex flex-row items-center w-full px-3 py-1 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:mt-0 md:ml-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                        <span class="text-lg text-primary relative"><i class="fas fa-bell text-white"></i>
-                            <span id='notify-mark'
-                                class=" hidden w-3 h-3 bg-primary-pink left-2 rounded-full absolute"></span></span>
+                        <span class="text-lg text-primary relative">
+                            <i class="fas fa-bell text-white"></i>
+                            <!-- Only show the counter if there are unread notifications -->
+                            @if (auth()->user() && auth()->user()->unreadNotifications->count() > 0)
+                                <span id='notify-mark'
+                                    class="w-4 h-4 notififcationCount text-white text-xs rounded-full absolute top-0 right-0 flex items-center justify-center">
+                                    {{ auth()->user()->unreadNotifications->count() }}
+                                </span>
+                            @endif
+                        </span>
                     </button>
-                    {{-- @if (session()->get('lang') == 'en') --}}
                     <div x-show="open" x-transition:enter="transition ease-out duration-100"
                         x-transition:enter-start="transform opacity-0 scale-95"
                         x-transition:enter-end="transform opacity-100 scale-100"
                         x-transition:leave="transition ease-in duration-75"
                         x-transition:leave-start="transform opacity-100 scale-100"
                         x-transition:leave-end="transform opacity-0 scale-95"
-                        class="absolute {{ session()->get('lang') == 'en' ? 'right-0' : 'left-0' }} w-full mt-2 origin-top-right  rounded-md shadow-lg z-50 md:w-96"
+                        class="absolute {{ session()->get('lang') == 'en' ? 'right-0' : 'left-0' }} w-full mt-2 origin-top-right rounded-md shadow-lg z-50 md:w-96"
                         style='z-index: 19999;'>
-                        <div class="px-2 py-2 bg-white rounded-md shadow " id='notify'>
-                            @foreach (auth()->user()->unreadNotifications as $notification)
-                                <a class="rounded text-black bg-gray-200 my-2 hover:bg-primary-light-pink  border border-primary-light-gray  py-2 px-4 block whitespace-no-wrap hover:text-black"
+                        <div class="px-2 py-2 bg-white rounded-md shadow" id='notify'>
+                            @foreach (auth()->user()->notifications as $notification)
+                                <a class="rounded text-black bg-gray-200 my-2 hover:bg-primary-light-pink border border-primary-light-gray py-2 px-4 block whitespace-no-wrap hover:text-black"
                                     href="{{ $notification->data['url'] }}">
                                     {{ $notification->data['message'] }}
                                 </a>
@@ -98,14 +107,15 @@
                         </div>
                     </div>
                 </div>
-                <a class="flex items-center px-3 py-1 mt-2 text-lg font-semibold text-primary rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                <a class="flex relative items-center px-3 py-1 mt-2 text-lg font-semibold text-primary rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="{{ route('inbox.index') }}">
                     <i class="fas fa-envelope text-white "></i>
                     @php
                         $unreadMessageCount = countMessages();
                     @endphp
                     @if ($unreadMessageCount > 0)
-                        <span class=" notififcationCount">{{ $unreadMessageCount }}</span>
+                        <span
+                            class=" w-4 h-4 notififcationCount text-white text-xs rounded-full absolute top-0 flex items-center justify-center">{{ $unreadMessageCount }}</span>
                     @endif
                 </a>
             @endif
@@ -124,6 +134,28 @@
         </div>
     </nav>
     <script>
+        function markAsRead() {
+            @if (auth()->check())
+                fetch('/mark-notifications-as-read', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            user_id: {{ auth()->user()->id }}
+                        })
+                    }).then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            document.getElementById('notify-mark').classList.add('hidden');
+                        }
+                    }).catch(error => console.error('Error:', error));
+            @else
+                console.warn('User not authenticated.');
+            @endif
+        }
+
         function changeLanguage(lang) {
             // Send an AJAX request to update the language
             fetch('{{ route('LanguageSwitcher') }}', {

@@ -44,75 +44,60 @@ class postController extends Controller
     // this route show one page
     public function showOne($post_id)
     {
-        // try {
-        $post = Posts::select(
-            'posts.*',
-            'profiles.avatar',
-            'profiles.name as post_user_name',
-            'profiles.user_id as post_user_id',
-            'profiles.job_title',
-        )->join('profiles', 'profiles.user_id', 'posts.user_id')->where('id', (int)$post_id)->where('is_active', 1)->first();
+        try {
+            $post = Posts::select(
+                'posts.*',
+                'profiles.avatar',
+                'profiles.name as post_user_name',
+                'profiles.user_id as post_user_id',
+                'profiles.job_title',
+            )->join('profiles', 'profiles.user_id', 'posts.user_id')->where('id', (int)$post_id)->where('is_active', 1)->first();
 
 
-        $skills = PostSkills::select('skills.name')
-            ->join('skills', 'skills.id', '=', 'post_skills.skill_id')
-            ->where('post_id', (int)$post_id)
-            ->where('is_active', 1)
-            ->get();
+            $skills = PostSkills::select('skills.name')
+                ->join('skills', 'skills.id', '=', 'post_skills.skill_id')
+                ->where('post_id', (int)$post_id)
+                ->where('is_active', 1)
+                ->get();
 
-        $comments =  Comments::select(
-            'profiles.name',
-            'profiles.specialization',
-            'profiles.rating',
-            'profiles.user_id',
-            'profiles.avatar',
-            'profiles.limit',
-            'comments.duration',
-            'comments.cost',
-            'comments.description',
-            'comments.id as offer_id',
-            'comments.user_id as provider_id',
-            // DB::table('works')->raw("count(works.id) as workcount")
-        )
-            ->join('profiles', 'profiles.user_id', '=', 'comments.user_id')
-            // ->join('works', 'works.user_id', '=', 'comments.user_id')
-            ->where('post_id', (int)$post_id)
-            // ->groupBy([
-            //     'comments.id',
-            //     'profiles.name',
-            //     'profiles.specialization',
-            //     'profiles.rating',
-            //     'profiles.user_id',
-            //     'profiles.avatar',
-            //     'profiles.limit',
-            //     'comments.cost',
-            //     'comments.description',
-            //     'comments.user_id',
-            //     'comments.duration',
-            // ])
-            ->get();
-        $checkProject = Project::select(
-            'status'
-        )
-            ->where('post_id', (int)$post_id)
-            ->where('status', '!=', 'rejected')
-            ->first();
+            $comments =  Comments::select(
+                'profiles.name',
+                'profiles.specialization',
+                'profiles.rating',
+                'profiles.user_id',
+                'profiles.avatar',
+                'profiles.limit',
+                'comments.duration',
+                'comments.cost',
+                'comments.description',
+                'comments.id as offer_id',
+                'comments.user_id as provider_id',
+            )
+                ->join('profiles', 'profiles.user_id', '=', 'comments.user_id')
+                ->where('post_id', (int)$post_id)
+                ->get();
+            $checkProject = Project::select(
+                'status'
+            )
+                ->where('post_id', (int)$post_id)
+                ->where('status', '!=', 'rejected')
+                ->first();
 
-        // print_r($comments);
-        $hasComment = Comments::where('post_id', (int)$post_id)->where('user_id', Auth::id())->count();
+            // print_r($comments);
+            $hasComment = Comments::where('post_id', (int)$post_id)->where('user_id', Auth::id())->count();
 
-        // return response()->json($post);
-        return view('client.post.postDetails')->with([
-            'post' => $post,
-            'comments' => $comments,
-            'post_id' => $post_id,
-            'skills' => $skills,
-            'hasComment' => $hasComment > 0 ? true : false,
-            'checkHasProject' => $checkProject ? true : false
-        ]);
-        // } catch (\Throwable $th) {
-        //     return back()->with(['message' => ' هنالك مشكله ما رجاء قم باعاده المحاوله', 'type' => 'alert-danger']);
-        // }
+            // return response()->json($post);
+            return view('client.post.postDetails')->with([
+                'post' => $post,
+                'comments' => $comments,
+                'post_id' => $post_id,
+                'skills' => $skills,
+                'hasComment' => $hasComment > 0 ? true : false,
+                'checkHasProject' => $checkProject ? true : false
+            ]);
+        } catch (\Throwable $th) {
+            return back()->with(['message' => ' هنالك مشكله ما رجاء قم باعاده المحاوله', 'type' => 'alert-danger']);
+        }
     }
 
 
@@ -120,8 +105,15 @@ class postController extends Controller
     // page for show the form of create new post
     public function index()
     {
+        $user = auth()->user();
+        $userProfile = $user->profile;
+        if (!$userProfile) {
+            return redirect(route('profile'))->with(['message' => __("profile.CompleteYourProfile"), 'type' => 'alert-danger']);
+        }
+
         $skill = Skill::where('is_active', 1)->get();
         $categories = category::where('is_active', 1)->get();
+
         return view('client.post.post')->with(['skills' => $skill, 'categories' => $categories]);
     }
 
@@ -331,7 +323,7 @@ class postController extends Controller
         $post = Posts::find($post_id);
         $post->is_active *= -1;
         if ($post->save())
-            return redirect()->route('myProject')->with(['message' =>__('messages.project.delete_success') , 'type' => 'alert-success']);
+            return redirect()->route('myProject')->with(['message' => __('messages.project.delete_success'), 'type' => 'alert-success']);
         return back()->with(['message' => __('messages.delete_failed_message'), 'type' => 'alert-danger']);
     }
 }

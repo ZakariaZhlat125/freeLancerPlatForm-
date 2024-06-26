@@ -7,11 +7,13 @@ use App\Models\Comments;
 use App\Models\Posts;
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Notifications\CommentNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Pusher\ApiErrorException;
 use Pusher\Pusher;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\ErrorHandler\Error\FatalError;
 use Symfony\Component\Mailer\Exception\TransportException;
 
@@ -32,6 +34,25 @@ class CommentsController extends Controller
                 'duration.numeric' => __('request.duration.numeric'),
             ]);
 
+            $profile = Profile::where('user_id', Auth::id())->first();
+            $wallet = Wallet::where('holder_id', Auth::id())->first();
+            $user = Auth::user();
+            $userRoles = $user->roles;
+            $userRole= $userRoles->first()->name;
+
+            if (!$wallet) {
+                $wallet = Wallet::create([
+                    'holder_type' =>  $userRole,
+                    'holder_id' =>  Auth::id(),
+                    'name' => $profile->name . ' Wallet',
+                    'slug' => 'default',
+                    'uuid' => Uuid::uuid4()->toString(),
+                    'balance' => 10000,
+                    'decimal_places' => 2,
+                ]);
+            }
+
+
             $comment = new Comments();
             $comment->user_id = Auth::id();
             $comment->post_id = $request->post_id;
@@ -47,8 +68,8 @@ class CommentsController extends Controller
             Posts::where('id', $request->post_id)->update([
                 'offers' => $comments + 1
             ]);
-            if ($comment->save()) {
 
+            if ($comment->save()) {
                 $postOwner = User::select(
                     'posts.id',
                     'posts.title',
@@ -69,9 +90,6 @@ class CommentsController extends Controller
                     'url' => url('posts/details/' . $postOwner->id),
                     'userId' => $postOwner->userid
                 ];
-
-
-
 
                 $user->notify(new CommentNotification($data));
 

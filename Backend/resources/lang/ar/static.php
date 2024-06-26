@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'متوفر',
+    'title' => 'B2B',
     'Home' => 'الرئيسية',
     'Available_projects' => "المشاريع المتاحة",
     'Service_providers' => "مقدمو الخدمات",
@@ -79,7 +79,7 @@ return [
     //freelancers
     "freelancers_desc1" => "ابحث عن مستقلين",
     //user profile
-    "seeker_role" => "صاحب مشاريع" ,
+    "seeker_role" => "صاحب مشاريع",
     "provider_role" => "متاح للعمل الحر",
     "hire_me" => "أنا متاح للتوظيف",
     "profile_add_project" => "أَضف مشروع",
@@ -293,57 +293,57 @@ return [
     "add_user_work_title" => "عنوان العمل",
     "add_work_pic" => "صورة مصغرة",
     "add_work_link" => "رابط العمل",
-   //admin categories
-   "admin_category_enabled" => "مفعل",
-   "admin_category_disabled" => "معطل",
-   //admin report
-   "report_type" => "نوع الشكوى",
-   "report_type_reason1" => "هذا المحتوى لم يعجبني",
-   "report_type_reason2" => "هذا المحتوى مزعج و متكرر",
-   "report_type_reason3" => "هذا المحتوى يخالف شروط استخدام الموقع",
-   "report_type_reason4" => "هذا المستخدم يزعجني",
-   "report_type_reason5" => "هذا المستخدم يخالف شروط استخدام الموقع",
-   "the_report" => "الشكوى",
-   "the_report_user" => "المستخدم",
-   "the_report_content" => "المحتوى",
-   "the_report_projects" => "المشاريع",
-   "the_report_date" => "التاريخ",
-   "report_deatails" => "الإبلاغ عن",
-   "report_deatails_project_name" => ":اسم المشروع",
-   "report_deatails_add_info" => "معلومات إضافية",
-   "report_deatails_time" => ":الوقت",
-   "project_reports" => "البلاغات",
-   "project_report_name" => ":الاسم",
-   "project_report_type" => ":النوع",
-   "project_report_type_provider" => "مقدم خدمة",
-   "project_report_seeker" => "طالب خدمة",
-   "project_report_message" => "البلاغ",
-   "return_money_provider" => "إرجاع المال لمقدم الخدمة",
-   "return_money_seeker" => "إرجاع المال لطالب الخدمة",
-   //admin users form user block
-   "user_available" => "متاح",
-   "user_blocked" => "محظور",
-   //admin wallet
-   "user_total_balance" => "الرصيد الكلي",
-   "user_fees" => "الأرباح",
-   //change password
-   "cahnge_password" => "تغيير كلمةالسر",
-   "old_password" => "كلمة السر القديمة",
-   "new_password" => "كلمة السر الجديدة",
-   "confirm_new_password" => "تأكيد كلمة السر الجديدة",
-   //admin index
-   "admin_categories" => "الأقسام",
-   //admin master layout
-   "admin_dashboard" => "واجهة لوحة التحكم بالنظام ",
-   "admin_wallet" => "المحفظة",
-   //admin users
-   "username" => "اسم المستخدم",
-   "user_state" => "الحالة",
-   "user_operations" => "العمليات",
-   "user_active" => "نشط",
-   "user_unactive" => "غير نشط",
+    //admin categories
+    "admin_category_enabled" => "مفعل",
+    "admin_category_disabled" => "معطل",
+    //admin report
+    "report_type" => "نوع الشكوى",
+    "report_type_reason1" => "هذا المحتوى لم يعجبني",
+    "report_type_reason2" => "هذا المحتوى مزعج و متكرر",
+    "report_type_reason3" => "هذا المحتوى يخالف شروط استخدام الموقع",
+    "report_type_reason4" => "هذا المستخدم يزعجني",
+    "report_type_reason5" => "هذا المستخدم يخالف شروط استخدام الموقع",
+    "the_report" => "الشكوى",
+    "the_report_user" => "المستخدم",
+    "the_report_content" => "المحتوى",
+    "the_report_projects" => "المشاريع",
+    "the_report_date" => "التاريخ",
+    "report_deatails" => "الإبلاغ عن",
+    "report_deatails_project_name" => ":اسم المشروع",
+    "report_deatails_add_info" => "معلومات إضافية",
+    "report_deatails_time" => ":الوقت",
+    "project_reports" => "البلاغات",
+    "project_report_name" => ":الاسم",
+    "project_report_type" => ":النوع",
+    "project_report_type_provider" => "مقدم خدمة",
+    "project_report_seeker" => "طالب خدمة",
+    "project_report_message" => "البلاغ",
+    "return_money_provider" => "إرجاع المال لمقدم الخدمة",
+    "return_money_seeker" => "إرجاع المال لطالب الخدمة",
+    //admin users form user block
+    "user_available" => "متاح",
+    "user_blocked" => "محظور",
+    //admin wallet
+    "user_total_balance" => "الرصيد الكلي",
+    "user_fees" => "الأرباح",
+    //change password
+    "cahnge_password" => "تغيير كلمةالسر",
+    "old_password" => "كلمة السر القديمة",
+    "new_password" => "كلمة السر الجديدة",
+    "confirm_new_password" => "تأكيد كلمة السر الجديدة",
+    //admin index
+    "admin_categories" => "الأقسام",
+    //admin master layout
+    "admin_dashboard" => "واجهة لوحة التحكم بالنظام ",
+    "admin_wallet" => "المحفظة",
+    //admin users
+    "username" => "اسم المستخدم",
+    "user_state" => "الحالة",
+    "user_operations" => "العمليات",
+    "user_active" => "نشط",
+    "user_unactive" => "غير نشط",
 
-   //email welcome
+    //email welcome
     "welcome_user" => " مرحبًا بك يا",
     "welcome_user_message" => "نحن سعداء بانضمامك لنا تبقى خطوة واحدة لإتمام عملية التسجيل يرجى الضغط على الرابط التالي لتفعيل حسابك",
     "press_activate" => "اضغط هنا لتفعيل حسابك",
@@ -361,5 +361,14 @@ return [
 
     //create user
     "with_google" => "مع Google",
+    // عملية  الدفع
+    'payment_title' => 'الدفع للمشروع',
+    'payment_method' => 'طريقة الدفع',
+    'credit_card' => 'بطاقة ائتمان',
+    'paypal' => 'باي بال',
+    'bank_transfer' => 'تحويل بنكي',
+    'card_number' => 'رقم البطاقة',
+    'complete_payment' => 'إتمام الدفع',
+    'close' => 'إغلاق',
 
 ];

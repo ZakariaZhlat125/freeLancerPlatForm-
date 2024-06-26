@@ -18,9 +18,15 @@ class LanguageSwitcher
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
+
     public function handle(Request $request, Closure $next): Response
     {
-        App::setlocale(Session::has('lang')? Session::get('lang'):Config::get('app.locale'));
+        $defaultLocale = Config::get('app.locale');
+        if (!Session::has('lang')) {
+            Session::put('lang', $defaultLocale);
+        }
+        App::setLocale(Session::get('lang'));
         return $next($request);
     }
 }

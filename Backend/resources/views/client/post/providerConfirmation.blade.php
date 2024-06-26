@@ -66,8 +66,7 @@
                                     {{ __('static.post_detail_desc7') }}
                                 </label>
                                 <textarea class="form-control" name='post_description' id="post_description" type="text" style="height: 10rem;"
-                                    data-sb-validations="required"
-                                    readonly>{{ $project->post_description }}</textarea>
+                                    data-sb-validations="required" readonly>{{ $project->post_description }}</textarea>
                             </div>
 
                             <div class="mt-4">
@@ -75,18 +74,21 @@
                                     {{ __('static.provider_deatils') }}
                                 </label>
                                 <textarea class="form-control" name='comment_description' id="comment_description" type="text" style="height: 10rem;"
-                                    data-sb-validations="required"
-                                    readonly>{{ $project->comment_description }}</textarea>
+                                    data-sb-validations="required" readonly>{{ $project->comment_description }}</textarea>
                             </div>
                             <div class="mt-4 float-left">
-                                <a href='{{ route('AcceptProject', [$project->project_id, $project->seeker_id]) }}'
-                                    class="mo-btn " type="submit" name="confirm">
-                                    {{ __('static.provider_confirm') }}
-                                </a>
-                                <a href='{{ route('rejectProject', [$project->project_id, $project->seeker_id]) }}'
-                                    class="mo-btn btn-blue-rounderd " type="submit" name="reject">
-                                    {{ __('static.provider_reject') }}
-                                </a>
+                                @if ($project->status == 'pending')
+                                    <a href='{{ route('AcceptProject', [$project->project_id, $project->seeker_id]) }}'
+                                        class="mo-btn " type="submit" name="confirm">
+                                        {{ __('static.provider_confirm') }}
+                                    </a>
+
+                                    <a href='{{ route('rejectProject', [$project->project_id, $project->seeker_id]) }}'
+                                        class="mo-btn btn-blue-rounderd " type="submit" name="reject">
+                                        {{ __('static.provider_reject') }}
+                                    </a>
+                                @endif
+
                             </div>
                         </form>
                     </div>

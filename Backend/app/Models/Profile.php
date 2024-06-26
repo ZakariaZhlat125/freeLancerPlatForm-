@@ -15,6 +15,12 @@ class Profile extends Model
         return url("images/") . "/" . $value;
     }
 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     function user_role()
     {
         return $this->hasMany(Role::class);

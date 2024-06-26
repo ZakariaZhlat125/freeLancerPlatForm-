@@ -6,9 +6,9 @@
         <!-- title -->
         <div class="w-12/12 md:w-6/12">
             <div class="flex flex-col justify-center h-full px-5 md:px-20">
-                <h1 class="logo-font font-4xl">
+                <a href="{{ route('home') }}" class="logo-font font-4xl">
                     {{ __('static.title') }}
-                </h1>
+                </a>
                 <p class="mt-4">
                     {{ __('static.descrption1') }}
                     <br />
@@ -77,6 +77,6 @@
 </footer>
 <hr class="my-4 border-gray sm:mx-auto dark:border-primary-light-gray lg:my-8" />
 <span class="block text-sm text-gray-500 sm:text-center dark:text-dark-gray">© 2022 <a href="https://flowbite.com"
-        class="hover:underline">Motofer</a>. All Rights Reserved.
+        class="hover:underline"> {{ __('static.title') }}</a>. All Rights Reserved.
 </span>
 <!-- end of the page -->

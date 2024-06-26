@@ -99,7 +99,7 @@ class UserController extends Controller
                 $userRole = 'provider';
             }
 
-            $works = work::where('is_active', 1)->where('user_id', $user_id)->get();
+            $works = work::where('user_id', $user_id)->get();
             $posts = Posts::where('is_active', 1)->where('user_id', $user_id)->get();
 
             $rating_count = Evaluation::select(

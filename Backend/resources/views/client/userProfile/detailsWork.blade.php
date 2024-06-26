@@ -35,7 +35,8 @@
         <div class="container my-4 pt-20">
             <div class="row my-2">
                 <div style="float:right;">
-                    {{-- edition btn --}}
+                    @if (Auth::user()->id == $item->user_id )
+                        {{-- edition btn --}}
                     <div class=" float-start">
                         <a tabindex="-1" href="{{ route('edit_work', $item->id) }}">
                             <button class="mo-btn btn-blue-bg font-md">
@@ -51,6 +52,7 @@
 
 
                     </div>
+                    @endif
 
                 </div>
                 <div class="col-md-8 col-sm-12 my-2">

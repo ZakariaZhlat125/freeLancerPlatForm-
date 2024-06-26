@@ -2,17 +2,18 @@
 @section('content')
     {{-- Header --}}
     <main class="md:px-20 my-20">
-        <div
-            class="flex  bg-white border-md  rounded-l-none shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+        <div class="flex  bg-white border-md  rounded-l-none shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
             <div style='border-right: none;' class="hidden lg:block lg:w-1/2 bg-cover bg-primary-pink ">
                 <div class=" relative  w-6/12 hidden md:flex  ">
                     <div class="illstration_warrper w-full h-full ">
-                        <div class="motaah_illstration" style=" @if (session()->get('lang') == 'en')top: -44px; left: 50%; @else top: -44px; left: 210%; @endif ">
+                        <div class="motaah_illstration"
+                            style=" @if (session()->get('lang') == 'en') top: -44px; left: 50%; @elseif (session()->get('lang') == 'ar') top: -44px; left: 210%; @else top: -44px; left: 210%; @endif ">
                             <div class="motaah-circle__gray green white xl"></div>
                             <div class="motaah-circle__gray blue white lg"></div>
                             <div class="motaah-circle__gray white md"></div>
                             <div class="motaah-circle__gray white sm"></div>
-                            <div class="motaah-core bg-primary-green @if (session()->get('lang') == 'en') motaah-core-en @endif">
+                            <div
+                                class="motaah-core bg-primary-green @if (session()->get('lang') == 'en') motaah-core-en @endif">
                             </div>
                         </div>
                     </div>
@@ -25,7 +26,7 @@
                 <p class="text-lg text-dark-gray text-gray-600 text-center">
                     {{ __('static.create_user_welcome') }}
                 </p>
-                <a href="{{ route('loginWithGoogle') }} "
+                {{-- <a href="{{ route('loginWithGoogle') }} "
                     class="flex items-center justify-center mt-4 text-white border-sm border border-primary-pink hover:bg-gray-100">
                     <div class=" py-2">
                         <svg class="h-6 w-6" viewBox="0 0 40 40">
@@ -46,7 +47,7 @@
                     <h1 class=" w-5/6 text-center text-primary-pink ">
                         {{ __('static.create_user_google') }}
                     </h1>
-                </a>
+                </a> --}}
                 <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 lg:w-1/4"></span>
                     <a href="#" class="text-xs text-center text-gray-500 uppercase">
@@ -83,8 +84,7 @@
                 @enderror
 
                 <div class="mt-6 w-full flex justify-end items-start">
-                    <button type='submit'
-                        class="mo-btn btn-blue-bg font-bold py-2 px-4  rounded hover:bg-gray-600">
+                    <button type='submit' class="mo-btn btn-blue-bg font-bold py-2 px-4  rounded hover:bg-gray-600">
                         {{ __('static.form_confirm_account') }}
                     </button>
                 </div>

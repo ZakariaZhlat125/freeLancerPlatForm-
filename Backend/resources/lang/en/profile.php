@@ -40,4 +40,5 @@ return [
     'notifacations2' => 'Internal Notifications',
     'note11' => 'Addition of a new proposal to your project',
     'note12' => 'Editing of a proposal added to your project',
+    "CompleteYourProfile" => "Please Complete your Profile",
 ];

@@ -4,27 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Wallet extends Model
+class Transaction extends Model
 {
-
+    use HasFactory;
     protected $fillable = [
-        'holder_type', 'holder_id', 'name', 'slug', 'uuid', 'description', 'meta', 'balance', 'decimal_places'
+        'payable_type', 'payable_id', 'wallet_id', 'type', 'amount', 'confirmed', 'meta', 'uuid'
     ];
 
     protected $casts = [
         'meta' => 'array',
     ];
 
-    public function holder(): MorphTo
+    public function payable(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function transactions(): HasMany
+    public function wallet(): BelongsTo
     {
-        return $this->hasMany(Transaction::class);
+        return $this->belongsTo(Wallet::class);
     }
 }

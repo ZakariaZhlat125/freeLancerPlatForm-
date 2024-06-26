@@ -30,9 +30,9 @@
                 class="flex  items-center justify-between md:flex-rowflex-col md:flex-row  w-full h-fit p-3 px-8"
                 :class="{ 'shadow-lg flex-col border-md': isOpen, '': !isOpen }">
                 <div class=" flex justify-between md:w-fit w-full">
-                    <div class="logo-font">
+                    <a href="{{ route('home') }}" class="logo-font">
                         <p>{{ __('static.title') }}</p>
-                    </div>
+                    </a>
                     <!-- toggle menu  -->
                     <!-- <div class="inline md:hidden cursor-pointer" @click="isNavOpend = !isNavOpend">close</div> -->
                     <button @click="isOpen = !isOpen" type="button"
@@ -442,9 +442,9 @@
                 <!-- title -->
                 <div class="w-12/12 md:w-6/12">
                     <div class="flex flex-col justify-center h-full px-5 md:px-20">
-                        <h1 class="logo-font font-4xl">
+                        <a href="{{ route('home') }}" class="logo-font font-4xl">
                             {{ __('static.title') }}
-                        </h1>
+                        </a>
                         <p class="mt-4">
                             {{ __('static.descrption1') }}
                             <br />

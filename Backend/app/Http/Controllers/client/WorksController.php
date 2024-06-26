@@ -27,9 +27,8 @@ class WorksController extends Controller
                 'works.link',
                 'works.details',
                 'profiles.name'
-            )->join('profiles', 'profiles.user_id', '=', 'works.user_id')->where('is_active', 1)->where('works.user_id', Auth::id())->get();
+            )->join('profiles', 'profiles.user_id', '=', 'works.user_id')->where('works.user_id', Auth::id())->get();
             $item = Profile::where('user_id', Auth::id())->first();
-
             $skill = Skill::where('is_active', 1)->get();
             return view('client.userProfile.myWorks')->with(['works' => $works, 'skills' => $skill, 'item' =>  $item]);
         } catch (\Throwable $th) {

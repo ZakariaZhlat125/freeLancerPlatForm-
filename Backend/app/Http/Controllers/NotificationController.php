@@ -41,7 +41,6 @@ class NotificationController extends Controller
                 'url' => url('posts/details/' . $postOwner->id),
                 'userId' => $postOwner->userid
             ];
-            dd('test');
 
             // Send notification
             Notification::send($user, new CommentNotification($data));
@@ -59,7 +58,7 @@ class NotificationController extends Controller
     function AcceptOffersNotification($projects)
     {
 
-        dd('test');
+
         $providerNotify = User::find($projects->provider_id);
         $data = [
             'project_id' => $projects->project_id,
@@ -82,7 +81,7 @@ class NotificationController extends Controller
 
 
         $providerNotify->notify(new AcceptOfferNotification($data));
-        $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
+        // $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
     }
 
 
@@ -110,7 +109,7 @@ class NotificationController extends Controller
 
 
         $seekerNotify->notify(new AcceptProjectNotification($data));
-        $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
+        // $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
     }
 
 
@@ -138,7 +137,7 @@ class NotificationController extends Controller
         );
 
         $providerNotify->notify(new RejectProjectNotification($data));
-        $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
+        // $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
     }
 
     function sendTheProjectNotifiction($project)
@@ -168,7 +167,7 @@ class NotificationController extends Controller
             $options
         );
         $seeker->notify(new MarkAsDoneNotification($data));
-        $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
+        // $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
         // } catch (\Throwable $th) {
         //     //throw $th;
         // }
@@ -197,7 +196,7 @@ class NotificationController extends Controller
             $options
         );
         $providerNotify->notify(new MarkAsAcceptReceviceNotification($data));
-        $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
+        // $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
     }
 
     function markAsRejectNotifiction($project,  $profile, $post)
@@ -223,6 +222,6 @@ class NotificationController extends Controller
             $options
         );
         $user->notify(new MarkAsRejectReceviceNotification($data));
-        $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
+        // $pusher->trigger('channel-name', 'App\\Events\\CommentEvents', $data);
     }
 }

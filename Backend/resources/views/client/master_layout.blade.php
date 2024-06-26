@@ -48,7 +48,7 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
-    <title>متوفر</title>
+    <title> {{ __('static.title') }}</title>
     @livewireStyles
     {{-- //paste this code under the head tag or in a separate js file.
 	// Wait for window load --}}
@@ -70,9 +70,10 @@
     </div> --}}
 
     {{-- alerts --}}
+
     @if (session()->has('message'))
-        <div id='alert' x-data="{ isShow: true }" class="z-50  " style="z-index: 99999">
-            <div x-show="isShow" class="fixed top-32 right-0 m-3 w-2/3 md:w-1/3"
+        <div id='alert' x-data="{ isShow: true }">
+            <div x-show="isShow" class="fixed top-32 right-0 z-50 m-3 w-2/3 md:w-1/3"
                 x-transition:enter="transition transform ease-out duration-300"
                 x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
                 x-transition:leave="transition transform ease-in duration-300"
