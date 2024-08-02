@@ -36,6 +36,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('batoul@22?!'),
             'remember_token' => Str::random(60),
         ]);
+
         $Batoul->addRole('seeker');
     }
 }
