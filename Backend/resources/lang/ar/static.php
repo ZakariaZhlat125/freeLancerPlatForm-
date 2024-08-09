@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'B2B',
+    'title' => 'متوفر',
     'Home' => 'الرئيسية',
     'Available_projects' => "المشاريع المتاحة",
     'Service_providers' => "مقدمو الخدمات",

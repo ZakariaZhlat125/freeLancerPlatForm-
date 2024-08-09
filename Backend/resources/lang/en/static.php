@@ -3,7 +3,7 @@
 use App\Models\category;
 
 return [
-    'title' => 'B2B',
+    'title' => 'Mutofer',
     'Home' => 'Home',
     "Available_projects" => "Available Projects",
     "Service_providers" => "Service Providers",
