@@ -12,6 +12,7 @@ use App\Http\Controllers\client\WorksController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\client\CommentController;
 use App\Http\Controllers\client\ProfileController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\client\ProjectController;
 use App\Http\Controllers\admin\projectAdminController;
 use App\Http\Controllers\admin\projects;
@@ -153,6 +154,9 @@ Route::group(['middleware' => [LanguageSwitcher::class]], function () {
                 Route::get('/delete/{skill_id}', [ProfileController::class, 'deleteSkill'])->name('deleteSkill');
             });
 
+
+            Route::resource('contracts', ContractController::class);
+            Route::post('contracts/{contract}/sign', [ContractController::class, 'sign'])->name('contracts.sign');
 
             Route::get('/user-account', [ControllPannelController::class, 'edit_pro'])->name('account');
             Route::post('/account-update', [ControllPannelController::class, 'account_save'])->name('account_save');
