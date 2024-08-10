@@ -155,8 +155,6 @@ Route::group(['middleware' => [LanguageSwitcher::class]], function () {
             });
 
 
-            Route::resource('contracts', ContractController::class);
-            Route::post('contracts/{contract}/sign', [ContractController::class, 'sign'])->name('contracts.sign');
 
             Route::get('/user-account', [ControllPannelController::class, 'edit_pro'])->name('account');
             Route::post('/account-update', [ControllPannelController::class, 'account_save'])->name('account_save');
@@ -239,6 +237,18 @@ Route::group(['middleware' => [LanguageSwitcher::class]], function () {
         Route::get('/inbox', [ChatController::class, 'index'])->name('inbox.index');
         Route::get('/inbox/{id}', [ChatController::class, 'show'])->name('inbox.show');
         Route::post('/send-message/{sender}', [ChatController::class, 'sendMessage'])->name('sendMessage');
+
+        Route::resource('contracts', ContractController::class);
+        Route::post('contracts/{contract}/sign', [ContractController::class, 'sign'])->name('contracts.sign');
+
+        // Route to show the edit form
+        Route::get('contracts/{contract}/edit', [ContractController::class, 'edit'])->name('contracts.edit');
+
+        // Route to update the contract
+        Route::put('contracts/{contract}', [ContractController::class, 'update'])->name('contracts.update');
+
+        Route::get('contracts/{contract}/sign', [ContractController::class, 'sign'])->name('contracts.sign');
+
     });
 
 
