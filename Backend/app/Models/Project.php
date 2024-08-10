@@ -27,4 +27,9 @@ class Project extends Model
     {
         return $this->hasMany(Posts::class);
     }
+
+    public function contract() {
+        return $this->hasOne(Contract::class);
+    }
+    
 }

@@ -103,6 +103,11 @@ class User extends Authenticatable implements LaratrustUser
         return $this->hasMany(Messages::class);
     }
 
+    public function contracts() {
+        return $this->hasMany(Contract::class);
+    }
+    
+
     public static function getProviders($search_keyword, $cates, $rateing)
     {
         $users = DB::table('profiles')->join('role_user', 'role_user.user_id', '=', 'profiles.user_id')
