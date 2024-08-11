@@ -14,6 +14,8 @@ class Contract extends Model
          ,'admin_id','freelancer_public_key','freelancer_signature',
          'seeker_public_key','seeker_signature',
          'admin_public_key','admin_signature',
+         'version', 'content_hash', 'title'
+         , 'encrypted_pdf_path' ,'pdf_timestamp'
     ];
 
     public function project() {

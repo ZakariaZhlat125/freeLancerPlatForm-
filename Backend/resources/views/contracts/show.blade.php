@@ -67,6 +67,18 @@
                                 <i class="fa-regular fa-calendar"></i>
                                 <span>{{ $contract->created_at }}</span>
                             </li>
+                            <li class="font-md color-gray-dark">
+                                <i class="fa-solid fa-user"></i>
+                                <span>المستقل: {{ $contract->freelancer->name }}</span>
+                            </li>
+                            <li class="font-md color-gray-dark mx-3">
+                                <i class="fa-solid fa-user-tie"></i>
+                                <span>صاحب العمل: {{ $contract->seeker->name }}</span>
+                            </li>
+                            <li class="font-md color-gray-dark">
+                                <i class="fa-solid fa-info-circle"></i>
+                                <span>الحالة: {{ $contract->status }}</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -81,7 +93,7 @@
                     <ul>
                         <li>توقيع المستقل: {{ $freelancer_signed ? ($freelancer_signature_valid ? 'صالح' : 'غير صالح') : 'غير موقّع بعد' }}</li>
                         <li>توقيع صاحب العمل: {{ $seeker_signed ? ($seeker_signature_valid ? 'صالح' : 'غير صالح') : 'غير موقّع بعد' }}</li>
-                        <li>توقيع المشرف: {{ $admin_signed ? ($admin_signature_valid ? 'صالح' : 'غير صالح') : 'غير موقّع بعد' }}</li>
+                        {{-- <li>توقيع المشرف: {{ $admin_signed ? ($admin_signature_valid ? 'صالح' : 'غير صالح') : 'غير موقّع بعد' }}</li> --}}
                     </ul>
                 </div>
 
