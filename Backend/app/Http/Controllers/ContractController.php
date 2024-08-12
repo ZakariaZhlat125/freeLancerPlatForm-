@@ -40,7 +40,7 @@ class ContractController extends Controller
         $contract->seeker_id = Auth::id();
         $contract->contract_content = $request->contract_content;
         $contract->status = 'pending';
-        $contract->amount = $request->qmount;
+        $contract->amount = $request->amount;
         $contract->save();
 
         return redirect()->route('contracts.index');
